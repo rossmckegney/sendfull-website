@@ -86,7 +86,7 @@ body {
 .bar {
     width: 25px;
     height: 3px;
-    background: #232336;
+    background: #fff;
     margin: 3px 0;
     transition: 0.3s;
     border-radius: 2px;
@@ -164,6 +164,7 @@ body {
     font-size: 1.1rem;
     background: #7b61ff;
     color: #fff;
+    text-align: center;
 }
 
 .btn:hover {
@@ -578,11 +579,11 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.95) 100%);
+        background: #181824;
         width: 100%;
         text-align: center;
         transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.3);
         padding: 2rem 0;
         backdrop-filter: blur(20px);
     }
@@ -624,6 +625,11 @@ body {
     .footer-content {
         flex-direction: column;
         text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .footer-content .btn {
+        order: -1;
     }
     
     .section-title {
