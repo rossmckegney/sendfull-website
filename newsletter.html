@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter - Sendfull</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <a href="index.html">
+                        <img src="images/sendfull-logo-white.jpg" alt="Sendfull" class="logo-image">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="newsletter.html" class="nav-link active">Newsletter</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <canvas id="shader-canvas" class="shader-canvas"></canvas>
+            <div class="container">
+                <h1 class="page-title">Newsletter</h1>
+                <p class="page-subtitle">Latest insights on design research for XR, AI, and robotics</p>
+            </div>
+        </section>
+
+        <section class="newsletter-content">
+            <div class="container">
+                <div class="newsletter-intro">
+                    <h2>Weekly Insights from Stef Hutka</h2>
+                    <p>Get bi-weekly insights on design research for XR, AI, and robotics. Stay ahead with the latest trends and ideas from the intersection of spatial computing and artificial intelligence.</p>
+                    <a href="https://sendfull.substack.com" target="_blank" rel="noopener" class="btn btn-primary">Subscribe on Substack</a>
+                </div>
+
+                <div class="newsletter-grid" id="newsletter-grid">
+                    <!-- Posts will be loaded here dynamically -->
+                    <div class="loading">Loading latest posts...</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="substack-promo">
+            <div class="container">
+                <h2 class="substack-title">Subscribe to the Sendfull Newsletter</h2>
+                <p class="substack-desc">Get bi-weekly insights on design research for XR, AI, and robotics. Stay ahead with the latest trends and ideas from Stef Hutka.</p>
+                <a href="https://sendfull.substack.com" target="_blank" rel="noopener" class="btn btn-primary">Subscribe on Substack</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Sendfull. All rights reserved.</p>
+                <a href="mailto:hello@sendfull.com" class="btn btn-primary">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="newsletter.js"></script>
+</body>
+</html> 
