@@ -17,24 +17,31 @@ class NewsletterFeed {
     }
 
     async loadPosts() {
-        // Try multiple CORS proxies for reliability
+        // Try multiple CORS proxies for reliability, with cache-busting
         const proxies = [
             'https://api.allorigins.win/raw?url=',
-            'https://cors-anywhere.herokuapp.com/',
+            'https://corsproxy.io/?',
             'https://api.codetabs.com/v1/proxy?quest=',
             'https://thingproxy.freeboard.io/fetch/',
-            'https://corsproxy.io/?'
+            'https://cors-anywhere.herokuapp.com/'
         ];
 
         let lastError;
         
         for (const proxy of proxies) {
             try {
-                const response = await fetch(proxy + encodeURIComponent(this.rssUrl), {
+                // Add cache-busting parameter to ensure fresh content
+                const cacheBuster = '&_t=' + Date.now();
+                const url = proxy + encodeURIComponent(this.rssUrl) + cacheBuster;
+                
+                console.log(`Trying proxy: ${proxy}`);
+                
+                const response = await fetch(url, {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/xml, text/xml, */*',
-                        'User-Agent': 'Mozilla/5.0 (compatible; Sendfull/1.0)'
+                        'User-Agent': 'Mozilla/5.0 (compatible; Sendfull/1.0)',
+                        'Cache-Control': 'no-cache'
                     },
                     timeout: 10000
                 });
@@ -44,6 +51,7 @@ class NewsletterFeed {
                 }
 
                 const xmlText = await response.text();
+                console.log(`Successfully fetched RSS feed from ${proxy}, length: ${xmlText.length}`);
                 
                 // Check if we got valid XML
                 if (!xmlText.includes('<rss') && !xmlText.includes('<feed')) {
@@ -51,6 +59,13 @@ class NewsletterFeed {
                 }
 
                 const posts = this.parseRSSFeed(xmlText);
+                console.log(`Parsed ${posts.length} posts from RSS feed`);
+                
+                if (posts.length > 0) {
+                    console.log('Latest post date:', posts[0].pubDate);
+                    console.log('Latest post title:', posts[0].title);
+                }
+                
                 this.displayPosts(posts);
                 return; // Success, exit the loop
                 
@@ -63,15 +78,18 @@ class NewsletterFeed {
         
         // If all proxies failed, try direct fetch (might work in some browsers)
         try {
-            const response = await fetch(this.rssUrl, {
+            console.log('Trying direct fetch...');
+            const response = await fetch(this.rssUrl + '?_t=' + Date.now(), {
                 method: 'GET',
                 headers: {
-                    'Accept': 'application/xml, text/xml, */*'
+                    'Accept': 'application/xml, text/xml, */*',
+                    'Cache-Control': 'no-cache'
                 }
             });
             
             if (response.ok) {
                 const xmlText = await response.text();
+                console.log(`Direct fetch successful, length: ${xmlText.length}`);
                 const posts = this.parseRSSFeed(xmlText);
                 this.displayPosts(posts);
                 return;
@@ -82,6 +100,7 @@ class NewsletterFeed {
         
         // If RSS feed fails, try fallback JSON
         try {
+            console.log('Trying fallback posts...');
             await this.loadFallbackPosts();
             return;
         } catch (fallbackError) {
@@ -94,13 +113,14 @@ class NewsletterFeed {
 
     async loadFallbackPosts() {
         try {
-            const response = await fetch('newsletter-fallback.json');
+            const response = await fetch('newsletter-fallback.json?_t=' + Date.now());
             if (!response.ok) {
                 throw new Error('Failed to load fallback posts');
             }
             
             const data = await response.json();
             if (data.posts && data.posts.length > 0) {
+                console.log('Using fallback posts');
                 this.displayPosts(data.posts);
             } else {
                 throw new Error('No posts in fallback data');
@@ -121,13 +141,14 @@ class NewsletterFeed {
         }
         
         const items = xmlDoc.querySelectorAll('item');
+        console.log(`Found ${items.length} items in RSS feed`);
         
         if (items.length === 0) {
             throw new Error('No posts found in RSS feed');
         }
         
         const posts = [];
-        for (let i = 0; i < Math.min(items.length, this.maxPosts); i++) {
+        for (let i = 0; i < items.length; i++) {
             const item = items[i];
             const post = {
                 title: this.getTextContent(item, 'title'),
@@ -144,7 +165,18 @@ class NewsletterFeed {
             }
         }
         
-        return posts;
+        // Sort posts by date (newest first) to ensure we get the latest
+        posts.sort((a, b) => {
+            const dateA = new Date(a.pubDate);
+            const dateB = new Date(b.pubDate);
+            return dateB - dateA;
+        });
+        
+        // Take only the first maxPosts
+        const finalPosts = posts.slice(0, this.maxPosts);
+        console.log(`Returning ${finalPosts.length} posts (sorted by date, newest first)`);
+        
+        return finalPosts;
     }
 
     getTextContent(element, tagName) {
@@ -207,6 +239,7 @@ class NewsletterFeed {
             return;
         }
 
+        console.log(`Displaying ${posts.length} posts`);
         const postsHTML = posts.map(post => this.createPostCard(post)).join('');
         this.gridElement.innerHTML = postsHTML;
     }
