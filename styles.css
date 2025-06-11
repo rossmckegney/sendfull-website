@@ -101,16 +101,23 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    padding: 8px;
-    border-radius: 6px;
+    padding: 12px;
+    border-radius: 8px;
     transition: background 0.2s ease;
     -webkit-tap-highlight-color: transparent;
     align-items: center;
     justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    z-index: 1001;
 }
 
 .hamburger:hover {
     background: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger:active {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .bar {
@@ -120,6 +127,7 @@ body {
     margin: 3px 0;
     transition: all 0.3s ease;
     border-radius: 1px;
+    transform-origin: center;
 }
 
 /* Hamburger Animation */
@@ -129,6 +137,7 @@ body {
 
 .hamburger.active .bar:nth-child(2) {
     opacity: 0;
+    transform: scale(0);
 }
 
 .hamburger.active .bar:nth-child(3) {
@@ -643,10 +652,10 @@ body {
     
     .nav-menu {
         position: fixed;
-        top: 70px;
+        top: 105px;
         left: -100%;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 105px);
         background: #181824;
         flex-direction: column;
         justify-content: flex-start;
