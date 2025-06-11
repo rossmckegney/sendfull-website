@@ -21,7 +21,9 @@ class NewsletterFeed {
         const proxies = [
             'https://api.allorigins.win/raw?url=',
             'https://cors-anywhere.herokuapp.com/',
-            'https://api.codetabs.com/v1/proxy?quest='
+            'https://api.codetabs.com/v1/proxy?quest=',
+            'https://thingproxy.freeboard.io/fetch/',
+            'https://corsproxy.io/?'
         ];
 
         let lastError;

@@ -1,76 +1,76 @@
 {
   "posts": [
     {
+      "title": "ep. 54: Intentional Exploration to Navigate Career Transitions",
+      "description": "How to use intentional exploration to understand new landscapes in your career, such as when moving from enterprise AR hardware to creator tools for designers and artists building AR experiences.",
+      "link": "https://sendfull.substack.com/p/ep-54-intentional-exploration-to",
+      "pubDate": "2024-11-06T22:06:58Z",
+      "image": "https://picsum.photos/400/250?random=1",
+      "readTime": "8 min read"
+    },
+    {
+      "title": "ep. 53: Designing Future Systems",
+      "description": "Exploring how to design technology where we can harness 'the machines' while retaining our human agency, and how systems thinking is essential for future-proofing careers.",
+      "link": "https://sendfull.substack.com/p/ep-53-designing-future-systems",
+      "pubDate": "2024-10-30T22:06:58Z",
+      "image": "https://picsum.photos/400/250?random=2",
+      "readTime": "6 min read"
+    },
+    {
+      "title": "ep. 52: Systems Thinking as Career Future-Proofing",
+      "description": "How AI is redefining craft for knowledge workers, shifting roles towards big-picture orchestration and why systems thinking is essential for future-proofing careers.",
+      "link": "https://sendfull.substack.com/p/ep-52-systems-thinking-as-career",
+      "pubDate": "2024-10-23T18:26:35Z",
+      "image": "https://picsum.photos/400/250?random=3",
+      "readTime": "7 min read"
+    },
+    {
+      "title": "ep. 51: Thriving in Emerging Tech - Series Kickoff: XR Career Spotlight with Design Leader Jordan Harvey",
+      "description": "How industry practitioners can break into the field of extended reality to successfully navigate this evolving space, featuring insights from Jordan Harvey of Remote Control.",
+      "link": "https://sendfull.substack.com/p/ep-51-designing-for-emerging-technology",
+      "pubDate": "2024-10-16T17:45:18Z",
+      "image": "https://picsum.photos/400/250?random=4",
+      "readTime": "10 min read"
+    },
+    {
       "title": "Design Research at the Speed of AI",
       "description": "How we're accelerating design research for XR, AI, and robotics products using neuroscience-backed evaluation frameworks.",
       "link": "https://sendfull.substack.com/p/design-research-at-the-speed-of-ai",
-      "pubDate": "2025-01-15T10:00:00Z",
-      "image": "https://picsum.photos/400/250?random=1",
+      "pubDate": "2024-10-09T10:00:00Z",
+      "image": "https://picsum.photos/400/250?random=5",
       "readTime": "8 min read"
     },
     {
       "title": "Evaluating Cognitive Load in XR Experiences",
       "description": "Understanding how to measure and optimize cognitive load in virtual and augmented reality applications.",
       "link": "https://sendfull.substack.com/p/evaluating-cognitive-load-in-xr",
-      "pubDate": "2025-01-08T10:00:00Z",
-      "image": "https://picsum.photos/400/250?random=2",
+      "pubDate": "2024-10-02T10:00:00Z",
+      "image": "https://picsum.photos/400/250?random=6",
       "readTime": "6 min read"
     },
     {
       "title": "The Future of Human-Robot Interaction Design",
       "description": "Exploring the unique challenges and opportunities in designing interfaces for robotic systems.",
       "link": "https://sendfull.substack.com/p/human-robot-interaction-design",
-      "pubDate": "2025-01-01T10:00:00Z",
-      "image": "https://picsum.photos/400/250?random=3",
+      "pubDate": "2024-09-25T10:00:00Z",
+      "image": "https://picsum.photos/400/250?random=7",
       "readTime": "7 min read"
     },
     {
       "title": "Building Evaluation Frameworks That Scale",
       "description": "How to create design research frameworks that grow with your product and team.",
       "link": "https://sendfull.substack.com/p/evaluation-frameworks-that-scale",
-      "pubDate": "2024-12-25T10:00:00Z",
-      "image": "https://picsum.photos/400/250?random=4",
+      "pubDate": "2024-09-18T10:00:00Z",
+      "image": "https://picsum.photos/400/250?random=8",
       "readTime": "5 min read"
     },
     {
       "title": "Neuroscience in Product Design",
       "description": "Applying neuroscience principles to create more intuitive and effective user experiences.",
       "link": "https://sendfull.substack.com/p/neuroscience-in-product-design",
-      "pubDate": "2024-12-18T10:00:00Z",
-      "image": "https://picsum.photos/400/250?random=5",
-      "readTime": "9 min read"
-    },
-    {
-      "title": "Measuring User Experience in Spatial Computing",
-      "description": "Advanced techniques for evaluating user experience in virtual and augmented reality environments.",
-      "link": "https://sendfull.substack.com/p/measuring-ux-in-spatial-computing",
-      "pubDate": "2024-12-11T10:00:00Z",
-      "image": "https://picsum.photos/400/250?random=6",
-      "readTime": "7 min read"
-    },
-    {
-      "title": "AI-Powered Design Research Tools",
-      "description": "How artificial intelligence is transforming the way we conduct and analyze design research.",
-      "link": "https://sendfull.substack.com/p/ai-powered-design-research-tools",
-      "pubDate": "2024-12-04T10:00:00Z",
-      "image": "https://picsum.photos/400/250?random=7",
-      "readTime": "6 min read"
-    },
-    {
-      "title": "The Psychology of XR Interface Design",
-      "description": "Understanding the psychological principles that make XR interfaces intuitive and engaging.",
-      "link": "https://sendfull.substack.com/p/psychology-of-xr-interface-design",
-      "pubDate": "2024-11-27T10:00:00Z",
-      "image": "https://picsum.photos/400/250?random=8",
-      "readTime": "8 min read"
-    },
-    {
-      "title": "Automation and Human-Centered Design",
-      "description": "Balancing automation with human needs in the design of AI and robotics systems.",
-      "link": "https://sendfull.substack.com/p/automation-and-human-centered-design",
-      "pubDate": "2024-11-20T10:00:00Z",
+      "pubDate": "2024-09-11T10:00:00Z",
       "image": "https://picsum.photos/400/250?random=9",
-      "readTime": "5 min read"
+      "readTime": "9 min read"
     }
   ]
 } 
