@@ -110,10 +110,13 @@ body {
     min-width: 44px;
     min-height: 44px;
     z-index: 1001;
+    background: rgba(255, 255, 255, 0.1); /* Temporary for debugging */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Temporary for debugging */
 }
 
 .hamburger:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.3); /* More obvious for debugging */
+    transform: scale(1.05); /* Add scale effect for debugging */
 }
 
 .hamburger:active {
