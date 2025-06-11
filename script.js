@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     
-    // Only run mobile menu logic if hamburger is visible (mobile)
-    if (hamburger && navMenu && window.getComputedStyle(hamburger).display !== 'none') {
+    // Always set up mobile menu logic - it will only work when hamburger is visible
+    if (hamburger && navMenu) {
         let isMenuOpen = false;
         
         function toggleMenu() {
