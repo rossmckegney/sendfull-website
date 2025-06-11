@@ -3,14 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     
+    console.log('DOM loaded, hamburger:', hamburger, 'navMenu:', navMenu);
+    
     // Always set up mobile menu logic - it will only work when hamburger is visible
     if (hamburger && navMenu) {
         let isMenuOpen = false;
         
         function toggleMenu() {
+            console.log('toggleMenu called, current state:', isMenuOpen);
             isMenuOpen = !isMenuOpen;
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            console.log('Menu toggled, new state:', isMenuOpen, 'hamburger active:', hamburger.classList.contains('active'), 'nav active:', navMenu.classList.contains('active'));
             
             // Prevent body scroll when menu is open
             if (isMenuOpen) {
@@ -22,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Hamburger click handler
         hamburger.addEventListener('click', function(e) {
+            console.log('Hamburger clicked!');
             e.preventDefault();
             e.stopPropagation();
             toggleMenu();
@@ -30,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function() {
+                console.log('Nav link clicked');
                 if (isMenuOpen) {
                     toggleMenu();
                 }
@@ -39,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (isMenuOpen && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                console.log('Clicked outside menu');
                 toggleMenu();
             }
         });
@@ -46,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu on escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && isMenuOpen) {
+                console.log('Escape key pressed');
                 toggleMenu();
             }
         });
@@ -53,9 +61,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu on window resize (if switching to desktop)
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768 && isMenuOpen) {
+                console.log('Window resized to desktop');
                 toggleMenu();
             }
         });
+        
+        console.log('Mobile menu event listeners set up successfully');
+    } else {
+        console.error('Hamburger or nav menu not found:', { hamburger, navMenu });
     }
     
     // Smooth scrolling for anchor links

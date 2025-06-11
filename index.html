@@ -137,14 +137,18 @@
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             
+            console.log('Critical JS - DOM loaded, hamburger:', hamburger, 'navMenu:', navMenu);
+            
             // Always set up mobile menu logic - it will only work when hamburger is visible
             if (hamburger && navMenu) {
                 let isMenuOpen = false;
                 
                 function toggleMenu() {
+                    console.log('Critical JS - toggleMenu called, current state:', isMenuOpen);
                     isMenuOpen = !isMenuOpen;
                     hamburger.classList.toggle('active');
                     navMenu.classList.toggle('active');
+                    console.log('Critical JS - Menu toggled, new state:', isMenuOpen, 'hamburger active:', hamburger.classList.contains('active'), 'nav active:', navMenu.classList.contains('active'));
                     
                     // Prevent body scroll when menu is open
                     if (isMenuOpen) {
@@ -156,6 +160,7 @@
                 
                 // Hamburger click handler
                 hamburger.addEventListener('click', function(e) {
+                    console.log('Critical JS - Hamburger clicked!');
                     e.preventDefault();
                     e.stopPropagation();
                     toggleMenu();
@@ -164,6 +169,7 @@
                 // Close menu when clicking on a link
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.addEventListener('click', function() {
+                        console.log('Critical JS - Nav link clicked');
                         if (isMenuOpen) {
                             toggleMenu();
                         }
@@ -173,6 +179,7 @@
                 // Close menu when clicking outside
                 document.addEventListener('click', function(e) {
                     if (isMenuOpen && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        console.log('Critical JS - Clicked outside menu');
                         toggleMenu();
                     }
                 });
@@ -180,6 +187,7 @@
                 // Close menu on escape key
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && isMenuOpen) {
+                        console.log('Critical JS - Escape key pressed');
                         toggleMenu();
                     }
                 });
@@ -187,9 +195,14 @@
                 // Close menu on window resize (if switching to desktop)
                 window.addEventListener('resize', function() {
                     if (window.innerWidth > 768 && isMenuOpen) {
+                        console.log('Critical JS - Window resized to desktop');
                         toggleMenu();
                     }
                 });
+                
+                console.log('Critical JS - Mobile menu event listeners set up successfully');
+            } else {
+                console.error('Critical JS - Hamburger or nav menu not found:', { hamburger, navMenu });
             }
             
             // Smooth scrolling for anchor links (critical for navigation)
