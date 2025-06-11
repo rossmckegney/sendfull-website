@@ -161,14 +161,22 @@ const optimizedScrollHandler = debounce(function() {
 
 window.addEventListener('scroll', optimizedScrollHandler);
 
-// Interactive Shader Effect
-class ShaderEffect {
+// Interactive Neural Network Shader Effect
+class NeuralShaderEffect {
     constructor() {
         this.canvas = document.getElementById('shader-canvas');
-        if (!this.canvas) return;
+        if (!this.canvas) {
+            console.error('Shader canvas not found');
+            return;
+        }
         
         this.gl = this.canvas.getContext('webgl');
-        if (!this.gl) return;
+        if (!this.gl) {
+            console.error('WebGL not supported');
+            return;
+        }
+        
+        console.log('Initializing neural shader effect...');
         
         this.mouse = { x: 0.5, y: 0.5 };
         this.time = 0;
@@ -198,35 +206,30 @@ class ShaderEffect {
             
             void main() {
                 vec2 uv = gl_FragCoord.xy / u_resolution.xy;
-                vec2 center = vec2(0.5);
                 
-                // Create flowing waves
-                float wave1 = sin(uv.x * 10.0 + u_time * 0.5) * 0.5 + 0.5;
-                float wave2 = sin(uv.y * 8.0 + u_time * 0.3) * 0.5 + 0.5;
-                float wave3 = sin((uv.x + uv.y) * 6.0 + u_time * 0.7) * 0.5 + 0.5;
+                // Start with transparent background
+                vec3 finalColor = vec3(0.0, 0.0, 0.0);
                 
-                // Mouse interaction
-                float dist = distance(uv, u_mouse);
-                float mouseEffect = smoothstep(0.5, 0.0, dist) * 0.3;
+                // Mouse interaction - glowing cursor
+                float mouseDist = distance(uv, u_mouse);
+                float mouseGlow = smoothstep(0.3, 0.0, mouseDist) * 0.4;
+                finalColor += mouseGlow * vec3(0.48, 0.38, 1.0); // #7b61ff converted to RGB
                 
-                // Combine effects
-                float color = (wave1 + wave2 + wave3) / 3.0 + mouseEffect;
-                
-                // Create gradient
-                vec3 color1 = vec3(0.1, 0.2, 0.4); // Dark blue
-                vec3 color2 = vec3(0.3, 0.1, 0.5); // Purple
-                vec3 color3 = vec3(0.2, 0.3, 0.6); // Light blue
-                
-                vec3 finalColor = mix(color1, color2, wave1);
-                finalColor = mix(finalColor, color3, wave2);
-                finalColor += vec3(mouseEffect * 0.2);
-                
-                gl_FragColor = vec4(finalColor, 0.8);
+                gl_FragColor = vec4(finalColor, 0.5);
             }
         `);
         
+        if (!vertexShader || !fragmentShader) {
+            console.error('Failed to create shaders');
+            return;
+        }
+        
         // Create program
         this.program = this.createProgram(vertexShader, fragmentShader);
+        if (!this.program) {
+            console.error('Failed to create program');
+            return;
+        }
         
         // Get attribute and uniform locations
         this.positionLocation = this.gl.getAttribLocation(this.program, 'a_position');
@@ -245,6 +248,8 @@ class ShaderEffect {
         this.buffer = this.gl.createBuffer();
         this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.buffer);
         this.gl.bufferData(this.gl.ARRAY_BUFFER, positions, this.gl.STATIC_DRAW);
+        
+        console.log('Neural shader initialized successfully');
     }
     
     createShader(type, source) {
@@ -285,19 +290,22 @@ class ShaderEffect {
     bindEvents() {
         window.addEventListener('resize', () => this.resize());
         
-        this.canvas.addEventListener('mousemove', (e) => {
+        // Use document-level mouse tracking to ensure we get all mouse events
+        document.addEventListener('mousemove', (e) => {
             const rect = this.canvas.getBoundingClientRect();
             this.mouse.x = (e.clientX - rect.left) / rect.width;
             this.mouse.y = 1.0 - (e.clientY - rect.top) / rect.height;
         });
         
-        this.canvas.addEventListener('mouseleave', () => {
+        document.addEventListener('mouseleave', () => {
             this.mouse.x = 0.5;
             this.mouse.y = 0.5;
         });
     }
     
     render() {
+        if (!this.program) return;
+        
         this.time += 0.016; // ~60fps
         
         this.gl.useProgram(this.program);
@@ -319,7 +327,8 @@ class ShaderEffect {
     }
 }
 
-// Initialize shader effect when DOM is loaded
+// Initialize neural shader effect when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new ShaderEffect();
+    console.log('DOM loaded, initializing neural shader...');
+    new NeuralShaderEffect();
 }); 
