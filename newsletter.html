@@ -100,23 +100,43 @@
             const navMenu = document.querySelector('.nav-menu');
             
             if (hamburger && navMenu) {
-                // Add both click and touchstart events for better iOS support
+                let isMenuOpen = false;
+                
+                // More robust toggle function for iOS
                 const toggleMenu = function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+                    if (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                    
+                    isMenuOpen = !isMenuOpen;
                     hamburger.classList.toggle('active');
                     navMenu.classList.toggle('active');
+                    
+                    // Prevent body scroll when menu is open
+                    if (isMenuOpen) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
                 };
                 
-                // Use both click and touchstart for maximum compatibility
+                // Use multiple event types for maximum iOS compatibility
                 hamburger.addEventListener('click', toggleMenu);
-                hamburger.addEventListener('touchstart', toggleMenu, { passive: false });
+                hamburger.addEventListener('touchend', toggleMenu);
+                
+                // Add touch event with passive: false for iOS
+                hamburger.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                }, { passive: false });
                 
                 // Close mobile menu when clicking on a link
                 document.querySelectorAll('.nav-link').forEach(link => {
                     const closeMenu = () => {
+                        isMenuOpen = false;
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
                     };
                     
                     link.addEventListener('click', closeMenu);
@@ -125,17 +145,26 @@
                 
                 // Close menu when clicking outside
                 document.addEventListener('click', function(e) {
-                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
+                    if (isMenuOpen && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        toggleMenu();
                     }
                 });
                 
                 // Close menu on escape key
                 document.addEventListener('keydown', function(e) {
-                    if (e.key === 'Escape') {
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
+                    if (e.key === 'Escape' && isMenuOpen) {
+                        toggleMenu();
+                    }
+                });
+                
+                // Handle orientation change on iOS
+                window.addEventListener('orientationchange', function() {
+                    if (isMenuOpen) {
+                        setTimeout(() => {
+                            if (window.innerWidth > 768) {
+                                toggleMenu();
+                            }
+                        }, 100);
                     }
                 });
             }

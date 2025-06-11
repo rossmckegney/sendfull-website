@@ -65,6 +65,7 @@ body {
     border-radius: 8px;
     font-weight: 500;
     transition: color 0.2s, background 0.2s;
+    text-decoration: none;
 }
 
 .nav-link:hover,
@@ -88,6 +89,9 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    padding: 10px;
+    margin: -10px;
+    z-index: 1001;
 }
 
 .bar {
@@ -100,6 +104,7 @@ body {
     border-radius: 2px;
     -webkit-transform-origin: center;
     transform-origin: center;
+    will-change: transform, opacity;
 }
 
 /* Hamburger animation styles */
@@ -111,11 +116,15 @@ body {
 .hamburger.active .bar:nth-child(1) {
     -webkit-transform: translateY(8px) rotate(45deg);
     transform: translateY(8px) rotate(45deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .hamburger.active .bar:nth-child(3) {
     -webkit-transform: translateY(-8px) rotate(-45deg);
     transform: translateY(-8px) rotate(-45deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 /* Main Content */
@@ -631,6 +640,7 @@ body {
         flex-direction: column;
         background: #181824;
         width: 100%;
+        height: calc(100vh - 70px);
         text-align: center;
         transition: 0.3s;
         -webkit-transition: 0.3s;
@@ -640,6 +650,7 @@ body {
         -webkit-backdrop-filter: blur(20px);
         -webkit-overflow-scrolling: touch;
         z-index: 999;
+        overflow-y: auto;
     }
     
     .nav-menu.active {
@@ -650,6 +661,7 @@ body {
     
     .nav-menu li {
         margin: 1rem 0;
+        list-style: none;
     }
     
     .nav-menu .nav-link {
@@ -657,6 +669,15 @@ body {
         padding: 1rem 2rem;
         font-size: 1.1rem;
         -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+        color: #f5f6fa;
+        transition: all 0.2s ease;
+    }
+    
+    .nav-menu .nav-link:hover,
+    .nav-menu .nav-link.active {
+        color: #7b61ff;
+        background: rgba(123, 97, 255, 0.08);
     }
     
     .hero-title {
