@@ -17,23 +17,117 @@ class NewsletterFeed {
     }
 
     async loadPosts() {
-        // Use a CORS proxy to fetch the RSS feed
-        const proxyUrl = 'https://api.allorigins.win/raw?url=';
-        const response = await fetch(proxyUrl + encodeURIComponent(this.rssUrl));
-        
-        if (!response.ok) {
-            throw new Error('Failed to fetch RSS feed');
-        }
+        // Try multiple CORS proxies for reliability
+        const proxies = [
+            'https://api.allorigins.win/raw?url=',
+            'https://cors-anywhere.herokuapp.com/',
+            'https://api.codetabs.com/v1/proxy?quest='
+        ];
 
-        const xmlText = await response.text();
-        const posts = this.parseRSSFeed(xmlText);
-        this.displayPosts(posts);
+        let lastError;
+        
+        for (const proxy of proxies) {
+            try {
+                const response = await fetch(proxy + encodeURIComponent(this.rssUrl), {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/xml, text/xml, */*',
+                        'User-Agent': 'Mozilla/5.0 (compatible; Sendfull/1.0)'
+                    },
+                    timeout: 10000
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const xmlText = await response.text();
+                
+                // Check if we got valid XML
+                if (!xmlText.includes('<rss') && !xmlText.includes('<feed')) {
+                    throw new Error('Invalid RSS feed format');
+                }
+
+                const posts = this.parseRSSFeed(xmlText);
+                this.displayPosts(posts);
+                return; // Success, exit the loop
+                
+            } catch (error) {
+                console.warn(`Proxy ${proxy} failed:`, error);
+                lastError = error;
+                continue; // Try next proxy
+            }
+        }
+        
+        // If all proxies failed, try direct fetch (might work in some browsers)
+        try {
+            const response = await fetch(this.rssUrl, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/xml, text/xml, */*'
+                }
+            });
+            
+            if (response.ok) {
+                const xmlText = await response.text();
+                const posts = this.parseRSSFeed(xmlText);
+                this.displayPosts(posts);
+                return;
+            }
+        } catch (directError) {
+            console.warn('Direct fetch also failed:', directError);
+        }
+        
+        // If RSS feed fails, try fallback JSON
+        try {
+            await this.loadFallbackPosts();
+            return;
+        } catch (fallbackError) {
+            console.warn('Fallback also failed:', fallbackError);
+        }
+        
+        // If everything failed, show error
+        throw lastError || new Error('All fetch methods failed');
+    }
+
+    async loadFallbackPosts() {
+        try {
+            const response = await fetch('newsletter-fallback.json');
+            if (!response.ok) {
+                throw new Error('Failed to load fallback posts');
+            }
+            
+            const data = await response.json();
+            if (data.posts && data.posts.length > 0) {
+                this.displayPosts(data.posts);
+                // Show a note that these are sample posts
+                const note = document.createElement('div');
+                note.className = 'newsletter-note';
+                note.innerHTML = '<p><small>📝 Showing sample posts. <a href="https://sendfull.substack.com" target="_blank" rel="noopener">Visit Substack</a> for the latest content.</small></p>';
+                this.gridElement.insertBefore(note, this.gridElement.firstChild);
+            } else {
+                throw new Error('No posts in fallback data');
+            }
+        } catch (error) {
+            throw new Error('Fallback posts failed to load');
+        }
     }
 
     parseRSSFeed(xmlText) {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+        
+        // Check for parsing errors
+        const parserError = xmlDoc.querySelector('parsererror');
+        if (parserError) {
+            throw new Error('Failed to parse RSS feed XML');
+        }
+        
         const items = xmlDoc.querySelectorAll('item');
+        
+        if (items.length === 0) {
+            throw new Error('No posts found in RSS feed');
+        }
         
         const posts = [];
         for (let i = 0; i < Math.min(items.length, this.maxPosts); i++) {
@@ -46,7 +140,11 @@ class NewsletterFeed {
                 image: this.extractImage(item),
                 readTime: this.extractReadTime(item)
             };
-            posts.push(post);
+            
+            // Only add posts with at least a title
+            if (post.title.trim()) {
+                posts.push(post);
+            }
         }
         
         return posts;
@@ -73,6 +171,13 @@ class NewsletterFeed {
             }
         }
 
+        // Try to extract from description
+        const description = this.getTextContent(item, 'description');
+        const descImgMatch = description.match(/<img[^>]+src="([^"]+)"/);
+        if (descImgMatch) {
+            return descImgMatch[1];
+        }
+
         // Default placeholder image
         return 'https://via.placeholder.com/400x250/7b61ff/ffffff?text=Sendfull';
     }
@@ -84,12 +189,19 @@ class NewsletterFeed {
     }
 
     formatDate(dateString) {
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        });
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) {
+                return 'Recent';
+            }
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        } catch (error) {
+            return 'Recent';
+        }
     }
 
     displayPosts(posts) {
@@ -108,7 +220,7 @@ class NewsletterFeed {
         return `
             <article class="newsletter-card">
                 <div class="newsletter-card-image">
-                    <img src="${post.image}" alt="${post.title}" loading="lazy">
+                    <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/7b61ff/ffffff?text=Sendfull'">
                 </div>
                 <div class="newsletter-card-content">
                     <div class="newsletter-card-meta">
@@ -136,6 +248,7 @@ class NewsletterFeed {
             <div class="newsletter-error">
                 <h3>Unable to load posts</h3>
                 <p>Please visit our <a href="https://sendfull.substack.com" target="_blank" rel="noopener">Substack</a> to read the latest posts.</p>
+                <p><small>Technical note: This may be due to CORS restrictions. The newsletter feed is available at <a href="https://sendfull.substack.com/feed" target="_blank" rel="noopener">https://sendfull.substack.com/feed</a></small></p>
             </div>
         `;
     }

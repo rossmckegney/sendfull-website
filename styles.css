@@ -967,4 +967,32 @@ body, .main, .features, .about-content, .values, .substack-promo, .footer {
     background: #181824;
     padding: 60px 0 40px 0;
     text-align: center;
+}
+
+.newsletter-error a:hover {
+    color: #a084ff;
+}
+
+.newsletter-note {
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    background: rgba(123, 97, 255, 0.1);
+    border: 1px solid rgba(123, 97, 255, 0.2);
+    border-radius: 12px;
+    color: #bfc1d1;
+}
+
+.newsletter-note p {
+    margin: 0;
+}
+
+.newsletter-note a {
+    color: #7b61ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.newsletter-note a:hover {
+    color: #a084ff;
 } 
