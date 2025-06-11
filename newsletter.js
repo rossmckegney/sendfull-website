@@ -1,9 +1,7 @@
-// Newsletter RSS Feed Integration
+// Newsletter Feed - Load from GitHub Action cached data
 class NewsletterFeed {
     constructor() {
-        this.rssDataUrl = 'newsletter-rss.json';
-        this.fallbackUrl = 'newsletter-fallback.json';
-        this.maxPosts = 9;
+        this.cachedDataUrl = 'newsletter-rss.json';
         this.gridElement = document.getElementById('newsletter-grid');
         this.init();
     }
@@ -18,58 +16,30 @@ class NewsletterFeed {
     }
 
     async loadPosts() {
-        // Try to load the GitHub Action-generated RSS data first
         try {
-            console.log('Loading RSS data from GitHub Action...');
-            const response = await fetch(this.rssDataUrl + '?_t=' + Date.now(), {
+            console.log('Loading cached newsletter data...');
+            const response = await fetch(this.cachedDataUrl + '?_t=' + Date.now(), {
                 method: 'GET',
                 headers: {
                     'Cache-Control': 'no-cache'
                 }
             });
             
-            if (response.ok) {
-                const data = await response.json();
-                if (data.posts && data.posts.length > 0) {
-                    console.log(`Loaded ${data.posts.length} posts from RSS data`);
-                    console.log('Last updated:', data.lastUpdated);
-                    this.displayPosts(data.posts);
-                    return;
-                }
-            }
-        } catch (error) {
-            console.warn('Failed to load RSS data:', error);
-        }
-        
-        // If RSS data fails, try fallback JSON
-        try {
-            console.log('Trying fallback posts...');
-            await this.loadFallbackPosts();
-            return;
-        } catch (fallbackError) {
-            console.warn('Fallback also failed:', fallbackError);
-        }
-        
-        // If everything failed, show error
-        throw new Error('All data sources failed');
-    }
-
-    async loadFallbackPosts() {
-        try {
-            const response = await fetch(this.fallbackUrl + '?_t=' + Date.now());
             if (!response.ok) {
-                throw new Error('Failed to load fallback posts');
+                throw new Error('Failed to load cached data');
             }
             
             const data = await response.json();
             if (data.posts && data.posts.length > 0) {
-                console.log('Using fallback posts');
+                console.log(`Loaded ${data.posts.length} posts from cached data`);
+                console.log('Last updated:', data.lastUpdated);
                 this.displayPosts(data.posts);
             } else {
-                throw new Error('No posts in fallback data');
+                throw new Error('No posts found in cached data');
             }
         } catch (error) {
-            throw new Error('Fallback posts failed to load');
+            console.error('Failed to load cached data:', error);
+            this.showError();
         }
     }
 
@@ -134,7 +104,7 @@ class NewsletterFeed {
             <div class="newsletter-error">
                 <h3>Unable to load posts</h3>
                 <p>Please visit our <a href="https://sendfull.substack.com" target="_blank" rel="noopener">Substack</a> to read the latest posts.</p>
-                <p><small>Technical note: The newsletter feed is automatically updated every hour via GitHub Actions.</small></p>
+                <p><small>The newsletter feed is automatically updated every hour via GitHub Actions.</small></p>
             </div>
         `;
     }
