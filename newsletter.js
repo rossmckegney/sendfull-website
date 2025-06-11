@@ -178,8 +178,8 @@ class NewsletterFeed {
             return descImgMatch[1];
         }
 
-        // Default placeholder image
-        return 'https://via.placeholder.com/400x250/7b61ff/ffffff?text=Sendfull';
+        // Default placeholder image using Picsum
+        return 'https://picsum.photos/400/250?random=' + Math.floor(Math.random() * 1000);
     }
 
     extractReadTime(item) {
@@ -220,7 +220,7 @@ class NewsletterFeed {
         return `
             <article class="newsletter-card">
                 <div class="newsletter-card-image">
-                    <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x250/7b61ff/ffffff?text=Sendfull'">
+                    <img src="${post.image}" alt="${post.title}" loading="lazy" onerror="this.src='https://picsum.photos/400/250?random=' + Math.floor(Math.random() * 1000)">
                 </div>
                 <div class="newsletter-card-content">
                     <div class="newsletter-card-meta">
