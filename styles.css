@@ -92,6 +92,19 @@ body {
     border-radius: 2px;
 }
 
+/* Hamburger animation styles */
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 /* Main Content */
 .main {
     margin-top: 110px;
