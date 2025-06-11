@@ -39,6 +39,38 @@
       "pubDate": "2024-12-18T10:00:00Z",
       "image": "https://picsum.photos/400/250?random=5",
       "readTime": "9 min read"
+    },
+    {
+      "title": "Measuring User Experience in Spatial Computing",
+      "description": "Advanced techniques for evaluating user experience in virtual and augmented reality environments.",
+      "link": "https://sendfull.substack.com/p/measuring-ux-in-spatial-computing",
+      "pubDate": "2024-12-11T10:00:00Z",
+      "image": "https://picsum.photos/400/250?random=6",
+      "readTime": "7 min read"
+    },
+    {
+      "title": "AI-Powered Design Research Tools",
+      "description": "How artificial intelligence is transforming the way we conduct and analyze design research.",
+      "link": "https://sendfull.substack.com/p/ai-powered-design-research-tools",
+      "pubDate": "2024-12-04T10:00:00Z",
+      "image": "https://picsum.photos/400/250?random=7",
+      "readTime": "6 min read"
+    },
+    {
+      "title": "The Psychology of XR Interface Design",
+      "description": "Understanding the psychological principles that make XR interfaces intuitive and engaging.",
+      "link": "https://sendfull.substack.com/p/psychology-of-xr-interface-design",
+      "pubDate": "2024-11-27T10:00:00Z",
+      "image": "https://picsum.photos/400/250?random=8",
+      "readTime": "8 min read"
+    },
+    {
+      "title": "Automation and Human-Centered Design",
+      "description": "Balancing automation with human needs in the design of AI and robotics systems.",
+      "link": "https://sendfull.substack.com/p/automation-and-human-centered-design",
+      "pubDate": "2024-11-20T10:00:00Z",
+      "image": "https://picsum.photos/400/250?random=9",
+      "readTime": "5 min read"
     }
   ]
 } 

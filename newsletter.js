@@ -2,7 +2,7 @@
 class NewsletterFeed {
     constructor() {
         this.rssUrl = 'https://sendfull.substack.com/feed';
-        this.maxPosts = 10;
+        this.maxPosts = 9;
         this.gridElement = document.getElementById('newsletter-grid');
         this.init();
     }
@@ -100,11 +100,6 @@ class NewsletterFeed {
             const data = await response.json();
             if (data.posts && data.posts.length > 0) {
                 this.displayPosts(data.posts);
-                // Show a note that these are sample posts
-                const note = document.createElement('div');
-                note.className = 'newsletter-note';
-                note.innerHTML = '<p><small>📝 Showing sample posts. <a href="https://sendfull.substack.com" target="_blank" rel="noopener">Visit Substack</a> for the latest content.</small></p>';
-                this.gridElement.insertBefore(note, this.gridElement.firstChild);
             } else {
                 throw new Error('No posts in fallback data');
             }
