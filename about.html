@@ -158,10 +158,10 @@
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             
-            if (hamburger && navMenu) {
+            // Only run mobile menu logic if hamburger is visible (mobile)
+            if (hamburger && navMenu && window.getComputedStyle(hamburger).display !== 'none') {
                 let isMenuOpen = false;
                 
-                // Simple toggle function
                 function toggleMenu() {
                     isMenuOpen = !isMenuOpen;
                     hamburger.classList.toggle('active');
@@ -175,21 +175,18 @@
                     }
                 }
                 
-                // Use only click event for maximum compatibility
+                // Hamburger click handler
                 hamburger.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     toggleMenu();
                 });
                 
-                // Close mobile menu when clicking on a link
+                // Close menu when clicking on a link
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.addEventListener('click', function() {
                         if (isMenuOpen) {
-                            isMenuOpen = false;
-                            hamburger.classList.remove('active');
-                            navMenu.classList.remove('active');
-                            document.body.style.overflow = '';
+                            toggleMenu();
                         }
                     });
                 });
@@ -197,20 +194,21 @@
                 // Close menu when clicking outside
                 document.addEventListener('click', function(e) {
                     if (isMenuOpen && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                        isMenuOpen = false;
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                        document.body.style.overflow = '';
+                        toggleMenu();
                     }
                 });
                 
                 // Close menu on escape key
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && isMenuOpen) {
-                        isMenuOpen = false;
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                        document.body.style.overflow = '';
+                        toggleMenu();
+                    }
+                });
+                
+                // Close menu on window resize (if switching to desktop)
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768 && isMenuOpen) {
+                        toggleMenu();
                     }
                 });
             }
