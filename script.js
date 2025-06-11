@@ -207,15 +207,17 @@ class NeuralShaderEffect {
             void main() {
                 vec2 uv = gl_FragCoord.xy / u_resolution.xy;
                 
-                // Start with transparent background
-                vec3 finalColor = vec3(0.0, 0.0, 0.0);
+                // Base background for the shader (matching the hero section gradient)
+                vec3 color1 = vec3(0.29, 0.24, 0.55); // #4A3C8B
+                vec3 color2 = vec3(0.42, 0.36, 0.91); // #6C5CE7
+                vec3 finalColor = mix(color1, color2, uv.x * 0.7 + uv.y * 0.3); // Mix based on UV for gradient
                 
                 // Mouse interaction - glowing cursor
                 float mouseDist = distance(uv, u_mouse);
-                float mouseGlow = smoothstep(0.3, 0.0, mouseDist) * 0.4;
-                finalColor += mouseGlow * vec3(0.48, 0.38, 1.0); // #7b61ff converted to RGB
+                float mouseGlow = smoothstep(0.3, 0.0, mouseDist) * 0.4; // Reverted to previous fade and intensity
+                finalColor += mouseGlow * vec3(0.48, 0.38, 1.0);
                 
-                gl_FragColor = vec4(finalColor, 0.5);
+                gl_FragColor = vec4(finalColor, 1.0); // Make shader fully opaque
             }
         `);
         
