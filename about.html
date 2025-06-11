@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Sendfull - Design Research at the Speed of AI">
+    <meta name="theme-color" content="#7b61ff">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="images/sendfull-logo-white.svg" as="image" type="image/svg+xml">
+    
+    <!-- Critical CSS inlined for above-the-fold content -->
+    <style>
+        /* Critical CSS for above-the-fold content */
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#181824 0%,#232336 100%);color:#f5f6fa;min-height:100vh}.header{position:fixed;top:0;left:0;right:0;background:#181824;z-index:1000;transition:all 0.3s ease}.nav-container{display:flex;justify-content:space-between;align-items:center;padding:1.8rem 0;max-width:1200px;margin:0 auto;padding-left:20px;padding-right:20px}.logo-image{height:45px;width:auto;display:block}.nav-menu{display:flex;list-style:none;gap:2rem}.nav-link{color:#f5f6fa;background:none;border:none;padding:8px 16px;border-radius:8px;font-weight:500;transition:color 0.2s,background 0.2s;text-decoration:none}.nav-link:hover,.nav-link.active{color:#7b61ff;background:rgba(123,97,255,0.08)}.main{margin-top:110px}.page-header{background:linear-gradient(135deg,#4A3C8B 0%,#6C5CE7 100%)!important;color:#fff!important;padding:80px 0 50px 0;text-align:left;position:relative;overflow:hidden}.page-title{font-size:3.5rem;font-weight:700;margin-bottom:1rem;color:#fff}.page-subtitle{font-size:1.3rem;color:#bfc1d1;margin-bottom:2rem}.container{max-width:1200px;margin:0 auto;padding:0 20px}@media(max-width:768px){.page-title{font-size:2.5rem}.page-subtitle{font-size:1.1rem}}
+    </style>
+    
     <title>About - Sendfull</title>
-    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Non-critical CSS loaded asynchronously -->
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    
+    <!-- Optimized font loading -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -133,6 +151,57 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Critical JavaScript for navigation -->
+    <script>
+        // Critical JavaScript for navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (hamburger && navMenu) {
+                // Add both click and touchstart events for better iOS support
+                const toggleMenu = function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                };
+                
+                // Use both click and touchstart for maximum compatibility
+                hamburger.addEventListener('click', toggleMenu);
+                hamburger.addEventListener('touchstart', toggleMenu, { passive: false });
+                
+                // Close mobile menu when clicking on a link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    const closeMenu = () => {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    };
+                    
+                    link.addEventListener('click', closeMenu);
+                    link.addEventListener('touchend', closeMenu);
+                });
+                
+                // Close menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+                
+                // Close menu on escape key
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+    
+    <!-- Non-critical JavaScript loaded asynchronously -->
+    <script src="script.js" defer></script>
 </body>
 </html> 
