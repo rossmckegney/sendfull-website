@@ -142,13 +142,8 @@
             if (hamburger && navMenu) {
                 let isMenuOpen = false;
                 
-                // More robust toggle function for iOS
-                const toggleMenu = function(e) {
-                    if (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                    
+                // Simple toggle function
+                function toggleMenu() {
                     isMenuOpen = !isMenuOpen;
                     hamburger.classList.toggle('active');
                     navMenu.classList.toggle('active');
@@ -159,52 +154,44 @@
                     } else {
                         document.body.style.overflow = '';
                     }
-                };
+                }
                 
-                // Use multiple event types for maximum iOS compatibility
-                hamburger.addEventListener('click', toggleMenu);
-                hamburger.addEventListener('touchend', toggleMenu);
-                
-                // Add touch event with passive: false for iOS
-                hamburger.addEventListener('touchstart', function(e) {
+                // Use only click event for maximum compatibility
+                hamburger.addEventListener('click', function(e) {
                     e.preventDefault();
-                }, { passive: false });
+                    e.stopPropagation();
+                    toggleMenu();
+                });
                 
                 // Close mobile menu when clicking on a link
                 document.querySelectorAll('.nav-link').forEach(link => {
-                    const closeMenu = () => {
-                        isMenuOpen = false;
-                        hamburger.classList.remove('active');
-                        navMenu.classList.remove('active');
-                        document.body.style.overflow = '';
-                    };
-                    
-                    link.addEventListener('click', closeMenu);
-                    link.addEventListener('touchend', closeMenu);
+                    link.addEventListener('click', function() {
+                        if (isMenuOpen) {
+                            isMenuOpen = false;
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
                 });
                 
                 // Close menu when clicking outside
                 document.addEventListener('click', function(e) {
                     if (isMenuOpen && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                        toggleMenu();
+                        isMenuOpen = false;
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
                     }
                 });
                 
                 // Close menu on escape key
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && isMenuOpen) {
-                        toggleMenu();
-                    }
-                });
-                
-                // Handle orientation change on iOS
-                window.addEventListener('orientationchange', function() {
-                    if (isMenuOpen) {
-                        setTimeout(() => {
-                            if (window.innerWidth > 768) {
-                                toggleMenu();
-                            }
-                        }, 100);
+                        isMenuOpen = false;
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        document.body.style.overflow = '';
                     }
                 });
             }
