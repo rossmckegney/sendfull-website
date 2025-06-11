@@ -23,7 +23,10 @@ class NewsletterFeed {
             'https://corsproxy.io/?',
             'https://api.codetabs.com/v1/proxy?quest=',
             'https://thingproxy.freeboard.io/fetch/',
-            'https://cors-anywhere.herokuapp.com/'
+            'https://cors-anywhere.herokuapp.com/',
+            'https://cors.bridged.cc/',
+            'https://api.codetabs.com/v1/proxy?quest=',
+            'https://cors.io/?'
         ];
 
         let lastError;
@@ -43,7 +46,7 @@ class NewsletterFeed {
                         'User-Agent': 'Mozilla/5.0 (compatible; Sendfull/1.0)',
                         'Cache-Control': 'no-cache'
                     },
-                    timeout: 10000
+                    timeout: 15000
                 });
                 
                 if (!response.ok) {
