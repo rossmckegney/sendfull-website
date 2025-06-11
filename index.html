@@ -146,8 +146,23 @@
                 function toggleMenu() {
                     console.log('Critical JS - toggleMenu called, current state:', isMenuOpen);
                     isMenuOpen = !isMenuOpen;
-                    hamburger.classList.toggle('active');
-                    navMenu.classList.toggle('active');
+                    
+                    console.log('Critical JS - Before toggle - hamburger classes:', hamburger.className);
+                    console.log('Critical JS - Before toggle - nav classes:', navMenu.className);
+                    
+                    // Try manual class manipulation instead of toggle
+                    if (isMenuOpen) {
+                        hamburger.classList.add('active');
+                        navMenu.classList.add('active');
+                        console.log('Critical JS - Added active classes manually');
+                    } else {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        console.log('Critical JS - Removed active classes manually');
+                    }
+                    
+                    console.log('Critical JS - After toggle - hamburger classes:', hamburger.className);
+                    console.log('Critical JS - After toggle - nav classes:', navMenu.className);
                     console.log('Critical JS - Menu toggled, new state:', isMenuOpen, 'hamburger active:', hamburger.classList.contains('active'), 'nav active:', navMenu.classList.contains('active'));
                     
                     // Prevent body scroll when menu is open

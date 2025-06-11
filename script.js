@@ -12,8 +12,23 @@ document.addEventListener('DOMContentLoaded', function() {
         function toggleMenu() {
             console.log('toggleMenu called, current state:', isMenuOpen);
             isMenuOpen = !isMenuOpen;
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            
+            console.log('Before toggle - hamburger classes:', hamburger.className);
+            console.log('Before toggle - nav classes:', navMenu.className);
+            
+            // Try manual class manipulation instead of toggle
+            if (isMenuOpen) {
+                hamburger.classList.add('active');
+                navMenu.classList.add('active');
+                console.log('Added active classes manually');
+            } else {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                console.log('Removed active classes manually');
+            }
+            
+            console.log('After toggle - hamburger classes:', hamburger.className);
+            console.log('After toggle - nav classes:', navMenu.className);
             console.log('Menu toggled, new state:', isMenuOpen, 'hamburger active:', hamburger.classList.contains('active'), 'nav active:', navMenu.classList.contains('active'));
             
             // Prevent body scroll when menu is open
