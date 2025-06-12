@@ -31,6 +31,7 @@ jobs:
         cat > fetch-rss.js << 'EOF'
         const https = require('https');
         const fs = require('fs');
+        const zlib = require('zlib');
         
         const RSS_URL = 'https://sendfull.substack.com/feed';
         
@@ -54,17 +55,36 @@ jobs:
             const req = https.get(RSS_URL, options, (res) => {
               console.log('Response status:', res.statusCode);
               console.log('Content-Type:', res.headers['content-type']);
+              console.log('Content-Encoding:', res.headers['content-encoding']);
               
               let data = '';
+              let stream = res;
               
-              res.on('data', (chunk) => {
+              // Handle gzip compression
+              if (res.headers['content-encoding'] === 'gzip') {
+                stream = res.pipe(zlib.createGunzip());
+                console.log('Decompressing gzipped response...');
+              } else if (res.headers['content-encoding'] === 'br') {
+                stream = res.pipe(zlib.createBrotliDecompress());
+                console.log('Decompressing brotli response...');
+              } else if (res.headers['content-encoding'] === 'deflate') {
+                stream = res.pipe(zlib.createInflate());
+                console.log('Decompressing deflate response...');
+              }
+              
+              stream.on('data', (chunk) => {
                 data += chunk;
               });
               
-              res.on('end', () => {
+              stream.on('end', () => {
                 console.log('Received data length:', data.length);
                 console.log('First 200 chars:', data.substring(0, 200));
                 resolve(data);
+              });
+              
+              stream.on('error', (error) => {
+                console.error('Stream error:', error.message);
+                reject(error);
               });
             });
             
