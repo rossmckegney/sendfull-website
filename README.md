@@ -1,86 +1,65 @@
 # Sendfull Website
 
-A modern, responsive website for Sendfull - Design Research at the Speed of AI.
+The official website for Sendfull, a design research consultancy focused on emerging technology products.
 
-## Features
+## 🌐 Live Site
+Visit: [www.sendfull.com](https://www.sendfull.com)
 
-- **Interactive Shader Effects**: WebGL-powered animated backgrounds on hero sections
-- **Professional Design**: Clean, modern interface with Frame.io-inspired styling
-- **Responsive Layout**: Works perfectly on desktop, tablet, and mobile devices
-- **SVG Icons**: Professional, futuristic icons throughout the site
-- **Smooth Animations**: Hover effects and transitions for enhanced user experience
+## 🚀 Features
+- **Responsive Design**: Optimized for desktop, tablet, and mobile
+- **Performance Optimized**: Critical CSS inlining, optimized images, and fast loading
+- **Newsletter Integration**: Automated RSS feed from Substack
+- **Modern UI**: Clean, professional design with smooth animations
 
-## Pages
+## 📁 Structure
+- `index.html` - Homepage
+- `about.html` - About page
+- `newsletter.html` - Newsletter/Substack posts
+- `styles.css` - Main stylesheet
+- `script.js` - Main JavaScript
+- `newsletter.js` - Newsletter functionality
+- `newsletter-rss.json` - Cached RSS feed data
 
-- **Homepage**: Features interactive shader background and service offerings
-- **About Page**: Company information, mission, and team details
+## 🔧 Setup & Deployment
+This site is hosted on **GitHub Pages** with automatic deployment from the main branch.
 
-## Technologies Used
+### Local Development
+1. Clone the repository
+2. Open any HTML file in your browser
+3. Or use a local server: `python3 -m http.server 8000`
 
-- HTML5
-- CSS3 (with modern features like CSS Grid, Flexbox, and custom properties)
-- JavaScript (ES6+)
-- WebGL (for shader effects)
-
-## Local Development
-
-To run the site locally:
+### RSS Feed Updates
+The newsletter page automatically fetches posts from the Sendfull Substack RSS feed. Due to Cloudflare protection, updates are done locally:
 
 ```bash
-# Using Python (if you have Python installed)
-python3 -m http.server 8000
-
-# Using Node.js (if you have Node.js installed)
-npx serve .
-
-# Using PHP (if you have PHP installed)
-php -S localhost:8000
+# Update RSS feed (when needed)
+node fetch-rss-local.js
+git add newsletter-rss.json
+git commit -m "Update RSS feed"
+git push
 ```
 
-Then open your browser and navigate to `http://localhost:8000`
+## 🎨 Design System
+- **Colors**: Professional blue and white theme
+- **Typography**: Clean, readable fonts
+- **Layout**: Grid-based responsive design
+- **Animations**: Smooth transitions and hover effects
 
-## GitHub Pages Deployment
+## 📱 Mobile Optimized
+- Hamburger menu for mobile navigation
+- Responsive grid layouts
+- Touch-friendly interactions
+- Optimized for all screen sizes
 
-This site is configured to be deployed on GitHub Pages. To deploy:
+## 🔍 Performance
+- Critical CSS inlined for above-the-fold content
+- Optimized images and assets
+- Minimal JavaScript footprint
+- Fast loading times
 
-1. **Create a GitHub repository** (if you haven't already)
-2. **Push your code** to the repository
-3. **Enable GitHub Pages**:
-   - Go to your repository on GitHub
-   - Click on "Settings"
-   - Scroll down to "GitHub Pages" section
-   - Select "Deploy from a branch"
-   - Choose "main" branch (or "master" if that's your default)
-   - Click "Save"
+## 📞 Contact
+For questions about this website, contact: stef@sendfull.com
 
-Your site will be available at: `https://[your-username].github.io/[repository-name]`
+---
 
-## File Structure
-
-```
-sendfull/
-├── index.html          # Homepage
-├── about.html          # About page
-├── styles.css          # Main stylesheet
-├── script.js           # JavaScript functionality
-├── images/             # Image assets
-│   ├── sendfull-logo.png
-│   └── stef-hutka.jpg
-└── README.md           # This file
-```
-
-## Customization
-
-- **Colors**: Update CSS custom properties in `styles.css` for brand colors
-- **Content**: Modify HTML files to update text and images
-- **Shaders**: Edit the fragment shader in `script.js` for different background effects
-- **Icons**: Replace SVG icons in HTML files with your preferred designs
-
-## Browser Support
-
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-
-Note: The WebGL shader effects require a modern browser with WebGL support. 
+Built with ❤️ for the Sendfull community 
