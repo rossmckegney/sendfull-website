@@ -42,7 +42,6 @@ jobs:
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
                 'Accept': 'application/xml, text/xml, */*',
                 'Accept-Language': 'en-US,en;q=0.9',
-                'Accept-Encoding': 'gzip, deflate, br',
                 'Connection': 'keep-alive',
                 'Upgrade-Insecure-Requests': '1',
                 'Sec-Fetch-Dest': 'document',
@@ -56,6 +55,7 @@ jobs:
               console.log('Response status:', res.statusCode);
               console.log('Content-Type:', res.headers['content-type']);
               console.log('Content-Encoding:', res.headers['content-encoding']);
+              console.log('All headers:', JSON.stringify(res.headers, null, 2));
               
               let data = '';
               let stream = res;
@@ -70,6 +70,8 @@ jobs:
               } else if (res.headers['content-encoding'] === 'deflate') {
                 stream = res.pipe(zlib.createInflate());
                 console.log('Decompressing deflate response...');
+              } else {
+                console.log('No compression detected, using raw response');
               }
               
               stream.on('data', (chunk) => {
@@ -79,6 +81,7 @@ jobs:
               stream.on('end', () => {
                 console.log('Received data length:', data.length);
                 console.log('First 200 chars:', data.substring(0, 200));
+                console.log('Last 200 chars:', data.substring(data.length - 200));
                 resolve(data);
               });
               
