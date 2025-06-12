@@ -1,0 +1,46 @@
+name: Update Newsletter List
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # every hour
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  update-newsletter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies (if needed)
+        run: |
+          if [ -f package.json ]; then
+            npm ci
+          fi
+
+      - name: Run update-rss.js
+        run: node update-rss.js
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          if git diff --quiet newsletter-rss.json; then
+            echo "No changes to commit"
+          else
+            git add newsletter-rss.json
+            git commit -m "🤖 Auto-update newsletter list [skip ci]"
+            git push
+            echo "✅ Newsletter list updated and pushed"
+          fi 
