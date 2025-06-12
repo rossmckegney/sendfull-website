@@ -23,14 +23,199 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install dependencies (if needed)
+      - name: Update RSS feed with robust error handling
         run: |
-          if [ -f package.json ]; then
-            npm ci
-          fi
+          # Create a more robust RSS fetcher
+          cat > update-rss-robust.js << 'EOF'
+          const https = require('https');
+          const fs = require('fs');
+          const zlib = require('zlib');
 
-      - name: Run update-rss.js
-        run: node update-rss.js
+          const RSS_URL = 'https://sendfull.substack.com/feed';
+
+          // Multiple user agents to try
+          const userAgents = [
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+          ];
+
+          function fetchRSS(userAgent) {
+            return new Promise((resolve, reject) => {
+              const options = {
+                headers: {
+                  'User-Agent': userAgent,
+                  'Accept': 'application/xml, text/xml, */*',
+                  'Accept-Language': 'en-US,en;q=0.9',
+                  'Connection': 'keep-alive',
+                  'Upgrade-Insecure-Requests': '1',
+                  'Sec-Fetch-Dest': 'document',
+                  'Sec-Fetch-Mode': 'navigate',
+                  'Sec-Fetch-Site': 'none',
+                  'Cache-Control': 'no-cache',
+                  'Referer': 'https://sendfull.substack.com/'
+                }
+              };
+              
+              const req = https.get(RSS_URL, options, (res) => {
+                console.log(`📡 Fetching RSS feed... (Status: ${res.statusCode}, User-Agent: ${userAgent.substring(0, 50)}...)`);
+                
+                let data = '';
+                let stream = res;
+                
+                // Handle compression
+                if (res.headers['content-encoding'] === 'gzip') {
+                  stream = res.pipe(zlib.createGunzip());
+                } else if (res.headers['content-encoding'] === 'br') {
+                  stream = res.pipe(zlib.createBrotliDecompress());
+                } else if (res.headers['content-encoding'] === 'deflate') {
+                  stream = res.pipe(zlib.createInflate());
+                }
+                
+                stream.on('data', (chunk) => {
+                  data += chunk;
+                });
+                
+                stream.on('end', () => {
+                  resolve(data);
+                });
+                
+                stream.on('error', (error) => {
+                  reject(error);
+                });
+              });
+              
+              req.on('error', (error) => {
+                reject(error);
+              });
+              
+              req.setTimeout(20000, () => {
+                req.destroy();
+                reject(new Error('Request timeout'));
+              });
+            });
+          }
+
+          function parseRSS(xmlText) {
+            const posts = [];
+            
+            // Simple XML parsing to extract posts
+            const itemRegex = /<item>([\s\S]*?)<\/item>/g;
+            let match;
+            
+            while ((match = itemRegex.exec(xmlText)) !== null) {
+              const itemContent = match[1];
+              
+              // Extract title
+              const titleMatch = itemContent.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/);
+              const title = titleMatch ? titleMatch[1] : '';
+              
+              // Extract description
+              const descMatch = itemContent.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>/);
+              const description = descMatch ? descMatch[1] : '';
+              
+              // Extract link
+              const linkMatch = itemContent.match(/<link>(.*?)<\/link>/);
+              const link = linkMatch ? linkMatch[1] : '';
+              
+              // Extract pubDate
+              const dateMatch = itemContent.match(/<pubDate>(.*?)<\/pubDate>/);
+              const pubDate = dateMatch ? dateMatch[1] : '';
+              
+              // Extract image from enclosure
+              const imageMatch = itemContent.match(/<enclosure[^>]*url="([^"]*)"[^>]*>/);
+              const image = imageMatch ? imageMatch[1] : `https://picsum.photos/400/250?random=${Math.floor(Math.random() * 1000)}`;
+              
+              // Extract read time from description
+              const readTimeMatch = description.match(/(\d+)\s*min\s*read/);
+              const readTime = readTimeMatch ? `${readTimeMatch[1]} min read` : '5 min read';
+              
+              if (title && link) {
+                posts.push({
+                  title: title,
+                  description: description.replace(/<[^>]*>/g, '').substring(0, 200) + '...',
+                  link: link,
+                  pubDate: pubDate,
+                  image: image,
+                  readTime: readTime
+                });
+              }
+            }
+            
+            return posts.slice(0, 9); // Return only the first 9 posts
+          }
+
+          async function main() {
+            try {
+              console.log('🚀 Starting robust RSS feed update...\n');
+              
+              let xmlText = null;
+              let lastError = null;
+              
+              // Try multiple user agents
+              for (const userAgent of userAgents) {
+                try {
+                  xmlText = await fetchRSS(userAgent);
+                  
+                  // Validate RSS feed
+                  if (xmlText.includes('<rss') || xmlText.includes('<feed')) {
+                    console.log(`✅ Successfully fetched RSS feed with User-Agent: ${userAgent.substring(0, 50)}...`);
+                    break;
+                  } else {
+                    console.log(`❌ Invalid RSS format with User-Agent: ${userAgent.substring(0, 50)}...`);
+                    lastError = new Error('Invalid RSS format');
+                  }
+                } catch (error) {
+                  console.log(`❌ Failed with User-Agent: ${userAgent.substring(0, 50)}... - ${error.message}`);
+                  lastError = error;
+                  continue;
+                }
+              }
+              
+              if (!xmlText || (!xmlText.includes('<rss') && !xmlText.includes('<feed'))) {
+                throw lastError || new Error('Failed to fetch RSS feed with all user agents');
+              }
+              
+              const posts = parseRSS(xmlText);
+              console.log(`✅ Successfully parsed ${posts.length} posts`);
+              
+              if (posts.length === 0) {
+                throw new Error('No posts found in RSS feed');
+              }
+              
+              const output = {
+                lastUpdated: new Date().toISOString(),
+                posts: posts
+              };
+              
+              fs.writeFileSync('newsletter-rss.json', JSON.stringify(output, null, 2));
+              console.log('💾 Updated newsletter-rss.json');
+              
+              console.log('\n📋 Latest posts:');
+              posts.forEach((post, index) => {
+                console.log(`${index + 1}. ${post.title}`);
+              });
+              
+              console.log('\n🎉 RSS feed update complete!');
+              
+            } catch (error) {
+              console.error('❌ Error updating RSS feed:', error.message);
+              console.error('Stack trace:', error.stack);
+              
+              // If we have existing data, keep it
+              if (fs.existsSync('newsletter-rss.json')) {
+                console.log('⚠️  Keeping existing newsletter-rss.json due to fetch failure');
+                process.exit(0);
+              } else {
+                process.exit(1);
+              }
+            }
+          }
+
+          main();
+          EOF
+          
+          node update-rss-robust.js
 
       - name: Commit and push changes
         run: |
