@@ -293,6 +293,9 @@ body {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    text-decoration: none;
+    display: block;
+    color: inherit;
 }
 
 .feature-card::before {
@@ -311,6 +314,8 @@ body {
 .feature-card:hover {
     transform: translateY(-8px);
     border-color: rgba(123, 97, 255, 0.3);
+    text-decoration: none;
+    color: inherit;
 }
 
 .feature-card:hover::before {
