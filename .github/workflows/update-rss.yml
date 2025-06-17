@@ -17,8 +17,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Set up Node.js
       uses: actions/setup-node@v4
@@ -32,6 +30,8 @@ jobs:
         echo "Current directory: $(pwd)"
         echo "Files in directory:"
         ls -la
+        echo "Git status:"
+        git status
         
     - name: Update RSS feed
       run: |
