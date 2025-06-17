@@ -25,6 +25,14 @@ jobs:
       with:
         node-version: '18'
         
+    - name: Debug environment
+      run: |
+        echo "Node version: $(node --version)"
+        echo "NPM version: $(npm --version)"
+        echo "Current directory: $(pwd)"
+        echo "Files in directory:"
+        ls -la
+        
     - name: Update RSS feed
       run: |
         # Copy the update script to the runner
@@ -51,19 +59,27 @@ jobs:
               }
             };
             
+            console.log('Making request to:', RSS_URL);
+            
             const req = https.get(RSS_URL, options, (res) => {
               console.log(`📡 Fetching RSS feed... (Status: ${res.statusCode})`);
+              console.log('Response headers:', JSON.stringify(res.headers, null, 2));
               
               let data = '';
               let stream = res;
               
               // Handle compression
               if (res.headers['content-encoding'] === 'gzip') {
+                console.log('Handling gzip compression');
                 stream = res.pipe(zlib.createGunzip());
               } else if (res.headers['content-encoding'] === 'br') {
+                console.log('Handling brotli compression');
                 stream = res.pipe(zlib.createBrotliDecompress());
               } else if (res.headers['content-encoding'] === 'deflate') {
+                console.log('Handling deflate compression');
                 stream = res.pipe(zlib.createInflate());
+              } else {
+                console.log('No compression detected');
               }
               
               stream.on('data', (chunk) => {
@@ -71,19 +87,23 @@ jobs:
               });
               
               stream.on('end', () => {
+                console.log(`Received ${data.length} characters`);
                 resolve(data);
               });
               
               stream.on('error', (error) => {
+                console.error('Stream error:', error);
                 reject(error);
               });
             });
             
             req.on('error', (error) => {
+              console.error('Request error:', error);
               reject(error);
             });
             
             req.setTimeout(15000, () => {
+              console.error('Request timeout');
               req.destroy();
               reject(new Error('Request timeout'));
             });
@@ -145,6 +165,9 @@ jobs:
             
             const xmlText = await fetchRSS();
             
+            console.log('\nFirst 500 characters of response:');
+            console.log(xmlText.substring(0, 500));
+            
             // Validate RSS feed
             if (!xmlText.includes('<rss') && !xmlText.includes('<feed')) {
               throw new Error('Invalid RSS feed format');
@@ -162,18 +185,45 @@ jobs:
               posts: posts
             };
             
-            fs.writeFileSync('newsletter-rss.json', JSON.stringify(output, null, 2));
-            console.log('💾 Updated newsletter-rss.json');
+            // Check if file exists and compare
+            let hasChanges = false;
+            if (fs.existsSync('newsletter-rss.json')) {
+              console.log('Existing newsletter-rss.json found');
+              const existingContent = fs.readFileSync('newsletter-rss.json', 'utf8');
+              const existingData = JSON.parse(existingContent);
+              
+              console.log('Existing lastUpdated:', existingData.lastUpdated);
+              console.log('New lastUpdated:', output.lastUpdated);
+              
+              // Compare the posts
+              if (JSON.stringify(existingData.posts) !== JSON.stringify(posts)) {
+                hasChanges = true;
+                console.log('📝 Changes detected in RSS feed');
+              } else {
+                console.log('ℹ️ No changes detected in RSS feed');
+              }
+            } else {
+              hasChanges = true;
+              console.log('📝 Creating new newsletter-rss.json file');
+            }
             
-            console.log('\n📋 Latest posts:');
-            posts.forEach((post, index) => {
-              console.log(`${index + 1}. ${post.title}`);
-            });
-            
-            console.log('\n🎉 RSS feed update complete!');
+            if (hasChanges) {
+              fs.writeFileSync('newsletter-rss.json', JSON.stringify(output, null, 2));
+              console.log('💾 Updated newsletter-rss.json');
+              
+              console.log('\n📋 Latest posts:');
+              posts.forEach((post, index) => {
+                console.log(`${index + 1}. ${post.title}`);
+              });
+              
+              console.log('\n🎉 RSS feed update complete!');
+            } else {
+              console.log('ℹ️ No changes to commit');
+            }
             
           } catch (error) {
             console.error('❌ Error updating RSS feed:', error.message);
+            console.error('Stack trace:', error.stack);
             process.exit(1);
           }
         }
@@ -183,16 +233,35 @@ jobs:
         
         node update-rss.js
         
-    - name: Commit and push changes
+    - name: Configure Git
       run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        echo "Git configured"
         
+    - name: Check for changes
+      id: check-changes
+      run: |
+        echo "Checking for changes in newsletter-rss.json..."
         if git diff --quiet newsletter-rss.json; then
+          echo "has_changes=false" >> $GITHUB_OUTPUT
           echo "No changes to commit"
         else
-          git add newsletter-rss.json
-          git commit -m "🤖 Auto-update RSS feed [skip ci]"
-          git push
-          echo "✅ RSS feed updated and pushed"
-        fi 
+          echo "has_changes=true" >> $GITHUB_OUTPUT
+          echo "Changes detected in newsletter-rss.json"
+          git diff --stat newsletter-rss.json
+        fi
+        
+    - name: Commit and push changes
+      if: steps.check-changes.outputs.has_changes == 'true'
+      run: |
+        echo "Committing and pushing changes..."
+        git add newsletter-rss.json
+        git commit -m "🤖 Auto-update RSS feed [skip ci]"
+        git push
+        echo "✅ RSS feed updated and pushed"
+        
+    - name: No changes message
+      if: steps.check-changes.outputs.has_changes == 'false'
+      run: |
+        echo "ℹ️ No changes detected in RSS feed" 
