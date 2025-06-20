@@ -142,22 +142,45 @@ async function main() {
       posts: posts
     };
     
-    fs.writeFileSync('newsletter-rss.json', JSON.stringify(output, null, 2));
-    console.log('💾 Updated newsletter-rss.json');
+    // Check if file exists and compare
+    let hasChanges = false;
+    if (fs.existsSync('newsletter-rss.json')) {
+      console.log('Existing newsletter-rss.json found');
+      const existingContent = fs.readFileSync('newsletter-rss.json', 'utf8');
+      const existingData = JSON.parse(existingContent);
+      
+      console.log('Existing lastUpdated:', existingData.lastUpdated);
+      console.log('New lastUpdated:', output.lastUpdated);
+      
+      // Compare the posts
+      if (JSON.stringify(existingData.posts) !== JSON.stringify(posts)) {
+        hasChanges = true;
+        console.log('📝 Changes detected in RSS feed');
+      } else {
+        console.log('ℹ️ No changes detected in RSS feed');
+      }
+    } else {
+      hasChanges = true;
+      console.log('📝 Creating new newsletter-rss.json file');
+    }
     
-    console.log('\n📋 Latest posts:');
-    posts.forEach((post, index) => {
-      console.log(`${index + 1}. ${post.title}`);
-    });
-    
-    console.log('\n🎉 RSS feed update complete!');
-    console.log('💡 Next steps:');
-    console.log('   git add newsletter-rss.json');
-    console.log('   git commit -m "Update RSS feed"');
-    console.log('   git push');
+    if (hasChanges) {
+      fs.writeFileSync('newsletter-rss.json', JSON.stringify(output, null, 2));
+      console.log('💾 Updated newsletter-rss.json');
+      
+      console.log('\n📋 Latest posts:');
+      posts.forEach((post, index) => {
+        console.log(`${index + 1}. ${post.title}`);
+      });
+      
+      console.log('\n🎉 RSS feed update complete!');
+    } else {
+      console.log('ℹ️ No changes to commit');
+    }
     
   } catch (error) {
     console.error('❌ Error updating RSS feed:', error.message);
+    console.error('Stack trace:', error.stack);
     process.exit(1);
   }
 }
