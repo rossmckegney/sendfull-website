@@ -1,6 +1,14 @@
 {
-  "lastUpdated": "2025-07-05T11:09:14.346Z",
+  "lastUpdated": "2025-07-18T20:47:44.437Z",
   "posts": [
+    {
+      "title": "ep. 73. Cognitive Traps of Automation",
+      "description": "5 min read...",
+      "link": "https://sendfull.substack.com/p/ep-73-cognitive-traps-of-automation",
+      "pubDate": "Thu, 17 Jul 2025 20:24:57 GMT",
+      "image": "https://substackcdn.com/image/fetch/$s_!QKJ1!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5b381e4a-54c8-48bb-af0b-49b31aac0dca_888x499.png",
+      "readTime": "5 min read"
+    },
     {
       "title": "ep. 72. The Tale of the Bluenose: A Holiday Reflection on Automation",
       "description": "4 min read...",
@@ -64,14 +72,6 @@
       "pubDate": "Thu, 27 Mar 2025 16:54:42 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!ltP2!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f9db4ec-c7e8-4c7f-9dfd-2a28cf9f8733_1536x1024.jpeg",
       "readTime": "6 min read"
-    },
-    {
-      "title": "ep. 64: Isn't it Ironic? What AI Design Can Learn from Decades of Human Factors Research",
-      "description": "7 min read...",
-      "link": "https://sendfull.substack.com/p/ep-64-what-can-ai-design-learn-from",
-      "pubDate": "Thu, 13 Mar 2025 17:06:49 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!3bqE!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09933cb4-658b-4129-a4fc-4fbd43707cdb_1542x1016.jpeg",
-      "readTime": "7 min read"
     }
   ]
 }
