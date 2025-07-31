@@ -1,6 +1,14 @@
 {
-  "lastUpdated": "2025-07-18T20:47:44.437Z",
+  "lastUpdated": "2025-07-31T17:15:16.242Z",
   "posts": [
+    {
+      "title": "ep. 74. What Canoeing Can Teach Us About Human-AI Partnership",
+      "description": "5 min read...",
+      "link": "https://sendfull.substack.com/p/ep-74-what-canoeing-can-teach-us",
+      "pubDate": "Thu, 31 Jul 2025 15:24:57 GMT",
+      "image": "https://substackcdn.com/image/fetch/$s_!qiNg!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F178e2df0-490e-4e73-a461-35018165a87e_4195x3285.jpeg",
+      "readTime": "5 min read"
+    },
     {
       "title": "ep. 73. Cognitive Traps of Automation",
       "description": "5 min read...",
@@ -64,14 +72,6 @@
       "pubDate": "Thu, 10 Apr 2025 17:48:17 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!zSk1!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F52265eb7-95c6-440e-9202-472a2b34076f_1600x1200.jpeg",
       "readTime": "7 min read"
-    },
-    {
-      "title": "ep. 65. Augmentation or Atrophy? How Designers Perceive GenAI’s Role in UX",
-      "description": "6 min read...",
-      "link": "https://sendfull.substack.com/p/ep-65-augmentation-or-atrophy-designers",
-      "pubDate": "Thu, 27 Mar 2025 16:54:42 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!ltP2!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2f9db4ec-c7e8-4c7f-9dfd-2a28cf9f8733_1536x1024.jpeg",
-      "readTime": "6 min read"
     }
   ]
 }
