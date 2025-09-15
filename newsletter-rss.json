@@ -1,6 +1,22 @@
 {
-  "lastUpdated": "2025-08-25T14:53:25.848Z",
+  "lastUpdated": "2025-09-15T04:01:26.599Z",
   "posts": [
+    {
+      "title": "Principle #1: Automation is a Spectrum",
+      "description": "Principles of Autonomy Series: Part I of III...",
+      "link": "https://sendfull.substack.com/p/principle-1-autonomy-is-a-spectrum",
+      "pubDate": "Thu, 11 Sep 2025 16:02:18 GMT",
+      "image": "https://substackcdn.com/image/fetch/$s_!zEsu!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d9128eb-86f0-434d-8a4e-c0cb2d82aad1_1536x1024.png",
+      "readTime": "5 min read"
+    },
+    {
+      "title": "ep. 76. Still in the Loop: A Parking Meter's Quiet AI Design Wisdom",
+      "description": "5 min read...",
+      "link": "https://sendfull.substack.com/p/ep-76-still-in-the-loop-a-parking",
+      "pubDate": "Thu, 28 Aug 2025 15:49:23 GMT",
+      "image": "https://substackcdn.com/image/fetch/$s_!XcZR!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F90d26ad6-eaed-4f00-aee9-e9f1068c00fb_1024x1536.png",
+      "readTime": "5 min read"
+    },
     {
       "title": "ep. 75. Still in the Loop",
       "description": "6 min read...",
@@ -56,22 +72,6 @@
       "pubDate": "Thu, 22 May 2025 14:16:58 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!xP8N!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e73e2c6-738e-4b53-91d0-164ab31a5cd4_1600x1200.jpeg",
       "readTime": "6 min read"
-    },
-    {
-      "title": "ep. 68. Cognitive Load Theory as a Guide for AI Design",
-      "description": "5 min read...",
-      "link": "https://sendfull.substack.com/p/ep-68-cognitive-load-theory-as-a",
-      "pubDate": "Thu, 08 May 2025 16:38:38 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!j08l!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c31311c-e68e-4330-a5cd-95614a2518c4_1024x1024.png",
-      "readTime": "5 min read"
-    },
-    {
-      "title": "ep. 67. What Does It Mean for AI to Augment Human Capabilities?",
-      "description": "5 min read...",
-      "link": "https://sendfull.substack.com/p/ep-67-ai-that-augments",
-      "pubDate": "Thu, 24 Apr 2025 17:03:01 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!y8dK!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd1f479e3-86d8-42e9-b661-f3257c2f5522_1456x1078.png",
-      "readTime": "5 min read"
     }
   ]
 }
