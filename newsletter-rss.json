@@ -1,9 +1,17 @@
 {
-  "lastUpdated": "2025-09-15T04:01:26.599Z",
+  "lastUpdated": "2025-10-04T21:55:37.081Z",
   "posts": [
     {
+      "title": "Principle #2: Technology can automate tasks, not jobs.",
+      "description": "Principles of Automation Series: Part II of III...",
+      "link": "https://sendfull.substack.com/p/principle-2-technology-can-automate",
+      "pubDate": "Thu, 25 Sep 2025 16:05:32 GMT",
+      "image": "https://substackcdn.com/image/fetch/$s_!qscz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F92b55c16-f9fe-4e88-8462-8f7c9b013ff9_1536x1024.png",
+      "readTime": "5 min read"
+    },
+    {
       "title": "Principle #1: Automation is a Spectrum",
-      "description": "Principles of Autonomy Series: Part I of III...",
+      "description": "Principles of Automation Series: Part I of III...",
       "link": "https://sendfull.substack.com/p/principle-1-autonomy-is-a-spectrum",
       "pubDate": "Thu, 11 Sep 2025 16:02:18 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!zEsu!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d9128eb-86f0-434d-8a4e-c0cb2d82aad1_1536x1024.png",
@@ -64,14 +72,6 @@
       "pubDate": "Thu, 05 Jun 2025 14:21:42 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!o_c-!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9196638f-48b3-47bd-9840-a9a62969444f_1456x1456.png",
       "readTime": "5 min read"
-    },
-    {
-      "title": "ep. 69. AI, Design, & Creativity: Takeaways from UpScale Conf",
-      "description": "6 min read...",
-      "link": "https://sendfull.substack.com/p/ep-69-ai-design-and-creativity-takeaways",
-      "pubDate": "Thu, 22 May 2025 14:16:58 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!xP8N!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e73e2c6-738e-4b53-91d0-164ab31a5cd4_1600x1200.jpeg",
-      "readTime": "6 min read"
     }
   ]
 }
