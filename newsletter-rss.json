@@ -1,6 +1,14 @@
 {
-  "lastUpdated": "2025-10-04T21:55:37.081Z",
+  "lastUpdated": "2025-10-17T22:42:55.513Z",
   "posts": [
+    {
+      "title": "Principle #3: Just because you can automate, doesn’t mean you should. ",
+      "description": "Principles of Automation Series: Part III of III...",
+      "link": "https://sendfull.substack.com/p/principle-3-just-because-you-can",
+      "pubDate": "Fri, 10 Oct 2025 00:43:56 GMT",
+      "image": "https://substackcdn.com/image/fetch/$s_!xHdL!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d90d4f5-fee5-4583-88ad-4a2dbe43ace3_1502x1024.png",
+      "readTime": "5 min read"
+    },
     {
       "title": "Principle #2: Technology can automate tasks, not jobs.",
       "description": "Principles of Automation Series: Part II of III...",
@@ -18,7 +26,7 @@
       "readTime": "5 min read"
     },
     {
-      "title": "ep. 76. Still in the Loop: A Parking Meter's Quiet AI Design Wisdom",
+      "title": "ep. 76. A Parking Meter's Quiet AI Design Wisdom",
       "description": "5 min read...",
       "link": "https://sendfull.substack.com/p/ep-76-still-in-the-loop-a-parking",
       "pubDate": "Thu, 28 Aug 2025 15:49:23 GMT",
@@ -64,14 +72,6 @@
       "pubDate": "Thu, 19 Jun 2025 14:58:29 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!8l2x!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F61232961-09bd-40b7-889a-010613358b61_3762x3024.jpeg",
       "readTime": "8 min read"
-    },
-    {
-      "title": "ep. 70. AI Meets XR: What I’m Watching at AWE 2025",
-      "description": "5 min read...",
-      "link": "https://sendfull.substack.com/p/ep-70-whats-ahead-for-xr-and-ai-what",
-      "pubDate": "Thu, 05 Jun 2025 14:21:42 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!o_c-!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9196638f-48b3-47bd-9840-a9a62969444f_1456x1456.png",
-      "readTime": "5 min read"
     }
   ]
 }
