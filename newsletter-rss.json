@@ -1,6 +1,14 @@
 {
-  "lastUpdated": "2025-10-17T22:42:55.513Z",
+  "lastUpdated": "2025-10-29T13:39:59.233Z",
   "posts": [
+    {
+      "title": "Automation in the Field: A Conversation with Konstantinos “Kostas” Kandylas",
+      "description": "A Preview into Designing Automated Futures...",
+      "link": "https://sendfull.substack.com/p/automation-in-the-field-a-conversation",
+      "pubDate": "Thu, 23 Oct 2025 12:33:15 GMT",
+      "image": "https://substackcdn.com/image/fetch/$s_!2QvR!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F370acb4c-4ea2-4dbe-9564-a7c54e0b87e3_960x540.png",
+      "readTime": "5 min read"
+    },
     {
       "title": "Principle #3: Just because you can automate, doesn’t mean you should. ",
       "description": "Principles of Automation Series: Part III of III...",
@@ -64,14 +72,6 @@
       "pubDate": "Thu, 03 Jul 2025 12:44:19 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!nTMA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9be27417-fcb0-4453-a519-6741ceef0bf3_1398x1195.jpeg",
       "readTime": "4 min read"
-    },
-    {
-      "title": "ep. 71. AI Meets XR: AWE 2025 Takeaways",
-      "description": "8 min read...",
-      "link": "https://sendfull.substack.com/p/ep-71-awe-2025-takeaways",
-      "pubDate": "Thu, 19 Jun 2025 14:58:29 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!8l2x!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F61232961-09bd-40b7-889a-010613358b61_3762x3024.jpeg",
-      "readTime": "8 min read"
     }
   ]
 }
