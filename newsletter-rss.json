@@ -1,17 +1,25 @@
 {
-  "lastUpdated": "2025-10-29T13:39:59.233Z",
+  "lastUpdated": "2025-11-09T04:25:41.588148Z",
   "posts": [
     {
-      "title": "Automation in the Field: A Conversation with Konstantinos “Kostas” Kandylas",
-      "description": "A Preview into Designing Automated Futures...",
+      "title": "ep. 81. What Toyota Can Teach Us About AI Automation",
+      "description": "5 min read",
+      "link": "https://sendfull.substack.com/p/ep-81-what-toyota-can-teach-us-about",
+      "pubDate": "Thu, 06 Nov 2025 15:55:18 GMT",
+      "image": "https://substack-post-media.s3.amazonaws.com/public/images/e7a8b6a9-91bb-4ecb-933d-1e5b7cd42958_1024x1024.png",
+      "readTime": "5 min read"
+    },
+    {
+      "title": "Automation in the Field: A Conversation with Konstantinos \u201cKostas\u201d Kandylas",
+      "description": "A Preview into Designing Automated Futures",
       "link": "https://sendfull.substack.com/p/automation-in-the-field-a-conversation",
       "pubDate": "Thu, 23 Oct 2025 12:33:15 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!2QvR!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F370acb4c-4ea2-4dbe-9564-a7c54e0b87e3_960x540.png",
       "readTime": "5 min read"
     },
     {
-      "title": "Principle #3: Just because you can automate, doesn’t mean you should. ",
-      "description": "Principles of Automation Series: Part III of III...",
+      "title": "Principle #3: Just because you can automate, doesn\u2019t mean you should.",
+      "description": "Principles of Automation Series: Part III of III",
       "link": "https://sendfull.substack.com/p/principle-3-just-because-you-can",
       "pubDate": "Fri, 10 Oct 2025 00:43:56 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!xHdL!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6d90d4f5-fee5-4583-88ad-4a2dbe43ace3_1502x1024.png",
@@ -19,7 +27,7 @@
     },
     {
       "title": "Principle #2: Technology can automate tasks, not jobs.",
-      "description": "Principles of Automation Series: Part II of III...",
+      "description": "Principles of Automation Series: Part II of III",
       "link": "https://sendfull.substack.com/p/principle-2-technology-can-automate",
       "pubDate": "Thu, 25 Sep 2025 16:05:32 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!qscz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F92b55c16-f9fe-4e88-8462-8f7c9b013ff9_1536x1024.png",
@@ -27,7 +35,7 @@
     },
     {
       "title": "Principle #1: Automation is a Spectrum",
-      "description": "Principles of Automation Series: Part I of III...",
+      "description": "Principles of Automation Series: Part I of III",
       "link": "https://sendfull.substack.com/p/principle-1-autonomy-is-a-spectrum",
       "pubDate": "Thu, 11 Sep 2025 16:02:18 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!zEsu!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5d9128eb-86f0-434d-8a4e-c0cb2d82aad1_1536x1024.png",
@@ -35,7 +43,7 @@
     },
     {
       "title": "ep. 76. A Parking Meter's Quiet AI Design Wisdom",
-      "description": "5 min read...",
+      "description": "5 min read",
       "link": "https://sendfull.substack.com/p/ep-76-still-in-the-loop-a-parking",
       "pubDate": "Thu, 28 Aug 2025 15:49:23 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!XcZR!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F90d26ad6-eaed-4f00-aee9-e9f1068c00fb_1024x1536.png",
@@ -43,7 +51,7 @@
     },
     {
       "title": "ep. 75. Still in the Loop",
-      "description": "6 min read...",
+      "description": "6 min read",
       "link": "https://sendfull.substack.com/p/ep-75-still-in-the-loop",
       "pubDate": "Thu, 14 Aug 2025 16:44:41 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!qO2a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7635537-f355-40da-af76-76cd5e4bd4d2_1024x983.png",
@@ -51,7 +59,7 @@
     },
     {
       "title": "ep. 74. What Canoeing Can Teach Us About Human-AI Partnership",
-      "description": "5 min read...",
+      "description": "5 min read",
       "link": "https://sendfull.substack.com/p/ep-74-what-canoeing-can-teach-us",
       "pubDate": "Thu, 31 Jul 2025 15:24:57 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!qiNg!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F178e2df0-490e-4e73-a461-35018165a87e_4195x3285.jpeg",
@@ -59,19 +67,11 @@
     },
     {
       "title": "ep. 73. Cognitive Traps of Automation",
-      "description": "5 min read...",
+      "description": "5 min read",
       "link": "https://sendfull.substack.com/p/ep-73-cognitive-traps-of-automation",
       "pubDate": "Thu, 17 Jul 2025 20:24:57 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!QKJ1!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5b381e4a-54c8-48bb-af0b-49b31aac0dca_888x499.png",
       "readTime": "5 min read"
-    },
-    {
-      "title": "ep. 72. The Tale of the Bluenose: A Holiday Reflection on Automation",
-      "description": "4 min read...",
-      "link": "https://sendfull.substack.com/p/ep-72-the-tale-of-the-bluenose-a",
-      "pubDate": "Thu, 03 Jul 2025 12:44:19 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!nTMA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9be27417-fcb0-4453-a519-6741ceef0bf3_1398x1195.jpeg",
-      "readTime": "4 min read"
     }
   ]
 }
