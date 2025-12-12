@@ -11,7 +11,7 @@ import subprocess
 import json
 import re
 import xml.etree.ElementTree as ET
-from datetime import datetime
+from datetime import datetime, timezone
 
 RSS_URL = 'https://sendfull.substack.com/feed'
 
@@ -159,7 +159,7 @@ def main():
             raise ValueError('No posts found in RSS feed')
         
         output = {
-            'lastUpdated': datetime.now(datetime.timezone.utc).isoformat().replace('+00:00', 'Z'),
+            'lastUpdated': datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z'),
             'posts': posts
         }
         

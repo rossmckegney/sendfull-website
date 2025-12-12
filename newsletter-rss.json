@@ -1,6 +1,22 @@
 {
-  "lastUpdated": "2025-11-09T04:25:41.588148Z",
+  "lastUpdated": "2025-12-12T09:57:08.372281Z",
   "posts": [
+    {
+      "title": "ep. 83. The Lawn Mower that Ate the Soccer Field",
+      "description": "5 min read",
+      "link": "https://sendfull.substack.com/p/the-lawn-mower-that-ate-the-soccer",
+      "pubDate": "Thu, 04 Dec 2025 16:56:09 GMT",
+      "image": "https://substack-post-media.s3.amazonaws.com/public/images/396e46aa-c210-4273-83b1-255939e2d1e0_1024x1024.png",
+      "readTime": "5 min read"
+    },
+    {
+      "title": "ep. 82. Live from Toronto: AI x Design Panel Recap & Reflections",
+      "description": "5 min read",
+      "link": "https://sendfull.substack.com/p/ep-82-live-from-toronto-ai-x-design",
+      "pubDate": "Thu, 20 Nov 2025 21:48:37 GMT",
+      "image": "https://substackcdn.com/image/fetch/$s_!nubm!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3e550ca1-3324-4a2d-83f7-445f3e5e2830_3024x4032.jpeg",
+      "readTime": "5 min read"
+    },
     {
       "title": "ep. 81. What Toyota Can Teach Us About AI Automation",
       "description": "5 min read",
@@ -56,22 +72,6 @@
       "pubDate": "Thu, 14 Aug 2025 16:44:41 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!qO2a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7635537-f355-40da-af76-76cd5e4bd4d2_1024x983.png",
       "readTime": "6 min read"
-    },
-    {
-      "title": "ep. 74. What Canoeing Can Teach Us About Human-AI Partnership",
-      "description": "5 min read",
-      "link": "https://sendfull.substack.com/p/ep-74-what-canoeing-can-teach-us",
-      "pubDate": "Thu, 31 Jul 2025 15:24:57 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!qiNg!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F178e2df0-490e-4e73-a461-35018165a87e_4195x3285.jpeg",
-      "readTime": "5 min read"
-    },
-    {
-      "title": "ep. 73. Cognitive Traps of Automation",
-      "description": "5 min read",
-      "link": "https://sendfull.substack.com/p/ep-73-cognitive-traps-of-automation",
-      "pubDate": "Thu, 17 Jul 2025 20:24:57 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!QKJ1!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5b381e4a-54c8-48bb-af0b-49b31aac0dca_888x499.png",
-      "readTime": "5 min read"
     }
   ]
 }
