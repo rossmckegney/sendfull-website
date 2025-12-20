@@ -1,6 +1,14 @@
 {
-  "lastUpdated": "2025-12-12T09:57:08.372281Z",
+  "lastUpdated": "2025-12-20T11:44:26.062296Z",
   "posts": [
+    {
+      "title": "ep. 84. The Importance of Anticipation",
+      "description": "5 min read",
+      "link": "https://sendfull.substack.com/p/ep-84-anticipation-x-automation",
+      "pubDate": "Thu, 18 Dec 2025 14:12:42 GMT",
+      "image": "https://substack-post-media.s3.amazonaws.com/public/images/850483e8-7377-472e-a40c-32f7bf8663eb_5712x4284.jpeg",
+      "readTime": "5 min read"
+    },
     {
       "title": "ep. 83. The Lawn Mower that Ate the Soccer Field",
       "description": "5 min read",
@@ -64,14 +72,6 @@
       "pubDate": "Thu, 28 Aug 2025 15:49:23 GMT",
       "image": "https://substackcdn.com/image/fetch/$s_!XcZR!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F90d26ad6-eaed-4f00-aee9-e9f1068c00fb_1024x1536.png",
       "readTime": "5 min read"
-    },
-    {
-      "title": "ep. 75. Still in the Loop",
-      "description": "6 min read",
-      "link": "https://sendfull.substack.com/p/ep-75-still-in-the-loop",
-      "pubDate": "Thu, 14 Aug 2025 16:44:41 GMT",
-      "image": "https://substackcdn.com/image/fetch/$s_!qO2a!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7635537-f355-40da-af76-76cd5e4bd4d2_1024x983.png",
-      "readTime": "6 min read"
     }
   ]
 }
