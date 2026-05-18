@@ -1,6 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5BM6XJ7WQD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5BM6XJ7WQD');
+    </script>
+    <script>
+      /* SPA page_view tracking for client-side route changes */
+      (function () {
+        var lastPath = location.pathname + location.search;
+        function trackPageView() {
+          var path = location.pathname + location.search;
+          if (path === lastPath) return;
+          lastPath = path;
+          /* defer so React can update document.title for the new route */
+          setTimeout(function () {
+            gtag('event', 'page_view', {
+              page_path: path,
+              page_location: location.href,
+              page_title: document.title
+            });
+          }, 50);
+        }
+        ['pushState', 'replaceState'].forEach(function (type) {
+          var orig = history[type];
+          history[type] = function () {
+            var rv = orig.apply(this, arguments);
+            trackPageView();
+            return rv;
+          };
+        });
+        window.addEventListener('popstate', trackPageView);
+      })();
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#111" />
