@@ -6,9 +6,23 @@
     <meta name="theme-color" content="#111" />
     <meta name="color-scheme" content="dark light" />
 
-    <title>Sendfull | Page not found</title>
-    <meta name="description" content="This page could not be found. It either doesn't exist or was deleted." />
+    <title>Sendfull | Contact</title>
+    <meta name="description" content="Send us a message if you're interested in discussing a project or if you just want to say hi" />
     <meta name="author" content="Sendfull" />
+    <meta property="og:image" content="https://sendfull.com/social-image.png" />
+    <meta property="og:image:alt" content="Banner for the site" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:title" content="Sendfull | Contact" />
+    <meta property="og:site_name" content="Sendfull" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sendfull.com/contact" />
+    <meta property="og:description" content="Send us a message if you're interested in discussing a project or if you just want to say hi" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:description" content="Send us a message if you're interested in discussing a project or if you just want to say hi" />
+    <meta property="twitter:title" content="Sendfull | Contact" />
+    <meta property="twitter:site" content="https://sendfull.com" />
+    <meta property="twitter:image" content="https://sendfull.com/social-image.png" />
 
     <link rel="manifest" href="/manifest.json" />
     <link rel="icon" href="/favicon.ico" />
@@ -72,7 +86,7 @@
           <a href="/#about" class="_navLink_vtju4_59" data-navbar-item>About</a>
           <a href="/#offerings" class="_navLink_vtju4_59" data-navbar-item>Offerings</a>
           <a href="/#newsletter" class="_navLink_vtju4_59" data-navbar-item>Newsletter</a>
-          <a href="/contact" class="_navLink_vtju4_59" data-navbar-item>Contact</a>
+          <a href="/contact" class="_navLink_vtju4_59" data-navbar-item aria-current="page">Contact</a>
         </div>
         <div class="_navIcons_vtju4_81">
           <a data-navbar-item class="_navIconLink_vtju4_105" aria-label="LinkedIn" href="https://www.linkedin.com/company/sendfull/" target="_blank" rel="noopener noreferrer">
@@ -88,7 +102,7 @@
         <a href="/#about" class="_mobileNavLink_vtju4_156" data-visible="false">About</a>
         <a href="/#offerings" class="_mobileNavLink_vtju4_156" data-visible="false">Offerings</a>
         <a href="/#newsletter" class="_mobileNavLink_vtju4_156" data-visible="false">Newsletter</a>
-        <a href="/contact" class="_mobileNavLink_vtju4_156" data-visible="false">Contact</a>
+        <a href="/contact" class="_mobileNavLink_vtju4_156" data-visible="false" aria-current="page">Contact</a>
         <div class="_navIcons_vtju4_81">
           <a class="_navIconLink_vtju4_105" aria-label="LinkedIn" href="https://www.linkedin.com/company/sendfull/" target="_blank" rel="noopener noreferrer">
             <svg aria-hidden="true" class="_icon_1tdl1_2 _navIcon_vtju4_81" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#linkedin"></use></svg>
@@ -101,22 +115,55 @@
     </header>
 
     <main id="main-content" class="_container_j3vhn_2" tabindex="-1">
-      <section class="_section_cvvm4_2" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:100vh;gap:var(--spaceL)">
-        <h1 class="_heading_e2qtd_2" data-align="center" data-weight="bold" data-level="0">404</h1>
-        <h2 class="_heading_e2qtd_2" data-align="center" data-weight="medium" data-level="4" style="text-transform:uppercase;letter-spacing:0.04em;color:color-mix(in lab, var(--text) 40%, transparent)">Page not found</h2>
-        <p class="_text_13dm1_2" data-align="center" data-size="m" data-weight="auto">This page could not be found. It either doesn't exist or was deleted.</p>
-        <a class="_button_7hj7f_2" data-secondary="true" data-icon="arrow-left" href="/">
-          <svg aria-hidden="true" class="_icon_1tdl1_2 _icon_7hj7f_158" data-start="true" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#arrow-left"></use></svg>
-          <span class="_text_7hj7f_132">Back to homepage</span>
-        </a>
-      </section>
+      <div class="_section_cvvm4_2 _contact_xvg9q_1">
+        <!-- Submits to Sendfull's existing Formspree form (carried over from the previous site). -->
+        <form class="_form_xvg9q_18" action="https://formspree.io/f/mykdjprq" method="POST">
+          <input type="hidden" name="_next" value="https://www.sendfull.com/contact-success" />
 
-      <footer class="_footer_zcznm_2">
-        <span class="_text_13dm1_2" data-align="center" data-size="s" data-weight="auto">
-          <span class="_date_zcznm_21">© 2026 Sendfull — </span><a class="_link_1h1qj_2 _link_zcznm_16" data-secondary="true" href="mailto:hello@sendfull.com">hello@sendfull.com</a><br />
-          <span class="_madeWith_zcznm_26">Made with <span class="_heart_zcznm_31">🩷</span> in Oakland &amp; Toronto</span>
-        </span>
-      </footer>
+          <h1 class="_heading_e2qtd_2 _title_xvg9q_30" data-status="entered" data-align="auto" data-weight="medium" data-level="3">Say hello</h1>
+
+          <div class="_divider_pac9p_2 _divider_xvg9q_60" data-status="entered" style="--lineWidth:100%;--lineHeight:2px;--collapseDelay:0ms">
+            <div class="_line_pac9p_8" data-collapsed="false"></div>
+          </div>
+
+          <!-- Honeypot — renamed to _gotcha so Formspree silently drops bot submissions. -->
+          <div class="_container_1ukhq_2 _botkiller_xvg9q_140" data-error="false">
+            <div class="_content_1ukhq_16">
+              <label class="_label_1ukhq_73" data-focused="false" data-filled="false" for="contact-gotcha">Name</label>
+              <input class="_input_1ukhq_21" id="contact-gotcha" type="text" name="_gotcha" maxlength="512" tabindex="-1" autocomplete="off" />
+              <div class="_underline_1ukhq_55" data-focused="false"></div>
+            </div>
+          </div>
+
+          <div class="_container_1ukhq_2 _input_xvg9q_98" data-status="entered" data-error="false">
+            <div class="_content_1ukhq_16">
+              <label class="_label_1ukhq_73" data-focused="false" data-filled="false" for="contact-email">Your email</label>
+              <input class="_input_1ukhq_21" id="contact-email" aria-labelledby="contact-email-label" type="email" name="email" maxlength="512" required autocomplete="email" />
+              <div class="_underline_1ukhq_55" data-focused="false"></div>
+            </div>
+          </div>
+
+          <div class="_container_1ukhq_2 _input_xvg9q_98" data-status="entered" data-error="false">
+            <div class="_content_1ukhq_16">
+              <label class="_label_1ukhq_73" data-focused="false" data-filled="false" for="contact-message">Message</label>
+              <textarea class="_textarea_1ly3z_2 _input_1ukhq_21" id="contact-message" aria-labelledby="contact-message-label" name="message" maxlength="4096" required rows="1" autocomplete="off" style="resize:none"></textarea>
+              <div class="_underline_1ukhq_55" data-focused="false"></div>
+            </div>
+          </div>
+
+          <button class="_button_7hj7f_2 _button_xvg9q_144" data-status="entered" data-sending="false" data-icon="send" type="submit">
+            <svg aria-hidden="true" class="_icon_1tdl1_2 _icon_7hj7f_158" data-start="true" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#send"></use></svg>
+            <span class="_text_7hj7f_132">Send message</span>
+          </button>
+        </form>
+
+        <footer class="_footer_zcznm_2 _footer_xvg9q_308">
+          <span class="_text_13dm1_2" data-align="center" data-size="s" data-weight="auto">
+            <span class="_date_zcznm_21">© 2026 Sendfull — </span><a class="_link_1h1qj_2 _link_zcznm_16" data-secondary="true" href="mailto:hello@sendfull.com">hello@sendfull.com</a><br />
+            <span class="_madeWith_zcznm_26">Made with <span class="_heart_zcznm_31">🩷</span> in Oakland &amp; Toronto</span>
+          </span>
+        </footer>
+      </div>
     </main>
   </body>
 </html>

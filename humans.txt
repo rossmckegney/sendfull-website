@@ -1,39 +1,28 @@
-__  __  __
-\ \ \ \ \/
- \ \/\ \
-  \/  \/
+/* sendfull */
 
-The humans.txt file explains the team, technology,
-and graphic assets behind this site humanstxt.org.
+The humans.txt file explains the team and technology
+behind this site — humanstxt.org
 
 _______________________________________________________________________________
 
-DESIGNER | デザイナー
+TEAM
 
-Hamish Williams
-Hand crafted design & web development
-
-Design tools:
-Figma
-Photoshop
-Blender
-
-twitter.com/hamishmw
-github.com/hamishmw
+Sendfull — The Automation Experts
+hello@sendfull.com
+Oakland & Toronto
 
 _______________________________________________________________________________
 
-TECHNOLOGY | テクノロジー
+TECHNOLOGY
 
-React
-Remix
+Hand-built static site — HTML, CSS, JavaScript
 Three.js
-Framer Motion
 
 _______________________________________________________________________________
 
-FONTS | フォント
+FONTS
 
 Gotham
-IPA Gothic Regular
-Hiragino Kaku Gothic W8
+Sora
+Inter
+IPA Gothic

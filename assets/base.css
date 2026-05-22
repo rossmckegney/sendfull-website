@@ -1,0 +1,309 @@
+@layer theme, base, components, layout;
+
+@layer theme {
+  :root {
+    --black: oklch(0% 0 0);
+    --white: oklch(100% 0 0);
+    --bezierFastoutSlowin: cubic-bezier(0.4, 0.0, 0.2, 1);
+    --durationXS: 200ms;
+    --durationS: 300ms;
+    --durationM: 400ms;
+    --durationL: 600ms;
+    --durationXL: 800ms;
+    --systemFontStack: system-ui, -apple-system, BlinkMacSystemFont, San Francisco, Roboto, Segoe UI, Ubuntu, Helvetica Neue, sans-serif;
+    --fontStack: Gotham, var(--systemFontStack);
+    --monoFontStack: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+    --japaneseFontStack: IPA Gothic, ヒラギノ角ゴ Pro W3, Hiragino Kaku Gothic Pro, Hiragino Sans, Osaka, メイリオ, Meiryo, Segoe UI, sans-serif;
+    --fontWeightRegular: 400;
+    --fontWeightMedium: 500;
+    --fontWeightBold: 700;
+    --fontSizeH0: 8.75rem;
+    --fontSizeH1: 6.25rem;
+    --fontSizeH2: 3.625rem;
+    --fontSizeH3: 2.375rem;
+    --fontSizeH4: 1.75rem;
+    --fontSizeH5: 1.5rem;
+    --fontSizeBodyXL: 1.375rem;
+    --fontSizeBodyL: 1.25rem;
+    --fontSizeBodyM: 1.125rem;
+    --fontSizeBodyS: 1rem;
+    --fontSizeBodyXS: 0.875rem;
+    --lineHeightTitle: 1.1;
+    --lineHeightBody: 1.6;
+    --maxWidthS: 540px;
+    --maxWidthM: 720px;
+    --maxWidthL: 1096px;
+    --maxWidthXL: 1680px;
+    --spaceOuter: 64px;
+    --spaceXS: 4px;
+    --spaceS: 8px;
+    --spaceM: 16px;
+    --spaceL: 24px;
+    --spaceXL: 32px;
+    --space2XL: 48px;
+    --space3XL: 64px;
+    --space4XL: 96px;
+    --space5XL: 128px;
+    --zIndex0: 0;
+    --zIndex1: 4;
+    --zIndex2: 8;
+    --zIndex3: 16;
+    --zIndex4: 32;
+    --zIndex5: 64;
+  }
+
+  @media (max-width: 2080px) {
+    :root {
+      --fontSizeH0: 7.5rem;
+      --fontSizeH1: 5rem;
+    }
+  }
+
+  @media (max-width: 1680px) {
+    :root {
+      --maxWidthS: 480px;
+      --maxWidthM: 640px;
+      --maxWidthL: 1000px;
+      --maxWidthXL: 1100px;
+      --spaceOuter: 48px;
+      --fontSizeH0: 6.25rem;
+      --fontSizeH1: 4.375rem;
+      --fontSizeH2: 3.125rem;
+      --fontSizeH3: 2.25rem;
+      --fontSizeH4: 1.625rem;
+      --fontSizeH5: 1.375rem;
+    }
+  }
+
+  @media (max-width: 1040px) {
+    :root {
+      --fontSizeH0: 5rem;
+      --fontSizeH1: 3.75rem;
+      --fontSizeH2: 3rem;
+      --fontSizeH3: 2rem;
+      --fontSizeH4: 1.5rem;
+      --fontSizeH5: 1.25rem;
+    }
+  }
+
+  @media (max-width: 696px) {
+    :root {
+      --spaceOuter: 24px;
+      --fontSizeH0: 3.5rem;
+      --fontSizeH1: 2.5rem;
+      --fontSizeH2: 2.125rem;
+      --fontSizeH3: 1.75rem;
+      --fontSizeH4: 1.375rem;
+      --fontSizeH5: 1.125rem;
+      --fontSizeBodyL: 1.0625rem;
+      --fontSizeBodyM: 1rem;
+      --fontSizeBodyS: 0.875rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    :root {
+      --spaceOuter: 16px;
+      --fontSizeH0: 2.625rem;
+      --fontSizeH1: 2.375rem;
+      --fontSizeH2: 1.75rem;
+      --fontSizeH3: 1.5rem;
+      --fontSizeH4: 1.25rem;
+    }
+  }
+
+  [data-theme='dark'] {
+    --background: oklch(14.5% 0.015 280);
+    --backgroundLight: oklch(18.5% 0.02 280);
+    --primary: oklch(58% 0.23 290);
+    --accent: oklch(58% 0.23 290);
+    --error: oklch(65.91% 0.249 13.76);
+    --text: var(--white);
+    --textTitle: var(--text);
+    --textBody: color-mix(in lab, var(--text) 80%, transparent);
+    --textLight: color-mix(in lab, var(--text) 60%, transparent);
+  }
+
+  [data-theme='light'] {
+    --background: oklch(96.12% 0 0);
+    --backgroundLight: var(--white);
+    --primary: oklch(58% 0.23 290);
+    --accent: oklch(58% 0.23 290);
+    --error: oklch(63.17% 0.259 25.41);
+    --text: var(--black);
+    --textTitle: color-mix(in lab, var(--text) 90%, transparent);
+    --textBody: color-mix(in lab, var(--text) 75%, transparent);
+    --textLight: color-mix(in lab, var(--text) 55%, transparent);
+  }
+
+  @font-face {
+    font-family: Gotham;
+    font-weight: 400;
+    src: url(/assets/gotham-book-Bnaws0Ef.woff2) format('woff2');
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Gotham;
+    font-weight: 400;
+    src: url(/assets/gotham-book-italic-Bm2IEtSK.woff2) format('woff2');
+    font-display: swap;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: Gotham;
+    font-weight: 500;
+    src: url(/assets/gotham-medium-0VT3RO8I.woff2) format('woff2');
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Gotham;
+    font-weight: 500;
+    src: url(/assets/gotham-medium-italic-Dok430ou.woff2) format('woff2');
+    font-display: swap;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: Gotham;
+    font-weight: 700;
+    src: url(/assets/gotham-bold-D1kvQ7KV.woff2) format('woff2');
+    font-display: swap;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: Gotham;
+    font-weight: 700;
+    src: url(/assets/gotham-bold-italic-C_msAlmW.woff2) format('woff2');
+    font-display: swap;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: IPA Gothic;
+    font-weight: 400;
+    src: url(/assets/ipa-gothic-DimHCOud.woff2) format('woff2');
+    font-display: swap;
+    font-style: normal;
+  }
+}
+
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :where(html, body) {
+    min-height: 100%;
+    width: 100%;
+  }
+
+  :where(*, *::before, *::after) {
+    box-sizing: border-box;
+    margin: 0;
+    min-width: 0;
+  }
+
+  :where(input, textarea, select, button) {
+    font: inherit;
+    color: inherit;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    border-radius: 0;
+    appearance: none;
+  }
+
+  :where(button, a) {
+    touch-action: manipulation;
+  }
+
+  :where(svg, img, picture, video, iframe, canvas) {
+    display: block;
+  }
+
+  :any-link {
+    text-decoration: none;
+  }
+
+  ul {
+    padding: 0;
+  }
+
+  :root {
+    --mobileNavOffset: calc(var(--spaceOuter) * 2 + var(--space2XL));
+  }
+
+  html, body {
+    font-family: var(--fontStack);
+    font-weight: var(--fontWeightRegular);
+    background-color: var(--background);
+    transition: var(--durationM) ease;
+    transition-property: background, opacity;
+    color: var(--textBody);
+    width: 100vw;
+    overflow-x: hidden;
+    opacity: 1;
+  }
+
+  html:focus, body:focus {
+    outline: none;
+  }
+
+  :where(code, pre) {
+    font-family: var(--monoFontStack);
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--black);
+  }
+
+  :focus {
+    outline: 4px solid var(--text);
+    outline-offset: 4px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes reveal {
+    0% { transform: scale3d(0, 1, 1); transform-origin: left; }
+    50% { transform: scale3d(1, 1, 1); transform-origin: left; }
+    51% { transform: scale3d(1, 1, 1); transform-origin: right; }
+    100% { transform: scale3d(0, 1, 1); transform-origin: right; }
+  }
+}
+
+/* ---- sphere canvas (from displacement-sphere-p-Z9Zs2R.css) ---- */
+._canvas_va038_1 {
+  position: absolute;
+  width: 100vw;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 3s;
+  transition-timing-function: var(--bezierFastoutSlowin);
+}
+._canvas_va038_1[data-visible=true] { opacity: 1; }
+
+/* ---- static-site helpers ---- */
+/* The container fade-in (was driven by React data-loading); keep it visible. */
+._container_j3vhn_2 { opacity: 1; }

@@ -1,6 +1,34 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#111" />
+    <meta name="color-scheme" content="dark light" />
+
+    <title>Sendfull | The Automation Experts</title>
+    <meta name="description" content="Sendfull are experts in automated systems; AI, Agents, Evals." />
+    <meta name="author" content="Sendfull" />
+    <meta property="og:image" content="https://sendfull.com/social-image.png" />
+    <meta property="og:image:alt" content="Banner for the site" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="800" />
+    <meta property="og:title" content="Sendfull | The Automation Experts" />
+    <meta property="og:site_name" content="Sendfull" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sendfull.com" />
+    <meta property="og:description" content="Sendfull are experts in automated systems; AI, Agents, Evals." />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:description" content="Sendfull are experts in automated systems; AI, Agents, Evals." />
+    <meta property="twitter:title" content="Sendfull | The Automation Experts" />
+    <meta property="twitter:site" content="https://sendfull.com" />
+    <meta property="twitter:image" content="https://sendfull.com/social-image.png" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icon-256.png" />
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5BM6XJ7WQD"></script>
     <script>
@@ -9,49 +37,12 @@
       gtag('js', new Date());
       gtag('config', 'G-5BM6XJ7WQD');
     </script>
-    <script>
-      /* SPA page_view tracking for client-side route changes */
-      (function () {
-        var lastPath = location.pathname + location.search;
-        function trackPageView() {
-          var path = location.pathname + location.search;
-          if (path === lastPath) return;
-          lastPath = path;
-          /* defer so React can update document.title for the new route */
-          setTimeout(function () {
-            gtag('event', 'page_view', {
-              page_path: path,
-              page_location: location.href,
-              page_title: document.title
-            });
-          }, 50);
-        }
-        ['pushState', 'replaceState'].forEach(function (type) {
-          var orig = history[type];
-          history[type] = function () {
-            var rv = orig.apply(this, arguments);
-            trackPageView();
-            return rv;
-          };
-        });
-        window.addEventListener('popstate', trackPageView);
-      })();
-    </script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#111" />
-    <meta name="color-scheme" content="dark light" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="shortcut icon" href="/shortcut.png" type="image/png" sizes="64x64" />
-    <link rel="apple-touch-icon" href="/icon-256.png" sizes="256x256" />
-    <link rel="author" href="/humans.txt" type="text/plain" />
-    <title>Sendfull</title>
-    <style>@layer theme, base, components, layout;</style>
-    <script type="module" crossorigin src="/assets/index-y_mRsJR2.js"></script>
-    <link rel="modulepreload" crossorigin href="/assets/framer-motion-D-pNuhrv.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-CfsHLNlG.css">
+
+    <link rel="stylesheet" href="/assets/base.css?v=4" />
+    <link rel="stylesheet" href="/assets/index-CfsHLNlG.css" />
+
+    <script type="module" src="/assets/sphere.js?v=4"></script>
+    <script src="/assets/site.js?v=4" defer></script>
   </head>
   <body data-theme="dark">
     <script>
@@ -64,6 +55,200 @@
         if (scheme) scheme.content = theme === 'light' ? 'light dark' : 'dark light';
       })();
     </script>
-    <div id="root"></div>
+
+    <a class="_hidden_1mhmf_2 _skip_j3vhn_12" data-show-on-focus="true" href="#main-content">Skip to main content</a>
+
+    <header class="_navbar_vtju4_2">
+      <a href="/" class="_logo_vtju4_27" aria-label="Sendfull, The Automation Experts" data-active="true" data-navbar-item>
+        <svg aria-hidden="true" class="_monogram_1quoj_2" width="36" height="36" viewBox="0 0 526 386">
+          <defs>
+            <clipPath id="monogram-clip">
+              <path d="M315.97,192.96c0-29.25-23.8-53.04-53.04-53.04c-29.25,0-53.04,23.8-53.04,53.04c0,29.25,23.8,53.04,53.04,53.04C292.17,246,315.97,222.21,315.97,192.96z"></path>
+              <path d="M521.92,200.74h-22.46h-0.41h-7.45c-0.59,0-1.18,0.01-1.77,0.03h-86.77c-15.9,0-30.83,7.04-40.91,19.27l-99.24,118.3l-99.2-118.25c-10.12-12.28-25.05-19.32-40.95-19.32H36.01c-0.59-0.02-1.18-0.03-1.77-0.03l-7.86,0.03v-0.03H3.5c-1.93,0-3.5,1.57-3.5,3.5v8.72c0,1.93,1.57,3.5,3.5,3.5h22.88v0.03h9.34c10.73,0.42,20.68,5.39,27.5,13.78l115.23,137.31l0.08,0.09c1.14,1.32,2.37,2.6,3.64,3.81c9.89,9.37,22.85,14.53,36.47,14.53h88.55v0c0,0,0,0,0,0c13.63,0,26.58-5.16,36.47-14.53c1.28-1.21,2.5-2.49,3.65-3.82l115.23-137.31l0.08-0.09c6.82-8.39,16.77-13.36,27.5-13.78l9.34-0.03h22.46c1.94,0,3.52-1.57,3.52-3.52v-8.69C525.44,202.31,523.86,200.74,521.92,200.74z"></path>
+              <path d="M521.95,169.55h-22.49v-0.03h-9.34c-10.73-0.42-20.68-5.39-27.5-13.78L347.39,18.43l-0.08-0.09c-1.14-1.32-2.37-2.6-3.64-3.81C333.78,5.16,320.83,0,307.2,0h-88.55l0,0c0,0,0,0,0,0c-13.63,0-26.58,5.16-36.48,14.53c-1.28,1.22-2.5,2.5-3.64,3.81L63.3,155.65l-0.08,0.09c-6.82,8.39-16.77,13.36-27.5,13.78l-9.34,0.03H3.51c-1.94,0-3.51,1.57-3.51,3.51v8.71c0,1.94,1.57,3.5,3.51,3.5h22.88h7.86c0.59,0,1.18-0.01,1.77-0.03h86.77c15.9,0,30.82-7.04,40.9-19.27l99.24-118.3l99.2,118.25c10.12,12.28,25.05,19.32,40.95,19.32h86.77c0.59,0.02,1.18,0.03,1.77,0.03l7.45-0.03v0.03h22.9c1.92,0,3.49-1.56,3.49-3.49v-8.74C525.44,171.11,523.88,169.55,521.95,169.55z"></path>
+            </clipPath>
+          </defs>
+          <rect clip-path="url(#monogram-clip)" width="100%" height="100%"></rect>
+          <g clip-path="url(#monogram-clip)">
+            <rect class="_highlight_1quoj_7" width="100%" height="100%"></rect>
+          </g>
+        </svg>
+      </a>
+
+      <button class="_button_7hj7f_2 _toggle_1lvbt_2" data-icon-only="true" aria-label="Menu" aria-expanded="false">
+        <div class="_inner_1lvbt_17">
+          <svg aria-hidden="true" class="_icon_1tdl1_2 _icon_1lvbt_25" data-menu="true" data-open="false" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#menu"></use></svg>
+          <svg aria-hidden="true" class="_icon_1tdl1_2 _icon_1lvbt_25" data-close="true" data-open="false" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#close"></use></svg>
+        </div>
+      </button>
+
+      <nav class="_nav_vtju4_2">
+        <div class="_navList_vtju4_51">
+          <a href="/#about" class="_navLink_vtju4_59" data-navbar-item>About</a>
+          <a href="/#offerings" class="_navLink_vtju4_59" data-navbar-item>Offerings</a>
+          <a href="/#newsletter" class="_navLink_vtju4_59" data-navbar-item>Newsletter</a>
+          <a href="/contact" class="_navLink_vtju4_59" data-navbar-item>Contact</a>
+        </div>
+        <div class="_navIcons_vtju4_81">
+          <a data-navbar-item class="_navIconLink_vtju4_105" aria-label="LinkedIn" href="https://www.linkedin.com/company/sendfull/" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" class="_icon_1tdl1_2 _navIcon_vtju4_81" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#linkedin"></use></svg>
+          </a>
+          <a data-navbar-item class="_navIconLink_vtju4_105" aria-label="Substack" href="https://sendfull.substack.com/archive" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" class="_icon_1tdl1_2 _navIcon_vtju4_81" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#link"></use></svg>
+          </a>
+        </div>
+      </nav>
+
+      <nav class="_mobileNav_vtju4_126" data-visible="false">
+        <a href="/#about" class="_mobileNavLink_vtju4_156" data-visible="false">About</a>
+        <a href="/#offerings" class="_mobileNavLink_vtju4_156" data-visible="false">Offerings</a>
+        <a href="/#newsletter" class="_mobileNavLink_vtju4_156" data-visible="false">Newsletter</a>
+        <a href="/contact" class="_mobileNavLink_vtju4_156" data-visible="false">Contact</a>
+        <div class="_navIcons_vtju4_81">
+          <a class="_navIconLink_vtju4_105" aria-label="LinkedIn" href="https://www.linkedin.com/company/sendfull/" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" class="_icon_1tdl1_2 _navIcon_vtju4_81" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#linkedin"></use></svg>
+          </a>
+          <a class="_navIconLink_vtju4_105" aria-label="Substack" href="https://sendfull.substack.com/archive" target="_blank" rel="noopener noreferrer">
+            <svg aria-hidden="true" class="_icon_1tdl1_2 _navIcon_vtju4_81" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#link"></use></svg>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content" class="_container_j3vhn_2" tabindex="-1">
+      <div class="_home_1r3da_1">
+        <!-- Intro / hero -->
+        <section class="_section_cvvm4_2 _intro_11075_1" id="intro" aria-labelledby="intro-title" tabindex="-1">
+          <canvas aria-hidden="true" class="_canvas_va038_1" data-visible="false"></canvas>
+          <header class="_text_11075_9">
+            <h1 class="_name_11075_35" data-visible="true" id="intro-title">
+              <svg aria-hidden="true" class="_monogram_1quoj_2 _monogramIcon_11075_72" width="36" height="36" viewBox="0 0 526 386">
+                <defs>
+                  <clipPath id="monogram-clip-name">
+                    <path d="M315.97,192.96c0-29.25-23.8-53.04-53.04-53.04c-29.25,0-53.04,23.8-53.04,53.04c0,29.25,23.8,53.04,53.04,53.04C292.17,246,315.97,222.21,315.97,192.96z"></path>
+                    <path d="M521.92,200.74h-22.46h-0.41h-7.45c-0.59,0-1.18,0.01-1.77,0.03h-86.77c-15.9,0-30.83,7.04-40.91,19.27l-99.24,118.3l-99.2-118.25c-10.12-12.28-25.05-19.32-40.95-19.32H36.01c-0.59-0.02-1.18-0.03-1.77-0.03l-7.86,0.03v-0.03H3.5c-1.93,0-3.5,1.57-3.5,3.5v8.72c0,1.93,1.57,3.5,3.5,3.5h22.88v0.03h9.34c10.73,0.42,20.68,5.39,27.5,13.78l115.23,137.31l0.08,0.09c1.14,1.32,2.37,2.6,3.64,3.81c9.89,9.37,22.85,14.53,36.47,14.53h88.55v0c0,0,0,0,0,0c13.63,0,26.58-5.16,36.47-14.53c1.28-1.21,2.5-2.49,3.65-3.82l115.23-137.31l0.08-0.09c6.82-8.39,16.77-13.36,27.5-13.78l9.34-0.03h22.46c1.94,0,3.52-1.57,3.52-3.52v-8.69C525.44,202.31,523.86,200.74,521.92,200.74z"></path>
+                    <path d="M521.95,169.55h-22.49v-0.03h-9.34c-10.73-0.42-20.68-5.39-27.5-13.78L347.39,18.43l-0.08-0.09c-1.14-1.32-2.37-2.6-3.64-3.81C333.78,5.16,320.83,0,307.2,0h-88.55l0,0c0,0,0,0,0,0c-13.63,0-26.58,5.16-36.48,14.53c-1.28,1.22-2.5,2.5-3.64,3.81L63.3,155.65l-0.08,0.09c-6.82,8.39-16.77,13.36-27.5,13.78l-9.34,0.03H3.51c-1.94,0-3.51,1.57-3.51,3.51v8.71c0,1.94,1.57,3.5,3.51,3.5h22.88h7.86c0.59,0,1.18-0.01,1.77-0.03h86.77c15.9,0,30.82-7.04,40.9-19.27l99.24-118.3l99.2,118.25c10.12,12.28,25.05,19.32,40.95,19.32h86.77c0.59,0.02,1.18,0.03,1.77,0.03l7.45-0.03v0.03h22.9c1.92,0,3.49-1.56,3.49-3.49v-8.74C525.44,171.11,523.88,169.55,521.95,169.55z"></path>
+                  </clipPath>
+                </defs>
+                <rect clip-path="url(#monogram-clip-name)" width="100%" height="100%"></rect>
+              </svg>
+              <span>Sendfull</span>
+            </h1>
+            <h2 class="_heading_e2qtd_2 _title_11075_78" data-align="auto" data-weight="medium" data-level="0">
+              <span class="_hidden_1mhmf_2" data-hidden="true">The Automation Experts + AI, Agents, Product Strategy, Vendor Selection, Recruiting, M&amp;A, and Evals</span>
+              <span aria-hidden="true" class="_row_11075_88">
+                <span class="_word_11075_122" data-status="entered">The Automation Experts</span>
+                <span class="_line_11075_202" data-status="entered"></span>
+              </span>
+              <div class="_row_11075_88" data-hero-words>
+                <span aria-hidden="true" class="_word_11075_122" data-plus="true" data-status="entered">AI</span>
+                <span aria-hidden="true" class="_word_11075_122" data-plus="true" data-status="exiting">Agents</span>
+              </div>
+            </h2>
+          </header>
+          <a href="/#about" class="_scrollIndicator_11075_255" data-status="entered" data-hidden="false">
+            <span class="_hidden_1mhmf_2" data-hidden="true">Scroll to about</span>
+          </a>
+          <a href="/#about" class="_mobileScrollIndicator_11075_324" data-status="entered" data-hidden="false">
+            <span class="_hidden_1mhmf_2" data-hidden="true">Scroll to about</span>
+            <svg aria-hidden="true" stroke="currentColor" width="43" height="15" viewBox="0 0 43 15">
+              <path d="M1 1l20.5 12L42 1" stroke-width="2" fill="none"></path>
+            </svg>
+          </a>
+        </section>
+
+        <!-- About -->
+        <section class="_section_cvvm4_2 _profile_1knxh_1" id="about" aria-labelledby="about-title" tabindex="-1">
+          <div class="_content_1knxh_36">
+            <div class="_column_1knxh_49">
+              <h3 class="_heading_e2qtd_2 _title_1knxh_64" data-visible="false" data-align="auto" data-weight="medium" data-level="3" id="about-title">About Sendfull</h3>
+              <p class="_text_13dm1_2 _description_1knxh_75" data-visible="false" data-align="auto" data-size="l" data-weight="auto">We're obsessed with automation — AI agents, robotics, everything in between. AI is rocket fuel, and it's making entirely new categories of product possible.</p>
+              <p class="_text_13dm1_2 _description_1knxh_75" data-visible="false" data-align="auto" data-size="l" data-weight="auto">Our foundation is systems design and cognitive neuroscience — how humans and machines actually think together. We layer that with deep hands-on experience in the latest agentic frameworks and tools.</p>
+              <p class="_text_13dm1_2 _description_1knxh_75" data-visible="false" data-align="auto" data-size="l" data-weight="auto">If you're in the middle of figuring out what automation means for your product, let's talk. This is an extreme sport. We're on the edge — and the only option is to full send.</p>
+              <p class="_text_13dm1_2 _description_1knxh_75" data-visible="false" data-align="auto" data-size="s" data-weight="auto" style="margin-top:-0.5rem;font-style:italic">— Dr Stefanie Hutka, Head of Design Research, Sendfull</p>
+              <a class="_button_7hj7f_2 _button_1knxh_125" data-visible="false" data-secondary="true" data-icon="send" href="/contact" rel="noopener noreferrer">
+                <svg aria-hidden="true" class="_icon_1tdl1_2 _icon_7hj7f_158" data-start="true" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#send"></use></svg>
+                <span class="_text_7hj7f_132">Let's Talk Automation!</span>
+              </a>
+            </div>
+            <div class="_column_1knxh_49">
+              <div class="_image_1knxh_119">
+                <div class="_image_4szht_2 _container_4szht_42" data-visible="false" data-reveal="true" data-theme="dark" style="--delay: 100ms">
+                  <div class="_elementWrapper_4szht_49" data-reveal="true" data-visible="false" style="--delay: 1100ms">
+                    <img class="_element_4szht_49" data-loaded="true" decoding="async"
+                      src="/assets/spr-background-volcanism-large-DYxOB55c.webp"
+                      srcset="/assets/spr-background-volcanism-gNzG9kT1.webp 480w, /assets/spr-background-volcanism-large-DYxOB55c.webp 960w"
+                      sizes="(max-width: 696px) 100vw, 480px"
+                      width="960" height="895" alt="Sendfull team" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Offerings -->
+        <section class="_section_cvvm4_2 _offerings_1s94m_1" id="offerings" aria-labelledby="offerings-title" tabindex="-1">
+          <div class="_content_1s94m_36">
+            <div class="_column_1s94m_49">
+              <div class="_image_1s94m_79">
+                <div class="_image_4szht_2 _container_4szht_42" data-visible="false" data-reveal="true" data-theme="dark" style="--delay: 100ms">
+                  <div class="_elementWrapper_4szht_49" data-reveal="true" data-visible="false" style="--delay: 1100ms">
+                    <img class="_element_4szht_49" data-loaded="true" decoding="async"
+                      src="/assets/autonomy-matrix-eWjywCOa.webp"
+                      width="960" height="640" alt="Team collaborating in a workshop setting" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="_column_1s94m_49">
+              <h3 class="_heading_e2qtd_2 _title_1s94m_58" data-visible="false" data-align="auto" data-weight="medium" data-level="3" id="offerings-title">Offerings</h3>
+              <p class="_text_13dm1_2 _description_1s94m_69" data-visible="false" data-align="auto" data-size="l" data-weight="auto">We help product teams figure out where automation fits and where it doesn't.</p>
+              <p class="_text_13dm1_2 _description_1s94m_69" data-visible="false" data-align="auto" data-size="l" data-weight="auto">It starts with a workshop. We get your team aligned on opportunity, risk, and roadmap. Then we roll up our sleeves through hands-on consulting or fractional leadership embedded with your crew.</p>
+              <p class="_text_13dm1_2 _description_1s94m_69" data-visible="false" data-align="auto" data-size="l" data-weight="auto">From AI agents to full-stack automation, we bring the frameworks, the technical depth, and the bias toward action.</p>
+              <a class="_button_7hj7f_2 _button_1s94m_84" data-visible="false" data-secondary="true" data-icon="send" href="/contact" rel="noopener noreferrer">
+                <svg aria-hidden="true" class="_icon_1tdl1_2 _icon_7hj7f_158" data-start="true" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#send"></use></svg>
+                <span class="_text_7hj7f_132">Let's Talk Automation!</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="_section_cvvm4_2 _newsletter_1r3da_5" id="newsletter" tabindex="-1">
+          <div class="_newsletterContent_1r3da_20">
+            <h2 class="_heading_e2qtd_2 _newsletterTitle_1r3da_29" data-visible="false" data-align="auto" data-weight="medium" data-level="3">Sendfull Substack</h2>
+            <p class="_text_13dm1_2 _newsletterDescription_1r3da_39" data-visible="false" data-align="auto" data-size="m" data-weight="auto">The Sendfull Substack is a bi-weekly newsletter exploring the playbook for product teams adapting to AI. How to restructure roles, evaluate AI agents, design for cognitive load, and stop confusing motion for progress.</p>
+            <div class="_newsletterPosts_1r3da_50" data-visible="false">
+              <a class="_postCard_1r3da_70" href="https://sendfull.substack.com/p/ep-14-why-we-need-a-new-design-framework" target="_blank" rel="noopener noreferrer">
+                <span class="_postEpisode_1r3da_87">ep. 14</span>
+                <span class="_postTitle_1r3da_95">Why We Need a New Design Framework for Building Gen AI</span>
+              </a>
+              <a class="_postCard_1r3da_70" href="https://sendfull.substack.com/p/ep-44-designing-ai-to-think-with" target="_blank" rel="noopener noreferrer">
+                <span class="_postEpisode_1r3da_87">ep. 44</span>
+                <span class="_postTitle_1r3da_95">Designing AI to Think With Us, Not For Us</span>
+              </a>
+              <a class="_postCard_1r3da_70" href="https://sendfull.substack.com/p/ep-49-the-cognitive-offloading-matrix" target="_blank" rel="noopener noreferrer">
+                <span class="_postEpisode_1r3da_87">ep. 49</span>
+                <span class="_postTitle_1r3da_95">The Cognitive Offloading Matrix: A How-To Guide</span>
+              </a>
+            </div>
+            <div class="_newsletterButton_1r3da_101" data-visible="false">
+              <a class="_button_7hj7f_2" href="https://sendfull.substack.com/archive" target="_blank" rel="noopener noreferrer">
+                <span class="_text_7hj7f_132">Read the Latest Insights</span>
+                <svg aria-hidden="true" class="_icon_1tdl1_2 _icon_7hj7f_158" data-end="true" data-shift="true" width="24" height="24"><use href="/assets/icons-BVfkxyd2.svg#arrow-right"></use></svg>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <footer class="_footer_zcznm_2">
+          <span class="_text_13dm1_2" data-align="center" data-size="s" data-weight="auto">
+            <span class="_date_zcznm_21">© 2026 Sendfull — </span><a class="_link_1h1qj_2 _link_zcznm_16" data-secondary="true" href="mailto:hello@sendfull.com">hello@sendfull.com</a><br />
+            <span class="_madeWith_zcznm_26">Made with <span class="_heart_zcznm_31">🩷</span> in Oakland &amp; Toronto</span>
+          </span>
+        </footer>
+      </div>
+    </main>
   </body>
 </html>

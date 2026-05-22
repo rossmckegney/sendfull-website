@@ -1,4 +1,23 @@
-import{u as C,a as M,b as E,m as P,j as w,T as I}from"./index-y_mRsJR2.js";import{r as t,a as D,b}from"./framer-motion-D-pNuhrv.js";import{D as A,G as T,T as G,C as F,V as k,W as V,L as j,P as q,S as U,M as H,U as O,a as W,b as N,c as B,A as X}from"./three-DcKjkeDs.js";function Y(r,e){let s=0;return function(...g){const v=new Date;v-s>=e&&(r(...g),s=v)}}F.enabled=!0;const R=new A,J=new T;R.setDecoderPath("/draco/");J.setDRACOLoader(R);new G;const K=r=>{r==null||r.traverse(e=>{if(e.isMesh)if(e.geometry.dispose(),e.material.isMaterial)S(e.material);else for(const s of e.material)S(s)})},S=r=>{var e,s,g;r.dispose();for(const v of Object.keys(r)){const i=r[v];i&&typeof i=="object"&&"minFilter"in i&&(i.dispose(),(g=(s=(e=i.source)==null?void 0:e.data)==null?void 0:s.close)==null||g.call(s))}},Q=r=>{r.dispose(),r=null},Z=r=>{for(const e of r)e.parent.remove(e)},$=`#define PHONG
+/*
+ * Homepage WebGL displacement sphere.
+ * Vanilla three.js re-implementation of the React `DisplacementSphere` component.
+ * three.js r161 is loaded from the existing local chunk with minified export names.
+ */
+import {
+  S as Scene,
+  W as WebGLRenderer,
+  P as PerspectiveCamera,
+  M as MeshPhongMaterial,
+  U as UniformsUtils,
+  a as SphereGeometry,
+  b as Mesh,
+  c as DirectionalLight,
+  A as AmbientLight,
+  L as SRGBColorSpace,
+} from '/assets/three-DcKjkeDs.js';
+
+/* Fragment shader (phong + noise) — copied verbatim from displacement-sphere-Z_A0mLWL.js */
+const fragmentShader = `#define PHONG
 
 uniform vec3 diffuse;
 uniform vec3 emissive;
@@ -80,7 +99,10 @@ void main() {
 
   gl_FragColor = vec4(outgoingLight, diffuseColor.a);
 }
-`,nn=`#define PHONG
+`;
+
+/* Vertex shader (turbulence / Perlin noise) — copied verbatim from displacement-sphere-Z_A0mLWL.js */
+const vertexShader = `#define PHONG
 
 //
 // GLSL textureless classic 3D noise "cnoise",
@@ -325,4 +347,141 @@ void main() {
   vec3 displacement = vec3((position.x) * noise, position.y * noise, position.z * noise);
   gl_Position = projectionMatrix * modelViewMatrix * vec4((position + normal) + displacement, 1.0);
 }
-`,en="_canvas_va038_1",tn={canvas:en},L={stiffness:30,damping:20,mass:2},an=r=>{const{theme:e}=C(),s=t.useRef(Date.now()),g=t.useRef(),v=t.useRef(),i=t.useRef(),l=t.useRef(),f=t.useRef(),_=t.useRef(),d=t.useRef(),y=t.useRef(),z=t.useRef(),c=t.useRef(),u=D(),m=M(g),h=E(),p=b(0,L),x=b(0,L);return t.useEffect(()=>{const{innerWidth:n,innerHeight:o}=window;try{v.current=new k(.8,.5),i.current=new V({canvas:g.current,antialias:!1,alpha:!0,powerPreference:"high-performance",failIfMajorPerformanceCaveat:!1})}catch(a){return()=>{}}if(!i.current)return()=>{};return i.current.setSize(n,o),i.current.setPixelRatio(Math.min(window.devicePixelRatio,2)),i.current.outputColorSpace=j,l.current=new q(54,n/o,.1,100),l.current.position.z=52,f.current=new U,y.current=new H,y.current.onBeforeCompile=a=>{d.current=O.merge([a.uniforms,{time:{type:"f",value:0}}]),a.uniforms=d.current,a.vertexShader=nn,a.fragmentShader=$},t.startTransition(()=>{z.current=new W(32,128,128),c.current=new N(z.current,y.current),c.current.position.z=0,c.current.modifier=Math.random(),f.current.add(c.current)}),()=>{K(f.current),Q(i.current)}},[]),t.useEffect(()=>{if(!f.current)return;const n=new B(16777215,e==="light"?1.8:2),o=new X(16777215,e==="light"?2.7:.4);return n.position.z=200,n.position.x=100,n.position.y=100,_.current=[n,o],_.current.forEach(a=>f.current.add(a)),()=>{Z(_.current)}},[e]),t.useEffect(()=>{if(!i.current||!l.current||!c.current)return;const{width:n,height:o}=h,a=o+o*.3;i.current.setSize(n,a),l.current.aspect=n/a,l.current.updateProjectionMatrix(),u&&i.current.render(f.current,l.current),n<=P.mobile?(c.current.position.x=14,c.current.position.y=10):n<=P.tablet?(c.current.position.x=18,c.current.position.y=14):(c.current.position.x=22,c.current.position.y=16)},[u,h]),t.useEffect(()=>{const n=Y(o=>{const a={x:o.clientX/window.innerWidth,y:o.clientY/window.innerHeight};p.set(a.y/2),x.set(a.x/2)},100),a=Y(o=>{if(!o.touches||!o.touches[0])return;const J={x:o.touches[0].clientX/window.innerWidth,y:o.touches[0].clientY/window.innerHeight};p.set(J.y/2),x.set(J.x/2)},100);return!u&&m&&(window.addEventListener("mousemove",n),window.addEventListener("touchmove",a,{passive:!0})),()=>{window.removeEventListener("mousemove",n),window.removeEventListener("touchmove",a)}},[m,u,p,x]),t.useEffect(()=>{if(!i.current||!f.current||!l.current)return;let n;const o=()=>{n=requestAnimationFrame(o),d.current!==void 0&&(d.current.time.value=5e-5*(Date.now()-s.current)),c.current&&(c.current.rotation.z+=.001,c.current.rotation.x=p.get(),c.current.rotation.y=x.get()),i.current.render(f.current,l.current)};return!u&&m?o():i.current.render(f.current,l.current),()=>{cancelAnimationFrame(n)}},[m,u,p,x]),w.jsx(I,{in:!0,timeout:3e3,nodeRef:g,children:({visible:n,nodeRef:o})=>w.jsx("canvas",{"aria-hidden":!0,className:tn.canvas,"data-visible":n,ref:o,...r})})};export{an as DisplacementSphere};
+`;
+
+(function initSphere() {
+  const canvas = document.querySelector('._canvas_va038_1');
+  if (!canvas) return;
+
+  const reducedMotion =
+    window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let renderer, scene, camera, mesh, material, uniforms;
+  const start = Date.now();
+
+  // eased mouse target / current values
+  let targetRotX = 0;
+  let targetRotY = 0;
+  let rotX = 0;
+  let rotY = 0;
+
+  try {
+    renderer = new WebGLRenderer({
+      canvas,
+      antialias: false,
+      alpha: true,
+      powerPreference: 'high-performance',
+      failIfMajorPerformanceCaveat: false,
+    });
+  } catch (e) {
+    // WebGL unavailable — leave canvas blank.
+    return;
+  }
+  if (!renderer) return;
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputColorSpace = SRGBColorSpace;
+
+  scene = new Scene();
+  camera = new PerspectiveCamera(54, 1, 0.1, 100);
+  camera.position.z = 52;
+
+  material = new MeshPhongMaterial();
+  material.onBeforeCompile = (shader) => {
+    uniforms = UniformsUtils.merge([shader.uniforms, { time: { type: 'f', value: 0 } }]);
+    shader.uniforms = uniforms;
+    shader.vertexShader = vertexShader;
+    shader.fragmentShader = fragmentShader;
+  };
+
+  const geometry = new SphereGeometry(32, 128, 128);
+  mesh = new Mesh(geometry, material);
+  mesh.position.z = 0;
+  scene.add(mesh);
+
+  const dirLight = new DirectionalLight(0xffffff, 2);
+  dirLight.position.set(100, 100, 200);
+  const ambLight = new AmbientLight(0xffffff, 0.4);
+  scene.add(dirLight);
+  scene.add(ambLight);
+
+  // Size the renderer to the intro section (full-bleed). The intro section is
+  // 100vh tall; the original sizes the canvas a little taller than the section.
+  function getSize() {
+    const width = window.innerWidth;
+    const height = window.innerHeight + window.innerHeight * 0.3;
+    return { width, height };
+  }
+
+  function resize() {
+    const { width, height } = getSize();
+    renderer.setSize(width, height);
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    // Offset the sphere toward the upper-right by breakpoint, matching the
+    // original (media.mobile=696, media.tablet=1040).
+    const w = window.innerWidth;
+    if (w <= 696) {
+      mesh.position.x = 14;
+      mesh.position.y = 10;
+    } else if (w <= 1040) {
+      mesh.position.x = 18;
+      mesh.position.y = 14;
+    } else {
+      mesh.position.x = 22;
+      mesh.position.y = 16;
+    }
+    if (reducedMotion) renderer.render(scene, camera);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  // mouse parallax
+  if (!reducedMotion) {
+    window.addEventListener(
+      'mousemove',
+      (e) => {
+        targetRotX = e.clientY / window.innerHeight / 2;
+        targetRotY = e.clientX / window.innerWidth / 2;
+      },
+      { passive: true }
+    );
+    window.addEventListener(
+      'touchmove',
+      (e) => {
+        if (!e.touches || !e.touches[0]) return;
+        targetRotX = e.touches[0].clientY / window.innerHeight / 2;
+        targetRotY = e.touches[0].clientX / window.innerWidth / 2;
+      },
+      { passive: true }
+    );
+  }
+
+  // reveal the canvas (CSS fades opacity 0 -> 1 over 3s)
+  requestAnimationFrame(() => {
+    canvas.setAttribute('data-visible', 'true');
+  });
+
+  if (reducedMotion) {
+    // single static frame, no animation loop
+    renderer.render(scene, camera);
+    return;
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    if (uniforms !== undefined) {
+      uniforms.time.value = 0.00005 * (Date.now() - start);
+    }
+    mesh.rotation.z += 0.001;
+    // ease toward mouse target
+    rotX += (targetRotX - rotX) * 0.1;
+    rotY += (targetRotY - rotY) * 0.1;
+    mesh.rotation.x = rotX;
+    mesh.rotation.y = rotY;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();

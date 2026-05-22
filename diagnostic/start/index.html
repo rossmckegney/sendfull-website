@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5BM6XJ7WQD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5BM6XJ7WQD');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0d0c12" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Take the Automation Readiness Diagnostic — a 15-question, 8-minute self-assessment that plots one AI initiative on the Autonomy Decision Matrix."
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/assets/sendfull-app.css?v=4" />
+    <title>The Automation Readiness Diagnostic · Sendfull</title>
+  </head>
+  <body>
+    <div class="diag">
+      <div class="ambient">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+      </div>
+
+      <!-- ================= TOP BAR ================= -->
+      <div class="diag-bar">
+        <div class="container diag-bar-inner">
+          <a href="/" class="brand">
+            <svg class="logo-mark" viewBox="0 0 526 386" fill="currentColor" role="img" aria-label="Sendfull">
+              <path d="M315.97,192.96c0-29.25-23.8-53.04-53.04-53.04c-29.25,0-53.04,23.8-53.04,53.04c0,29.25,23.8,53.04,53.04,53.04C292.17,246,315.97,222.21,315.97,192.96z" />
+              <path d="M521.92,200.74h-22.46h-0.41h-7.45c-0.59,0-1.18,0.01-1.77,0.03h-86.77c-15.9,0-30.83,7.04-40.91,19.27l-99.24,118.3l-99.2-118.25c-10.12-12.28-25.05-19.32-40.95-19.32H36.01c-0.59-0.02-1.18-0.03-1.77-0.03l-7.86,0.03v-0.03H3.5c-1.93,0-3.5,1.57-3.5,3.5v8.72c0,1.93,1.57,3.5,3.5,3.5h22.88v0.03h9.34c10.73,0.42,20.68,5.39,27.5,13.78l115.23,137.31l0.08,0.09c1.14,1.32,2.37,2.6,3.64,3.81c9.89,9.37,22.85,14.53,36.47,14.53h88.55v0c13.63,0,26.58-5.16,36.47-14.53c1.28-1.21,2.5-2.49,3.65-3.82l115.23-137.31l0.08-0.09c6.82-8.39,16.77-13.36,27.5-13.78l9.34-0.03h22.46c1.94,0,3.52-1.57,3.52-3.52v-8.69C525.44,202.31,523.86,200.74,521.92,200.74z" />
+              <path d="M521.95,169.55h-22.49v-0.03h-9.34c-10.73-0.42-20.68-5.39-27.5-13.78L347.39,18.43l-0.08-0.09c-1.14-1.32-2.37-2.6-3.64-3.81C333.78,5.16,320.83,0,307.2,0h-88.55c-13.63,0-26.58,5.16-36.48,14.53c-1.28,1.22-2.5,2.5-3.64,3.81L63.3,155.65l-0.08,0.09c-6.82,8.39-16.77,13.36-27.5,13.78l-9.34,0.03H3.51c-1.94,0-3.51,1.57-3.51,3.51v8.71c0,1.94,1.57,3.5,3.51,3.5h22.88h7.86c0.59,0,1.18-0.01,1.77-0.03h86.77c15.9,0,30.82-7.04,40.9-19.27l99.24-118.3l99.2,118.25c10.12,12.28,25.05,19.32,40.95,19.32h86.77c0.59,0.02,1.18,0.03,1.77,0.03l7.45-0.03v0.03h22.9c1.92,0,3.49-1.56,3.49-3.49v-8.74C525.44,171.11,523.88,169.55,521.95,169.55z" />
+            </svg>
+            <span>Sendfull <span class="brand-sub">/ Diagnostic</span></span>
+          </a>
+          <div id="diag-bar-extra" class="diag-bar-extra" style="display:flex;align-items:center;justify-content:flex-end;gap:var(--sp-4);flex:1"></div>
+        </div>
+      </div>
+
+      <!-- ================= STAGE ================= -->
+      <div class="diag-stage">
+        <div id="diag-panel" class="diag-panel"></div>
+      </div>
+    </div>
+
+    <noscript>
+      <div class="container" style="padding: var(--sp-8) 0">
+        <p class="lead">The Automation Readiness Diagnostic needs JavaScript enabled. Please turn it on and reload.</p>
+      </div>
+    </noscript>
+
+    <script src="/assets/matrix.js?v=4"></script>
+    <script src="/assets/diagnostic-quiz.js?v=4"></script>
+  </body>
+</html>

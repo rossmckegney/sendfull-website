@@ -1,3 +1,4 @@
 .DS_Store
 .ssh_deploy_key
 .ssh_deploy_key.pub
+.claude/

@@ -9,7 +9,7 @@
 /shortcut.png
   Cache-Control: public, max-age=3600, s-maxage=3600
 /*.css
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=3600
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
 /*.glb
@@ -23,7 +23,7 @@
 /*.webp
   Cache-Control: public, max-age=31536000, immutable
 /*.js
-  Cache-Control: public, max-age=31536000, immutable
+  Cache-Control: public, max-age=3600
 /*.wasm
   Cache-Control: public, max-age=31536000, immutable
 https://:project.pages.dev/*
