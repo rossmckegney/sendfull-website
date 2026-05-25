@@ -708,7 +708,17 @@
       '<form class="stack gap-4" style="margin-top:var(--sp-6)" novalidate id="lead-form">' +
       '<div class="form-grid">' +
       field('lf-name', 'Your name', 'input', f.name, 'Jane Rivera', 'name') +
-      field('lf-email', 'Work email', 'input', f.email, 'jane@company.com', 'email', 'email') +
+      field(
+        'lf-email',
+        'Work email',
+        'input',
+        f.email,
+        'jane@company.com',
+        'email',
+        'email',
+        'Used to send your diagnostic results. See our ' +
+          '<a class="textlink" href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.'
+      ) +
       '</div>' +
       '<div class="form-grid">' +
       field('lf-company', 'Company <span class="opt">· optional</span>', 'input', f.company, 'Northwind Inc.', 'company') +
@@ -716,9 +726,16 @@
       '</div>' +
       field('lf-init', 'The initiative you’re assessing', 'input', f.initiative, 'e.g. Automated claims triage agent', 'initiative') +
       field('lf-ctx', 'In a sentence, what is it meant to do? <span class="opt">· optional</span>', 'textarea', f.context, 'Route incoming claims to the right adjuster and pre-fill the first response.', 'context') +
+      '<div class="checkbox-row">' +
+      '<input type="checkbox" id="lf-agree" />' +
+      '<label for="lf-agree">' +
+      'I understand this is informational, not professional advice. I agree to the ' +
+      '<a class="textlink" href="/terms" target="_blank" rel="noopener">Terms of Use</a>.' +
+      '</label>' +
+      '</div>' +
       '<div class="q-nav" style="margin-top:var(--sp-2)">' +
       '<button type="button" class="q-back" id="lead-back">' + ICON.arrowLeft(16) + ' Back</button>' +
-      '<button type="submit" class="btn btn-primary">Start question 1 ' + ICON.arrowRight(20) + '</button>' +
+      '<button type="submit" class="btn btn-primary" id="lead-submit" disabled>Start question 1 ' + ICON.arrowRight(20) + '</button>' +
       '</div>' +
       '</form>';
 
@@ -727,16 +744,36 @@
       e.preventDefault();
       submitLead(host);
     });
-    /* clear error on input */
+
+    /* keep the Start button disabled until required fields are filled
+       AND the agreement checkbox is checked. We don't validate format
+       here (that happens on submit) — just non-empty + email-shape +
+       checkbox. */
+    function refreshSubmitState() {
+      var get = function (id) {
+        var el = host.querySelector('#' + id);
+        return el ? el.value.trim() : '';
+      };
+      var ok =
+        !!get('lf-name') &&
+        EMAIL_RE.test(get('lf-email')) &&
+        !!get('lf-init') &&
+        host.querySelector('#lf-agree').checked;
+      host.querySelector('#lead-submit').disabled = !ok;
+    }
+    /* clear error on input + recheck submit state */
     host.querySelectorAll('.input, .textarea').forEach(function (el) {
       el.addEventListener('input', function () {
         el.classList.remove('error');
         var err = el.parentNode.querySelector('.field-error');
         if (err) err.remove();
+        refreshSubmitState();
       });
     });
+    host.querySelector('#lf-agree').addEventListener('change', refreshSubmitState);
+    refreshSubmitState();
 
-    function field(id, label, kind, value, placeholder, key, type) {
+    function field(id, label, kind, value, placeholder, key, type, hint) {
       var control =
         kind === 'textarea'
           ? '<textarea id="' + id + '" class="textarea" data-key="' + key + '" placeholder="' + esc(placeholder) + '">' + esc(value) + '</textarea>'
@@ -745,7 +782,10 @@
             ' value="' + esc(value) + '" placeholder="' + esc(placeholder) + '"' +
             autoComplete(key) + '/>';
       return (
-        '<div class="field"><label for="' + id + '">' + label + '</label>' + control + '</div>'
+        '<div class="field"><label for="' + id + '">' + label + '</label>' +
+        control +
+        (hint ? '<span class="field-hint">' + hint + '</span>' : '') +
+        '</div>'
       );
     }
     function autoComplete(key) {
@@ -755,6 +795,12 @@
   }
 
   function submitLead(host) {
+    /* defense in depth: the Start button is also disabled until the
+       agreement checkbox is checked, but block the submit path too in
+       case the disabled state was bypassed. */
+    var agree = host.querySelector('#lf-agree');
+    if (agree && !agree.checked) return;
+
     var get = function (key) {
       var el = host.querySelector('[data-key="' + key + '"]');
       return el ? el.value : '';
@@ -879,6 +925,10 @@
       '<h1 class="verdict-quad"><em>' + esc(quad.name) + '</em></h1></div>' +
       '<p class="lead" style="max-width:52ch"><strong style="color:var(--text)">' +
       esc(quad.headline) + '</strong> ' + esc(quad.summary) + '</p>' +
+      /* short disclaimer — lives inside the verdict block so it travels
+         with any screenshot of the quadrant recommendation */
+      '<p class="results-disclaimer-short">Informational only, not professional advice. ' +
+      'See <a class="textlink" href="/terms" target="_blank" rel="noopener">full Terms</a>.</p>' +
       '</div></div>' +
 
       /* matrix */
@@ -958,6 +1008,14 @@
       '<div class="stack gap-2" style="align-items:center;color:var(--text-light);font-size:0.92rem">' +
       '<span class="stack gap-2" style="flex-direction:row"><span class="accent-text">' + ICON.check(15) + '</span> Two-day executive engagement</span>' +
       '</div></div></div></div></div>' +
+
+      /* full disclaimer — closing-note pair with the "responses are saved" line */
+      '<p class="results-disclaimer-full center">' +
+      'These results are a starting point for discussion, not a recommendation to act. ' +
+      'Decisions about whether and how to automate should involve your team, your context, ' +
+      'and qualified advisors where appropriate. Sendfull LLC is not responsible for actions ' +
+      'taken based on these results.' +
+      '</p>' +
 
       /* secondary actions */
       '<div class="reveal center stack gap-3" style="align-items:center">' +
