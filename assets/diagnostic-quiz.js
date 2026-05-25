@@ -35,7 +35,7 @@
         { points: 3, label: 'Effectiveness alone: whether the work succeeded, without tracking efficiency' },
         { points: 2, label: 'Efficiency alone: speed, throughput, or cycle time, without tracking whether the work succeeded' },
         { points: 1, label: 'Cost or headcount reduction: money saved or roles eliminated' },
-        { points: 0, label: 'Use of the AI: feature adoption or usage value' },
+        { points: 0, label: 'AI use: feature adoption or usage value' },
       ],
     },
     {
