@@ -452,7 +452,6 @@
   /* ============================================================
      APP STATE  (mirrors Diagnostic.jsx)
      ============================================================ */
-  var ADVANCE_MS = 430;
   var COMPUTE_MS = 1900;
   var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -462,7 +461,6 @@
     answers: {},
     qIndex: 0,
     result: null,
-    locked: false,
     emailStatus: null, // null | sending | sent | failed
   };
   var savedSubmission = false;
@@ -806,13 +804,15 @@
       var selected = value === opt.points;
       return (
         '<button type="button" role="radio" aria-checked="' + selected + '" class="q-option" ' +
-        'data-selected="' + selected + '" data-points="' + opt.points + '"' +
-        (state.locked ? ' disabled' : '') + '>' +
+        'data-selected="' + selected + '" data-points="' + opt.points + '">' +
         '<span class="q-radio" aria-hidden="true"><i></i></span>' +
         '<span>' + esc(opt.label) + '</span>' +
         '</button>'
       );
     }).join('');
+
+    var isLast = state.qIndex >= TOTAL_QUESTIONS - 1;
+    var nextLabel = isLast ? 'See results' : 'Next';
 
     host.innerHTML =
       '<div class="stack gap-2" style="margin-bottom:var(--sp-5)">' +
@@ -825,11 +825,14 @@
       '</div>' +
       '<div class="q-nav" style="margin-top:var(--sp-6)">' +
       '<button type="button" class="q-back" id="q-back">' + ICON.arrowLeft(16) + ' Back</button>' +
-      '<span class="muted" style="font-size:0.86rem">' +
-      (value === undefined ? 'Pick the closest answer' : 'Saved — moving on…') +
-      '</span></div>';
+      '<button type="button" class="btn btn-primary" id="q-next"' +
+      (value === undefined ? ' disabled' : '') + '>' +
+      nextLabel + ' ' + ICON.arrowRight(20) +
+      '</button>' +
+      '</div>';
 
     host.querySelector('#q-back').addEventListener('click', handleBack);
+    host.querySelector('#q-next').addEventListener('click', handleNext);
     host.querySelectorAll('.q-option').forEach(function (btn) {
       btn.addEventListener('click', function () {
         handleSelect(parseInt(btn.getAttribute('data-points'), 10));
@@ -1183,27 +1186,29 @@
   }
 
   function handleSelect(points) {
-    if (state.locked) return;
     var q = QUESTIONS[state.qIndex];
-    state.answers[q.id] = points;
-    track('diagnostic_question_answered', {
-      question_index: state.qIndex + 1,
-      question_id: q.id,
-    });
-    saveDraft({ lead: state.lead, answers: state.answers });
-    state.locked = true;
+    var prev = state.answers[q.id];
+    if (prev !== points) {
+      state.answers[q.id] = points;
+      track('diagnostic_question_answered', {
+        question_index: state.qIndex + 1,
+        question_id: q.id,
+      });
+      saveDraft({ lead: state.lead, answers: state.answers });
+    }
 
-    /* reflect the selection in-place (no full re-render, so the step
-       enter animation does not replay before the auto-advance) */
+    /* reflect the selection in-place so the step-enter animation
+       does not replay on every click */
     var opts = panelEl.querySelectorAll('.q-option');
     Array.prototype.slice.call(opts).forEach(function (btn) {
       var sel = parseInt(btn.getAttribute('data-points'), 10) === points;
       btn.setAttribute('data-selected', String(sel));
       btn.setAttribute('aria-checked', String(sel));
-      btn.disabled = true;
     });
-    var hint = panelEl.querySelector('.q-nav .muted');
-    if (hint) hint.textContent = 'Saved — moving on…';
+
+    /* enable Next now that an answer is picked */
+    var next = panelEl.querySelector('#q-next');
+    if (next) next.disabled = false;
 
     /* advance the progress bar in place */
     var fill = barExtraEl.querySelector('.progress-fill');
@@ -1211,17 +1216,17 @@
       fill.style.width =
         Math.round((answeredCount(state.answers) / TOTAL_QUESTIONS) * 100) + '%';
     }
+  }
 
-    setTimeout(function () {
-      if (state.qIndex >= TOTAL_QUESTIONS - 1) {
-        state.locked = false;
-        goComputing();
-      } else {
-        state.qIndex += 1;
-        state.locked = false;
-        render();
-      }
-    }, ADVANCE_MS);
+  function handleNext() {
+    var q = QUESTIONS[state.qIndex];
+    if (state.answers[q.id] === undefined) return;
+    if (state.qIndex >= TOTAL_QUESTIONS - 1) {
+      goComputing();
+    } else {
+      state.qIndex += 1;
+      render();
+    }
   }
 
   function handleBack() {
