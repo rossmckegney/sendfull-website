@@ -29,13 +29,13 @@
     },
     {
       id: 'q2', section: 1,
-      text: 'The primary metric you’d use to declare this initiative successful is:',
+      text: 'The primary metrics used to declare this initiative successful are:',
       options: [
-        { points: 4, label: 'A specific business outcome tied to how we win in our market (revenue, retention, quality, satisfaction)' },
-        { points: 3, label: 'A user-experience outcome (successful task completion, time-to-value)' },
-        { points: 2, label: 'Productivity gains (time saved, throughput)' },
-        { points: 1, label: 'Cost reduction / headcount efficiency' },
-        { points: 0, label: 'AI feature adoption or usage volume' },
+        { points: 4, label: 'Effectiveness and efficiency: both whether the work succeeded and how efficiently it was done' },
+        { points: 3, label: 'Effectiveness alone: whether the work succeeded, without tracking efficiency' },
+        { points: 2, label: 'Efficiency alone: speed, throughput, or cycle time, without tracking whether the work succeeded' },
+        { points: 1, label: 'Cost or headcount reduction: money saved or roles eliminated' },
+        { points: 0, label: 'Use of the AI: feature adoption or usage value' },
       ],
     },
     {
