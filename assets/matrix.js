@@ -39,10 +39,21 @@
       ty = CENTROID_TR[1];
     var isAtAutomate = quadrant === 'automate';
 
-    /* curved arrow from marker to North Star */
+    /* curved arrow from marker to North Star, stopping just shy of the
+       dot so the arrowhead doesn't overlap it. Quadratic Bezier tangent
+       at t=1 points along (P2 - P1), so pull the endpoint back along
+       that unit vector. ARROW_GAP is in viewBox units (~5px at typical
+       matrix sizes) and accounts for the dashed-circle dot radius plus
+       the marker's overshoot past the path endpoint. */
     var cx = (mx + tx) / 2 + (my - ty) * 0.18;
     var cy = (my + ty) / 2 - 8;
-    var arrowPath = 'M ' + mx + ' ' + my + ' Q ' + cx + ' ' + cy + ' ' + tx + ' ' + ty;
+    var tdx = tx - cx;
+    var tdy = ty - cy;
+    var tlen = Math.sqrt(tdx * tdx + tdy * tdy) || 1;
+    var ARROW_GAP = 3;
+    var endX = tx - (tdx / tlen) * ARROW_GAP;
+    var endY = ty - (tdy / tlen) * ARROW_GAP;
+    var arrowPath = 'M ' + mx + ' ' + my + ' Q ' + cx + ' ' + cy + ' ' + endX + ' ' + endY;
 
     var svgRects = ORDER.map(function (k, i) {
       var q = QUADRANTS[k];
