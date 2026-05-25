@@ -1017,7 +1017,6 @@
       esc(emailStatusText(state.emailStatus)) + '</p>' +
       '<div class="stack gap-3" style="flex-direction:row;flex-wrap:wrap;justify-content:center">' +
       '<button class="btn btn-ghost btn-sm" id="results-retake">Re-take the diagnostic</button>' +
-      '<a class="btn btn-ghost btn-sm" href="https://bit.ly/3VfGaTB" target="_blank" rel="noreferrer">Try the Autonomy Matrix with your team</a>' +
       '</div></div>' +
       '</div>';
 
