@@ -42,11 +42,11 @@
       id: 'q3', section: 1,
       text: "How well does your team's hands-on understanding of generative AI match leadership's expectations of it?",
       options: [
-        { points: 4, label: 'Strongly aligned — we’ve built shared intuition through structured experimentation' },
-        { points: 3, label: 'Mostly aligned, occasional gaps' },
-        { points: 2, label: 'Some disconnect — leadership over- or under-estimates what’s possible' },
-        { points: 1, label: 'Significant disconnect' },
-        { points: 0, label: 'We’ve never tested this alignment' },
+        { points: 4, label: 'Closely matched: shared, realistic sense of what the tools can and cannot do' },
+        { points: 3, label: 'Mostly matched: agreement on the basics, differences on specifics' },
+        { points: 2, label: 'Noticeable gap: agree on the goal, disagree on what is realistic' },
+        { points: 1, label: 'Large gap: disagree on what the tools should be used for' },
+        { points: 0, label: 'Gap unknown: expectations have not been discussed' },
       ],
     },
     {
