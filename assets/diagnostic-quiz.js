@@ -485,14 +485,13 @@
   }
 
   function emailStatusText(status) {
-    var to = (state.lead && state.lead.email) || 'you';
     if (status === 'sent') {
-      return 'A copy of these results has been emailed to ' + to + ' and the Sendfull team.';
+      return 'Your results have been sent to the Sendfull team — we’ll be in touch.';
     }
     if (status === 'failed') {
-      return 'We couldn’t email your results automatically — reach us at ' + SENDFULL_EMAIL + '.';
+      return 'We couldn’t send your results automatically — reach us at ' + SENDFULL_EMAIL + '.';
     }
-    return 'Emailing a copy of your results to ' + to + '…';
+    return 'Sending your results to the Sendfull team…';
   }
 
   function setEmailStatus(status) {
@@ -542,9 +541,9 @@
     return lines.join('\n');
   }
 
-  /* POST the completed result to Formspree. The form's recipient
-     (hello@sendfull.com) receives it; the respondent is carbon-copied
-     via the _cc field. Fire-and-forget — never blocks the results UI. */
+  /* POST the completed result to Formspree. Only the form's recipient
+     (hello@sendfull.com) receives it — the respondent is NOT copied.
+     Fire-and-forget — never blocks the results UI. */
   function sendResultsEmail(lead, result) {
     if (!lead || !lead.email) {
       setEmailStatus('failed');
@@ -555,7 +554,6 @@
     var quad = QUADRANTS[result.quadrant];
     var fd = new FormData();
     fd.append('email', lead.email); // reply-to
-    fd.append('_cc', lead.email); // carbon-copy the respondent
     fd.append(
       '_subject',
       'Automation Readiness Diagnostic — ' + (lead.name || lead.email) +
