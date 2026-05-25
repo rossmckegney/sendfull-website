@@ -161,7 +161,7 @@
     },
     {
       id: 'q14', section: 3,
-      text: 'If this initiative ships and “succeeds” by your current metrics, are there second-order effects you’re worried about (skill atrophy, trust erosion, regulatory exposure, desynchronization with adjacent workflows)?',
+      text: 'If this initiative ships and “succeeds” by your current metrics, are there second-order effects you’re worried about (e.g., skill atrophy, desynchronization with adjacent workflows)?',
       options: [
         { points: 4, label: 'Examined rigorously: second-order effects have been identified and stress-tested (e.g., through a premortem)' },
         { points: 3, label: 'Examined informally: second-order effects have been discussed and named, but not stress-tested' },
