@@ -708,17 +708,7 @@
       '<form class="stack gap-4" style="margin-top:var(--sp-6)" novalidate id="lead-form">' +
       '<div class="form-grid">' +
       field('lf-name', 'Your name', 'input', f.name, 'Jane Rivera', 'name') +
-      field(
-        'lf-email',
-        'Work email',
-        'input',
-        f.email,
-        'jane@company.com',
-        'email',
-        'email',
-        'Used to send your diagnostic results. See our ' +
-          '<a class="textlink" href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.'
-      ) +
+      field('lf-email', 'Work email', 'input', f.email, 'jane@company.com', 'email', 'email') +
       '</div>' +
       '<div class="form-grid">' +
       field('lf-company', 'Company <span class="opt">· optional</span>', 'input', f.company, 'Northwind Inc.', 'company') +
@@ -730,7 +720,9 @@
       '<input type="checkbox" id="lf-agree" />' +
       '<label for="lf-agree">' +
       'I understand this is informational, not professional advice. I agree to the ' +
-      '<a class="textlink" href="/terms" target="_blank" rel="noopener">Terms of Use</a>.' +
+      '<a class="textlink" href="/terms" target="_blank" rel="noopener">Terms of Use</a>' +
+      ' and ' +
+      '<a class="textlink" href="/privacy" target="_blank" rel="noopener">Privacy Policy</a>.' +
       '</label>' +
       '</div>' +
       '<div class="q-nav" style="margin-top:var(--sp-2)">' +
