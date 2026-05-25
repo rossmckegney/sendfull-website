@@ -1126,6 +1126,25 @@ h4 {
   color: var(--text-light);
 }
 
+/* When a quadrant contains the user's marker, flip the label to the
+   opposite corner of the cell. The marker is clamped to the OUTER
+   corner of its quadrant (e.g., Hold marker lands near bottom-left
+   of the bl cell), so moving the label to the INNER-opposite corner
+   keeps it clear of the marker dot, the "You are here" pill, and
+   the arrow's start path. */
+.matrix-quad.tl[data-active='true'] {
+  justify-content: flex-end; /* top-left → bottom-left of cell */
+}
+.matrix-quad.tr[data-active='true'] {
+  justify-content: flex-end; /* top-right → bottom-right of cell */
+}
+.matrix-quad.bl[data-active='true'] {
+  justify-content: flex-start; /* bottom-left → top-left of cell */
+}
+.matrix-quad.br[data-active='true'] {
+  justify-content: flex-start; /* bottom-right → top-right of cell */
+}
+
 /* marker */
 .matrix-marker {
   position: absolute;
@@ -1190,7 +1209,11 @@ h4 {
 }
 .matrix-target-label {
   position: absolute;
-  transform: translate(-50%, 14px);
+  /* Placed ABOVE the dot. The arrow always approaches the target
+     from below (the marker is never in the Automate quadrant when
+     an arrow is drawn), so the space above the dot is reliably
+     clear of the arrowhead. */
+  transform: translate(-50%, calc(-100% - 12px));
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.68rem;
