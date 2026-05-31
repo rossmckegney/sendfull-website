@@ -687,7 +687,7 @@
       (hasProgress()
         ? '<button class="q-back" id="intro-resume">or resume your saved run</button>'
         : '') +
-      '<p class="muted" style="font-size:0.86rem;max-width:38ch">Your answers stay on this device. Re-take quarterly to track drift.</p>' +
+      '<p class="muted" style="font-size:0.86rem;max-width:38ch">Re-take quarterly to track drift.</p>' +
       '</div>';
 
     host.querySelector('#intro-begin').addEventListener('click', handleBegin);
@@ -1012,7 +1012,7 @@
       /* secondary actions */
       '<div class="reveal center stack gap-3" style="align-items:center">' +
       '<div class="hr full" style="max-width:280px;margin:0 auto var(--sp-2)"></div>' +
-      '<p class="muted" style="font-size:0.92rem">Your responses are saved on this device. Re-take quarterly to track drift.</p>' +
+      '<p class="muted" style="font-size:0.92rem">Re-take quarterly to track drift.</p>' +
       '<p class="muted" id="diag-email-status" data-email-status="' + (state.emailStatus || 'sending') + '" style="font-size:0.92rem">' +
       esc(emailStatusText(state.emailStatus)) + '</p>' +
       '<div class="stack gap-3" style="flex-direction:row;flex-wrap:wrap;justify-content:center">' +
