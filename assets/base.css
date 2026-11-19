@@ -323,3 +323,58 @@
   text-transform: none;
   line-height: 1.3;
 }
+
+/* Book tour list. Scoped so the rest of the marketing pages stay as they are. */
+.book-tour {
+  max-width: var(--maxWidthM);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: var(--space5XL);
+  padding-bottom: var(--space3XL);
+}
+.book-tour h1 {
+  max-width: 16ch;
+  margin: var(--spaceS) 0 var(--spaceM);
+}
+.book-tour > h2 {
+  margin-top: var(--space3XL);
+  margin-bottom: var(--spaceM);
+}
+.book-tour-list {
+  list-style: none;
+  margin: 0 0 var(--spaceL);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spaceL);
+}
+.book-tour-event {
+  margin: 0;
+  padding: var(--spaceL);
+  border: 1px solid color-mix(in lab, var(--text) 15%, transparent);
+  border-radius: var(--spaceM);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spaceXS);
+}
+.book-tour-event p {
+  margin: 0;
+}
+.book-tour-date {
+  margin: 0;
+  color: var(--primary);
+  font-weight: var(--fontWeightMedium);
+  letter-spacing: 0.04em;
+}
+.book-tour-register {
+  margin-top: var(--spaceS);
+}
+@media (max-width: 696px) {
+  .book-tour h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+  .book-tour-event {
+    padding: var(--spaceM);
+  }
+}
