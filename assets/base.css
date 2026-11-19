@@ -307,3 +307,19 @@
 /* ---- static-site helpers ---- */
 /* The container fade-in (was driven by React data-loading); keep it visible. */
 ._container_j3vhn_2 { opacity: 1; }
+
+/* Newsletter cards: cover image above the episode, date, and title. */
+.post-thumb {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 8px;
+  border-radius: 8px;
+}
+.post-date {
+  font-size: var(--fontSizeBodyXS);
+  color: var(--textLight);
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.3;
+}

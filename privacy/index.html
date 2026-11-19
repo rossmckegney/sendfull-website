@@ -18,6 +18,7 @@
       name="description"
       content="Privacy Policy for the Sendfull automation diagnostic."
     />
+    <link rel="canonical" href="https://www.sendfull.com/privacy/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,10 +27,11 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/assets/sendfull-app.css?v=6" />
+    <link rel="stylesheet" href="/assets/sendfull-app.css?v=7" />
     <title>Privacy Policy · Sendfull</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- ================= NAV ================= -->
     <nav class="nav">
       <div class="container nav-inner">
@@ -60,18 +62,18 @@
     </nav>
 
     <!-- ================= LEGAL ================= -->
-    <main class="section">
+    <main id="main-content" class="section">
       <div class="container">
         <article class="legal-doc">
           <header class="stack gap-3" style="margin-bottom: var(--sp-7)">
             <span class="eyebrow">Legal</span>
             <h1 class="h1">Privacy Policy</h1>
-            <p class="muted" style="font-size: 0.95rem">Last updated: May 25, 2026</p>
+            <p class="muted" style="font-size: 0.95rem">Last updated: November 19, 2026</p>
           </header>
 
           <p class="lead">
-            This policy explains how Sendfull LLC (“Sendfull”) handles information you
-            provide through the automation diagnostic on sendfull.com.
+            This policy explains how Sendfull LLC (“Sendfull”) handles information on
+            sendfull.com, including the automation diagnostic and the contact form.
           </p>
 
           <h2 class="h2">1. What we collect</h2>
@@ -80,42 +82,85 @@
             <li>Your name</li>
             <li>Your work email address</li>
             <li>Optionally: your company and role</li>
-            <li>The initiative you are assessing</li>
+            <li>The initiative you are assessing, and an optional one-sentence description</li>
             <li>Your responses to the diagnostic questions</li>
           </ul>
           <p>
-            The site may also collect basic usage information through standard web
-            analytics (such as pages visited and approximate location), used only to
-            understand how the site is used.
+            While a run is in progress, a draft of those details and answers is saved in
+            this browser’s localStorage so you can resume. That draft is not sent to
+            Sendfull. When you finish, the draft is removed and a copy of the finished
+            run — your details, your answers, and the result — is saved in localStorage
+            on that device. Clearing this site’s data in your browser removes it.
+          </p>
+          <p>
+            Finishing also emails a summary to the Sendfull team. The summary includes
+            your name, email, any company and role you gave, the initiative, your scores,
+            and the recommended next step. It does not include a copy of every answer.
+            The site does not email that summary to you.
+          </p>
+          <p>
+            Google Analytics records pages visited on the whole site, and diagnostic
+            events such as starting, resuming, submitting your details, answering a
+            question, completing, and re-taking. Google receives that usage data, which
+            can include an approximate location.
+          </p>
+          <p>
+            The workshop, diagnostic, privacy, and terms pages load the Sora and Inter
+            typefaces from Google Fonts. That request sends your IP address to Google.
+            Your diagnostic answers are not part of it.
+          </p>
+          <p>
+            The contact form collects the email address and message you type.
           </p>
 
           <h2 class="h2">2. What we do with it</h2>
           <p>We use this information to:</p>
           <ul>
-            <li>Send your diagnostic results to the email you provide</li>
+            <li>
+              Email the diagnostic summary to hello@sendfull.com, and keep the in-progress
+              draft and the finished run in your browser, as described above
+            </li>
+            <li>Reply to messages sent through the contact form</li>
             <li>Improve the diagnostic based on the responses we receive</li>
             <li>
-              Occasionally email you about related Sendfull work, such as the forthcoming
-              book or upcoming workshops
+              Occasionally email you about related Sendfull work, such as the book
+              <em>What Your Machines Should Do</em> or upcoming workshops
             </li>
           </ul>
           <p>
-            You can opt out of follow-up emails at any time by replying to any email from
-            us or by contacting
+            The address you enter is included so we can reply. We do not automatically
+            send you a copy of your diagnostic results. You can opt out of follow-up
+            emails at any time by replying to any email from us or by contacting
             <a class="textlink" href="mailto:hello@sendfull.com">hello@sendfull.com</a>.
           </p>
 
           <h2 class="h2">3. What we do not do with it</h2>
           <p>
-            We do not sell your information. We do not share it with third parties for
-            their marketing.
+            We do not sell your information. We do not give it to other companies so they
+            can market their own products to you.
           </p>
 
           <h2 class="h2">4. Services we use</h2>
+          <ul>
+            <li>
+              <strong>Google Analytics 4</strong> (measurement ID G-5BM6XJ7WQD), loaded
+              with gtag.js on every page, for the page views and diagnostic events above.
+            </li>
+            <li>
+              <strong>Formspree</strong> (form
+              <a class="textlink" href="https://formspree.io/f/mykdjprq">formspree.io/f/mykdjprq</a>)
+              delivers the diagnostic summary and contact-form messages to
+              hello@sendfull.com. Formspree processes those fields in order to send that
+              email.
+            </li>
+            <li>
+              <strong>Google Fonts</strong> serves Sora and Inter on the workshop,
+              diagnostic, privacy, and terms pages.
+            </li>
+            <li>GitHub Pages hosts the site.</li>
+          </ul>
           <p>
-            The diagnostic relies on standard web services, such as email delivery and site
-            hosting, to operate. These services process your information only as needed to
-            provide their function.
+            These services process information only as needed to provide their function.
           </p>
 
           <h2 class="h2">5. Your rights</h2>
@@ -166,15 +211,15 @@
             </div>
             <div class="footer-col">
               <h4>Go deeper</h4>
-              <a href="https://sendfull.com" target="_blank" rel="noreferrer">Sendfull</a>
+              <a href="https://www.sendfull.com/" target="_blank" rel="noreferrer">Sendfull</a>
               <a href="https://sendfull.substack.com" target="_blank" rel="noreferrer">Sendfull Substack</a>
               <a href="https://bit.ly/3VfGaTB" target="_blank" rel="noreferrer">Autonomy Matrix template</a>
             </div>
           </div>
         </div>
         <div class="footer-base">
-          <span>Based on <em>Designing Automated Futures</em> by Stefanie Hutka · Rosenfeld Media</span>
-          <span id="footer-year">© Sendfull. Diagnostic v1.0.</span>
+          <span>Based on <a href="https://rosenfeldmedia.com/books/what-your-machines-should-do/" target="_blank" rel="noreferrer"><em>What Your Machines Should Do</em></a> by Stefanie Hutka, PhD · Rosenfeld Media</span>
+          <span id="footer-year">© 2026 Sendfull.</span>
         </div>
       </div>
     </footer>
@@ -182,7 +227,7 @@
     <script src="/assets/nav.js?v=4"></script>
     <script>
       document.getElementById('footer-year').textContent =
-        '© ' + new Date().getFullYear() + ' Sendfull. Diagnostic v1.0.';
+        '© ' + new Date().getFullYear() + ' Sendfull.';
     </script>
   </body>
 </html>

@@ -17,6 +17,20 @@
       name="description"
       content="The Automation Readiness Diagnostic — find out where your AI initiative sits on the Autonomy Decision Matrix, and what to do next."
     />
+    <link rel="canonical" href="https://www.sendfull.com/diagnostic/" />
+    <meta property="og:title" content="The Automation Readiness Diagnostic · Sendfull" />
+    <meta property="og:description" content="The Automation Readiness Diagnostic — find out where your AI initiative sits on the Autonomy Decision Matrix, and what to do next." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.sendfull.com/diagnostic/" />
+    <meta property="og:site_name" content="Sendfull" />
+    <meta property="og:image" content="https://www.sendfull.com/social-image.png" />
+    <meta property="og:image:alt" content="Banner for the site" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Automation Readiness Diagnostic · Sendfull" />
+    <meta name="twitter:description" content="The Automation Readiness Diagnostic — find out where your AI initiative sits on the Autonomy Decision Matrix, and what to do next." />
+    <meta name="twitter:image" content="https://www.sendfull.com/social-image.png" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,10 +39,11 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/assets/sendfull-app.css?v=6" />
+    <link rel="stylesheet" href="/assets/sendfull-app.css?v=7" />
     <title>The Automation Readiness Diagnostic · Sendfull</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- ================= NAV ================= -->
     <nav class="nav">
       <div class="container nav-inner">
@@ -58,6 +73,7 @@
       </div>
     </nav>
 
+    <main id="main-content">
     <!-- ================= HERO ================= -->
     <header class="hero">
       <div class="ambient">
@@ -73,7 +89,7 @@
           </h1>
           <p class="lead measure rise-in" style="--rise-delay: 0.30s">
             A 15-question, 8-minute self-assessment built on the frameworks in
-            <em>Designing Automated Futures</em>. Plot one initiative on the Autonomy Decision
+            <em>What Your Machines Should Do</em>. Plot one initiative on the Autonomy Decision
             Matrix, score your Strategy Gap risk, and get the single next step that fits.
           </p>
           <div class="hero-cta-row rise-in" style="--rise-delay: 0.41s">
@@ -256,8 +272,9 @@
           <div class="cta-band-inner stack gap-4">
             <h2 class="h1">Pick one initiative. Get clarity in eight minutes.</h2>
             <p class="lead">
-              Your answers stay on your device. Re-take quarterly to track how your readiness
-              drifts.
+              Your progress is saved in this browser. When you finish, a summary is emailed
+              to Sendfull at hello@sendfull.com — not back to you. Re-take quarterly to track
+              how your readiness drifts.
             </p>
             <div style="margin-top: 8px">
               <a href="/diagnostic/start" class="btn btn-primary btn-lg">
@@ -269,6 +286,7 @@
         </div>
       </div>
     </section>
+    </main>
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
@@ -292,15 +310,15 @@
             </div>
             <div class="footer-col">
               <h4>Go deeper</h4>
-              <a href="https://sendfull.com" target="_blank" rel="noreferrer">Sendfull</a>
+              <a href="https://www.sendfull.com/" target="_blank" rel="noreferrer">Sendfull</a>
               <a href="https://sendfull.substack.com" target="_blank" rel="noreferrer">Sendfull Substack</a>
               <a href="https://bit.ly/3VfGaTB" target="_blank" rel="noreferrer">Autonomy Matrix template</a>
             </div>
           </div>
         </div>
         <div class="footer-base">
-          <span>Based on <em>Designing Automated Futures</em> by Stefanie Hutka · Rosenfeld Media</span>
-          <span id="footer-year">© Sendfull. Diagnostic v1.0.</span>
+          <span>Based on <a href="https://rosenfeldmedia.com/books/what-your-machines-should-do/" target="_blank" rel="noreferrer"><em>What Your Machines Should Do</em></a> by Stefanie Hutka, PhD · Rosenfeld Media</span>
+          <span id="footer-year">© 2026 Sendfull.</span>
         </div>
       </div>
     </footer>
@@ -310,7 +328,7 @@
     <script src="/assets/matrix.js?v=5"></script>
     <script>
       document.getElementById('footer-year').textContent =
-        '© ' + new Date().getFullYear() + ' Sendfull. Diagnostic v1.0.';
+        '© ' + new Date().getFullYear() + ' Sendfull.';
       SendfullMatrix.render(
         document.getElementById('sample-matrix'),
         { could: 0.34, should: 0.72, quadrant: 'assist' },

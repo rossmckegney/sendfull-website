@@ -1,18 +1,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.sendfull.com/</loc>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.sendfull.com/contact</loc>
+    <loc>https://www.sendfull.com/contact/</loc>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.sendfull.com/diagnostic</loc>
+    <loc>https://www.sendfull.com/diagnostic/</loc>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.sendfull.com/workshop</loc>
+    <loc>https://www.sendfull.com/diagnostic/start/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.sendfull.com/workshop/</loc>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

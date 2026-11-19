@@ -18,6 +18,7 @@
       name="description"
       content="Terms of Use for the Sendfull automation diagnostic."
     />
+    <link rel="canonical" href="https://www.sendfull.com/terms/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,10 +27,11 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/assets/sendfull-app.css?v=6" />
+    <link rel="stylesheet" href="/assets/sendfull-app.css?v=7" />
     <title>Terms of Use · Sendfull</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- ================= NAV ================= -->
     <nav class="nav">
       <div class="container nav-inner">
@@ -60,7 +62,7 @@
     </nav>
 
     <!-- ================= LEGAL ================= -->
-    <main class="section">
+    <main id="main-content" class="section">
       <div class="container">
         <article class="legal-doc">
           <header class="stack gap-3" style="margin-bottom: var(--sp-7)">
@@ -184,15 +186,15 @@
             </div>
             <div class="footer-col">
               <h4>Go deeper</h4>
-              <a href="https://sendfull.com" target="_blank" rel="noreferrer">Sendfull</a>
+              <a href="https://www.sendfull.com/" target="_blank" rel="noreferrer">Sendfull</a>
               <a href="https://sendfull.substack.com" target="_blank" rel="noreferrer">Sendfull Substack</a>
               <a href="https://bit.ly/3VfGaTB" target="_blank" rel="noreferrer">Autonomy Matrix template</a>
             </div>
           </div>
         </div>
         <div class="footer-base">
-          <span>Based on <em>Designing Automated Futures</em> by Stefanie Hutka · Rosenfeld Media</span>
-          <span id="footer-year">© Sendfull. Diagnostic v1.0.</span>
+          <span>Based on <a href="https://rosenfeldmedia.com/books/what-your-machines-should-do/" target="_blank" rel="noreferrer"><em>What Your Machines Should Do</em></a> by Stefanie Hutka, PhD · Rosenfeld Media</span>
+          <span id="footer-year">© 2026 Sendfull.</span>
         </div>
       </div>
     </footer>
@@ -200,7 +202,7 @@
     <script src="/assets/nav.js?v=4"></script>
     <script>
       document.getElementById('footer-year').textContent =
-        '© ' + new Date().getFullYear() + ' Sendfull. Diagnostic v1.0.';
+        '© ' + new Date().getFullYear() + ' Sendfull.';
     </script>
   </body>
 </html>
