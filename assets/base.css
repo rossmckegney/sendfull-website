@@ -324,17 +324,37 @@
   line-height: 1.3;
 }
 
-/* Book tour list. Scoped so the rest of the marketing pages stay as they are. */
+/* Book tour. Inner width matches the homepage content column (--maxWidthL). */
 .book-tour {
-  max-width: var(--maxWidthM);
-  margin-left: auto;
-  margin-right: auto;
   padding-top: var(--space5XL);
   padding-bottom: var(--space3XL);
 }
+.book-tour-inner {
+  max-width: var(--maxWidthL);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.book-tour-hero {
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  gap: var(--space2XL);
+  align-items: center;
+  margin-bottom: var(--space2XL);
+}
+.book-tour-cover {
+  display: block;
+}
+.book-tour-cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 .book-tour h1 {
-  max-width: 16ch;
   margin: var(--spaceS) 0 var(--spaceM);
+}
+.book-tour-prose {
+  max-width: 68ch;
 }
 .book-tour > h2 {
   margin-top: var(--space3XL);
@@ -371,6 +391,13 @@
   margin-top: var(--spaceS);
 }
 @media (max-width: 696px) {
+  .book-tour-hero {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+  .book-tour-cover {
+    width: min(220px, 58%);
+  }
   .book-tour h1 {
     font-size: clamp(2rem, 10vw, 3rem);
   }
