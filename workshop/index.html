@@ -17,6 +17,20 @@
       name="description"
       content="The Strategy-First AI Workshop — a two-day executive engagement that anchors every AI investment to where you've chosen to play and how you've chosen to win."
     />
+    <link rel="canonical" href="https://www.sendfull.com/workshop/" />
+    <meta property="og:title" content="Strategy-First AI Workshop · Sendfull" />
+    <meta property="og:description" content="The Strategy-First AI Workshop — a two-day executive engagement that anchors every AI investment to where you've chosen to play and how you've chosen to win." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.sendfull.com/workshop/" />
+    <meta property="og:site_name" content="Sendfull" />
+    <meta property="og:image" content="https://www.sendfull.com/social-image.png" />
+    <meta property="og:image:alt" content="Banner for the site" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Strategy-First AI Workshop · Sendfull" />
+    <meta name="twitter:description" content="The Strategy-First AI Workshop — a two-day executive engagement that anchors every AI investment to where you've chosen to play and how you've chosen to win." />
+    <meta name="twitter:image" content="https://www.sendfull.com/social-image.png" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,10 +39,11 @@
       href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/assets/sendfull-app.css?v=6" />
+    <link rel="stylesheet" href="/assets/sendfull-app.css?v=7" />
     <title>Strategy-First AI Workshop · Sendfull</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <!-- ================= NAV ================= -->
     <nav class="nav">
       <div class="container nav-inner">
@@ -58,6 +73,7 @@
       </div>
     </nav>
 
+    <main id="main-content">
     <!-- ================= HERO ================= -->
     <header class="hero">
       <div class="ambient">
@@ -304,7 +320,7 @@
               <div class="timeline-item">
                 <div class="timeline-rail"><span class="timeline-bead"></span><span class="timeline-line"></span></div>
                 <div>
-                  <h3 class="h3" style="margin-bottom: 4px">60-minute scoping call</h3>
+                  <h3 class="h3" style="margin-bottom: 4px">30-minute scoping call</h3>
                   <p class="muted" style="font-size: 0.96rem">Confirms fit and surfaces the initiatives the workshop will focus on.</p>
                 </div>
               </div>
@@ -352,7 +368,7 @@
             <div>
               <h2 class="h2" style="margin-bottom: 10px">Stefanie Hutka, PhD</h2>
               <p class="muted">
-                Author of <em>Designing Automated Futures</em> (Rosenfeld Media). UX practitioner,
+                Author of <a class="textlink" href="https://rosenfeldmedia.com/books/what-your-machines-should-do/" target="_blank" rel="noopener noreferrer"><em>What Your Machines Should Do</em></a> (Rosenfeld Media, November 10, 2026). UX practitioner,
                 UC Berkeley adjunct professor, and Bay Area startup mentor with 15+ years of experience
                 in designing and shipping emerging-technology products, from startups to Fortune 500 companies like Meta and Adobe.
                 She has facilitated versions of this material with enterprise leadership teams across financial services, insurance, design tooling,
@@ -391,6 +407,7 @@
         </div>
       </div>
     </section>
+    </main>
 
     <!-- ================= FOOTER ================= -->
     <footer class="footer">
@@ -414,15 +431,15 @@
             </div>
             <div class="footer-col">
               <h4>Go deeper</h4>
-              <a href="https://sendfull.com" target="_blank" rel="noreferrer">Sendfull</a>
+              <a href="https://www.sendfull.com/" target="_blank" rel="noreferrer">Sendfull</a>
               <a href="https://sendfull.substack.com" target="_blank" rel="noreferrer">Sendfull Substack</a>
               <a href="https://bit.ly/3VfGaTB" target="_blank" rel="noreferrer">Autonomy Matrix template</a>
             </div>
           </div>
         </div>
         <div class="footer-base">
-          <span>Based on <em>Designing Automated Futures</em> by Stefanie Hutka · Rosenfeld Media</span>
-          <span id="footer-year">© Sendfull. Diagnostic v1.0.</span>
+          <span>Based on <a href="https://rosenfeldmedia.com/books/what-your-machines-should-do/" target="_blank" rel="noreferrer"><em>What Your Machines Should Do</em></a> by Stefanie Hutka, PhD · Rosenfeld Media</span>
+          <span id="footer-year">© 2026 Sendfull.</span>
         </div>
       </div>
     </footer>
@@ -431,7 +448,7 @@
     <script src="/assets/reveal.js?v=4"></script>
     <script>
       document.getElementById('footer-year').textContent =
-        '© ' + new Date().getFullYear() + ' Sendfull. Diagnostic v1.0.';
+        '© ' + new Date().getFullYear() + ' Sendfull.';
     </script>
   </body>
 </html>

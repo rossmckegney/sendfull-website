@@ -229,15 +229,22 @@
     },
   };
 
+  /* Chapter labels follow Rosenfeld Media’s table of contents for
+     What Your Machines Should Do (November 2026). A number is included
+     only when the published chapter title matches the topic. Chapters 5
+     (Seeing the System), 6 (Reinforcing Strategy Through Automation), and
+     9 (Designing Iron Man Suits) do not name “system purpose,”
+     “Automation Choice Check,” or “Cognitive Allocation Model,” so those
+     numbers are omitted rather than guessed. */
   var RECOMMENDATIONS = {
     hold: {
-      chapter: 'Chapter 5', title: 'Revisit system purpose before you invest',
-      body: 'Read Chapter 5 of Designing Automated Futures on system purpose. There’s no capability or value signal strong enough to act on yet — watch this space and re-take the diagnostic in 90 days.',
+      chapter: 'What Your Machines Should Do', title: 'Revisit system purpose before you invest',
+      body: 'There’s no capability or value signal strong enough to act on yet — see What Your Machines Should Do, then watch this space and re-take the diagnostic in 90 days.',
       workshopFit: 'low',
     },
     question: {
-      chapter: 'Chapter 6', title: 'Run an Automation Choice Check',
-      body: 'Your capability is real — it’s just not reinforcing your strategy. Run an Automation Choice Check (Chapter 6) to point that capability at a problem that actually moves how you win.',
+      chapter: 'What Your Machines Should Do', title: 'Run an Automation Choice Check',
+      body: 'Your capability is real — it’s just not reinforcing your strategy. Run an Automation Choice Check to point that capability at a problem that actually moves how you win.',
       workshopFit: 'medium',
     },
     'assist-high': {
@@ -246,8 +253,8 @@
       workshopFit: 'high',
     },
     'assist-low': {
-      chapter: 'Chapter 9', title: 'Design your Human-in-the-Loop handoffs',
-      body: 'You’re intentional enough to move forward with HITL design. Use the Cognitive Allocation Model (Chapter 9) to design the handoffs between human judgment and automated steps.',
+      chapter: 'What Your Machines Should Do', title: 'Design your Human-in-the-Loop handoffs',
+      body: 'You’re intentional enough to move forward with HITL design. Use the Cognitive Allocation Model to design the handoffs between human judgment and automated steps.',
       workshopFit: 'medium',
     },
     'automate-high': {
@@ -256,8 +263,8 @@
       workshopFit: 'critical',
     },
     'automate-low': {
-      chapter: 'Chapter 10', title: 'Build your evaluation framework before launch',
-      body: 'You’re both capable and intentional. Before launch, build your evaluation framework — define the operating envelope, success criteria, and tolerance bands (Chapter 10).',
+      chapter: 'Chapter 10 · Evaluating Automated Systems', title: 'Build your evaluation framework before launch',
+      body: 'You’re both capable and intentional. Before launch, build your evaluation framework — define the operating envelope, success criteria, and tolerance bands. Chapter 10 of What Your Machines Should Do is Evaluating Automated Systems.',
       workshopFit: 'medium',
     },
   };
@@ -687,7 +694,7 @@
       (hasProgress()
         ? '<button class="q-back" id="intro-resume">or resume your saved run</button>'
         : '') +
-      '<p class="muted" style="font-size:0.86rem;max-width:38ch">Re-take quarterly to track drift.</p>' +
+      '<p class="muted" style="font-size:0.86rem;max-width:46ch">Your progress is saved in this browser. When you finish, a summary is emailed to Sendfull at hello@sendfull.com — not to you. Re-take quarterly to track drift.</p>' +
       '</div>';
 
     host.querySelector('#intro-begin').addEventListener('click', handleBegin);
@@ -1013,6 +1020,7 @@
       '<div class="reveal center stack gap-3" style="align-items:center">' +
       '<div class="hr full" style="max-width:280px;margin:0 auto var(--sp-2)"></div>' +
       '<p class="muted" style="font-size:0.92rem">Re-take quarterly to track drift.</p>' +
+      '<p class="muted" style="font-size:0.92rem">A copy of this run is saved in this browser. The summary is emailed to Sendfull, not to you.</p>' +
       '<p class="muted" id="diag-email-status" data-email-status="' + (state.emailStatus || 'sending') + '" style="font-size:0.92rem">' +
       esc(emailStatusText(state.emailStatus)) + '</p>' +
       '<div class="stack gap-3" style="flex-direction:row;flex-wrap:wrap;justify-content:center">' +
