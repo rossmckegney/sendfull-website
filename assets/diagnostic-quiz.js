@@ -480,11 +480,27 @@
   var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mykdjprq';
   var SENDFULL_EMAIL = 'hello@sendfull.com';
 
-  /* Fire a Google Analytics (gtag) event; no-op if GA is unavailable. */
+  /* Numeric LinkedIn Campaign Manager conversion IDs. Unset until created,
+     so lintrk is not called with a guessed id. */
+  var LINKEDIN_CONVERSIONS = {
+    toolkit_start: null,
+    toolkit_complete: null
+  };
+
+  /* Fire a Google Analytics (gtag) event; no-op if GA is unavailable.
+     LinkedIn is fired only for funnel conversions that have a numeric id. */
   function track(name, params) {
     try {
       if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
     } catch (e) {
+      /* analytics must never break the quiz */
+    }
+    try {
+      var conversionId = LINKEDIN_CONVERSIONS[name];
+      if (typeof window.lintrk === 'function' && typeof conversionId === 'number') {
+        window.lintrk('track', { conversion_id: conversionId });
+      }
+    } catch (e2) {
       /* analytics must never break the quiz */
     }
   }
@@ -1216,6 +1232,7 @@
     state.emailStatus = null;
     state.phase = 'lead';
     track('diagnostic_start');
+    track('toolkit_start', { tool: 'diagnostic' });
     render();
   }
 
@@ -1226,6 +1243,11 @@
     } else if (state.lead) {
       state.qIndex = firstUnanswered();
       state.phase = 'questions';
+      track('toolkit_step', {
+        step_number: state.qIndex + 1,
+        step_count: TOTAL_QUESTIONS,
+        tool: 'diagnostic'
+      });
       render();
     } else {
       state.phase = 'lead';
@@ -1239,6 +1261,11 @@
     saveDraft({ lead: data, answers: state.answers });
     state.qIndex = firstUnanswered();
     state.phase = 'questions';
+    track('toolkit_step', {
+      step_number: state.qIndex + 1,
+      step_count: TOTAL_QUESTIONS,
+      tool: 'diagnostic'
+    });
     render();
   }
 
@@ -1282,6 +1309,11 @@
       goComputing();
     } else {
       state.qIndex += 1;
+      track('toolkit_step', {
+        step_number: state.qIndex + 1,
+        step_count: TOTAL_QUESTIONS,
+        tool: 'diagnostic'
+      });
       render();
     }
   }
@@ -1330,6 +1362,10 @@
           could_score: r.section2,
           should_score: r.section3,
           risk_score: r.riskScore,
+        });
+        track('toolkit_complete', {
+          tool: 'diagnostic',
+          step_count: TOTAL_QUESTIONS
         });
         sendResultsEmail(state.lead, r);
       }

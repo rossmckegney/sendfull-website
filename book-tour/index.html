@@ -118,7 +118,7 @@
       <article class="book-tour _section_cvvm4_2">
         <div class="book-tour-inner">
         <div class="book-tour-hero">
-          <a class="book-tour-cover" href="https://rosenfeldmedia.com/books/what-your-machines-should-do/" target="_blank" rel="noopener noreferrer">
+          <a class="book-tour-cover" href="https://rosenfeldmedia.com/books/what-your-machines-should-do/" target="_blank" rel="noopener noreferrer" data-ga-event="buy_book_click" data-discount-code="HUTKA-SUBSTACK">
             <img src="/assets/what-your-machines-should-do-cover.webp" width="600" height="903" alt="Cover of What Your Machines Should Do: The Science and Strategy of Human-Centered Automation, by Stefanie Hutka" />
           </a>
           <div class="book-tour-hero-copy">
@@ -137,7 +137,7 @@
             <p class="_text_13dm1_2" data-size="l" data-weight="medium">Rotman Business School</p>
             <p class="_text_13dm1_2" data-size="m">Toronto</p>
             <p class="_text_13dm1_2" data-size="s">Desautels Hall, Rotman School of Management, University of Toronto. In person and virtual. Presented by Rotman and the Business Design Initiative.</p>
-            <a class="_button_7hj7f_2 book-tour-register" href="https://www.rotman.utoronto.ca/news-events-and-ideas/public-events/events-listings/2026/november-2026/november-25stef-hutka/" target="_blank" rel="noopener noreferrer">
+            <a class="_button_7hj7f_2 book-tour-register" href="https://www.rotman.utoronto.ca/news-events-and-ideas/public-events/events-listings/2026/november-2026/november-25stef-hutka/" target="_blank" rel="noopener noreferrer" data-ga-event="register_click" data-event-label="rotman_nov25">
               <span class="_text_7hj7f_132">Register</span>
             </a>
           </li>
@@ -146,7 +146,7 @@
             <p class="_text_13dm1_2" data-size="l" data-weight="medium">DesignMeets &amp; OCAD U</p>
             <p class="_text_13dm1_2" data-size="m">Toronto</p>
             <p class="_text_13dm1_2" data-size="s">Rosalie Sharp Pavilion, OCAD University. Presented by DesignMeets and the OCAD U Faculty of Design.</p>
-            <a class="_button_7hj7f_2 book-tour-register" href="https://www.eventbrite.ca/e/what-your-machines-should-do-in-discussion-with-author-stef-hutka-tickets-2001009379921" target="_blank" rel="noopener noreferrer">
+            <a class="_button_7hj7f_2 book-tour-register" href="https://www.eventbrite.ca/e/what-your-machines-should-do-in-discussion-with-author-stef-hutka-tickets-2001009379921" target="_blank" rel="noopener noreferrer" data-ga-event="register_click" data-event-label="designmeets_ocad_nov26">
               <span class="_text_7hj7f_132">Register</span>
             </a>
           </li>
@@ -154,7 +154,7 @@
             <p class="book-tour-date"><time datetime="2026-12-02">December 2, 2026</time></p>
             <p class="_text_13dm1_2" data-size="l" data-weight="medium">Service Design Book Club</p>
             <p class="_text_13dm1_2" data-size="m">Remote</p>
-            <a class="_button_7hj7f_2 book-tour-register" href="https://luma.com/az1tm64e" target="_blank" rel="noopener noreferrer">
+            <a class="_button_7hj7f_2 book-tour-register" href="https://luma.com/az1tm64e" target="_blank" rel="noopener noreferrer" data-ga-event="register_click" data-event-label="service_design_book_club_dec2">
               <span class="_text_7hj7f_132">Register</span>
             </a>
           </li>
@@ -162,7 +162,7 @@
             <p class="book-tour-date"><time datetime="2026-12-02">December 2, 2026</time></p>
             <p class="_text_13dm1_2" data-size="l" data-weight="medium">UC Berkeley: School of Information</p>
             <p class="_text_13dm1_2" data-size="m">Berkeley</p>
-            <a class="_button_7hj7f_2 book-tour-register" href="https://www.ischool.berkeley.edu/events/lectures/2026/what-your-machines-should-do-science-and-strategy-human-centered-automation" target="_blank" rel="noopener noreferrer">
+            <a class="_button_7hj7f_2 book-tour-register" href="https://www.ischool.berkeley.edu/events/lectures/2026/what-your-machines-should-do-science-and-strategy-human-centered-automation" target="_blank" rel="noopener noreferrer" data-ga-event="register_click" data-event-label="berkeley_ischool_dec2">
               <span class="_text_7hj7f_132">Register</span>
             </a>
           </li>
@@ -179,7 +179,7 @@
 
         <h2 class="_heading_e2qtd_2" data-align="auto" data-weight="medium" data-level="4">The book</h2>
         <p class="_text_13dm1_2 book-tour-prose" data-size="m">
-          <a class="_link_1h1qj_2" href="https://rosenfeldmedia.com/books/what-your-machines-should-do/" target="_blank" rel="noopener noreferrer"><em>What Your Machines Should Do</em></a>
+          <a class="_link_1h1qj_2" href="https://rosenfeldmedia.com/books/what-your-machines-should-do/" target="_blank" rel="noopener noreferrer" data-ga-event="buy_book_click" data-discount-code="HUTKA-SUBSTACK"><em>What Your Machines Should Do</em></a>
           is available from Rosenfeld Media. Use the code <strong>HUTKA-SUBSTACK</strong> at checkout for 20% off, valid through December 12, 2026.
         </p>
         <p class="_text_13dm1_2 book-tour-prose" data-size="m">
@@ -209,6 +209,37 @@
           if (stamp < today) past.appendChild(item);
         });
         if (empty) empty.hidden = upcoming.children.length > 0;
+
+        /* Outbound funnel clicks. Beacon so the hit leaves with the navigation.
+           LinkedIn conversion IDs are numeric values created in Campaign Manager.
+           Until those exist, lintrk is not called. */
+        var LINKEDIN_CONVERSIONS = {
+          register_click: null,
+          buy_book_click: null
+        };
+        document.addEventListener('click', function (e) {
+          var link = e.target && e.target.closest ? e.target.closest('a[data-ga-event]') : null;
+          if (!link) return;
+          var name = link.getAttribute('data-ga-event');
+          if (name !== 'register_click' && name !== 'buy_book_click') return;
+          var params = {
+            link_url: link.href,
+            transport_type: 'beacon'
+          };
+          var label = link.getAttribute('data-event-label');
+          if (label) params.event_label = label;
+          var code = link.getAttribute('data-discount-code');
+          if (code) params.discount_code = code;
+          try {
+            if (typeof window.gtag === 'function') window.gtag('event', name, params);
+          } catch (err) {}
+          try {
+            var conversionId = LINKEDIN_CONVERSIONS[name];
+            if (typeof window.lintrk === 'function' && typeof conversionId === 'number') {
+              window.lintrk('track', { conversion_id: conversionId });
+            }
+          } catch (err2) {}
+        });
       })();
     </script>
 
